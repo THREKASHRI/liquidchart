@@ -1,0 +1,269 @@
+[30 08 2017 10:11:34.514] [INFO] -  - User - Giridharan S select - domain - Patient
+[30 08 2017 10:17:23.277] [INFO] -  - User - Giridharan S select - domain - Patient
+[30 08 2017 10:17:33.881] [INFO] - User - Giridharan S - select - userstory - Patient: Login
+[30 08 2017 10:18:12.019] [INFO] - User - Giridharan S - update - components to left pane
+[30 08 2017 10:19:40.426] [INFO] - User - Giridharan S - compile - Patient: Login - success
+[30 08 2017 10:19:40.427] [INFO] - - User - Giridharan S - CheckIn - Patient: Login - success
+[30 08 2017 10:40:32.193] [INFO] - User - Giridharan S - select - userDashBoard
+[30 08 2017 10:40:43.936] [INFO] - User - Giridharan S - select - profile
+[30 08 2017 10:41:04.069] [INFO] - User - Giridharan S - select - profile
+[30 08 2017 10:44:19.657] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[30 08 2017 10:44:25.742] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
+[30 08 2017 10:45:02.085] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 10:51:15.876] [INFO] - User - Giridharan S - select - profile
+[30 08 2017 10:52:18.649] [INFO] -  - User - Giridharan S select - domain - Patient
+[30 08 2017 11:17:29.131] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:18:53.578] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:23:17.248] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:24:35.887] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:35:39.244] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:35:43.298] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[30 08 2017 11:35:51.403] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[30 08 2017 11:35:56.502] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[30 08 2017 11:37:43.341] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[30 08 2017 12:24:12.137] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[30 08 2017 12:26:33.262] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[30 08 2017 12:26:56.157] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Login
+[30 08 2017 12:27:17.544] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[30 08 2017 12:34:51.864] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Login - success
+[30 08 2017 12:34:51.864] [INFO] - - User - Dhanasankar Sabanayagam - CheckIn - Patient: Login - success
+[30 08 2017 15:44:28.828] [INFO] - User - Prashant Pai - select - profile
+[30 08 2017 15:47:58.291] [INFO] - User - Prashant Pai - select - profile
+[30 08 2017 17:09:52.773] [INFO] - User - Prashant Pai - select - profile
+[30 08 2017 17:09:59.374] [INFO] - User - Prashant Pai - select - userDashBoard
+[30 08 2017 17:57:00.440] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 17:58:08.508] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 17:58:13.414] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 17:58:17.329] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 17:58:19.457] [INFO] -  - User - Prashant Pai select - domain - Call Center
+[30 08 2017 17:58:26.928] [INFO] - User - Prashant Pai - select - userstory - Call Center: Login
+[30 08 2017 18:05:35.392] [INFO] -  - User - Prashant Pai select - domain - Call Center
+[30 08 2017 18:13:56.022] [INFO] -  - User - Prashant Pai select - domain - Call Center
+[30 08 2017 19:03:55.858] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 19:04:01.034] [INFO] -  - User - Prashant Pai select - domain - Call Center
+[30 08 2017 19:04:09.251] [INFO] - User - Prashant Pai - select - userstory - Call Center: Add New Patient
+[30 08 2017 19:58:12.425] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 19:58:33.507] [INFO] - User - Prashant Pai - select - userstory - Patient: Login
+[30 08 2017 19:58:52.274] [INFO] - User - Prashant Pai - update - components to left pane
+[30 08 2017 19:59:05.886] [INFO] - User - Prashant Pai - update - components to left pane
+[30 08 2017 20:04:10.665] [INFO] - User - Prashant Pai - compile - Patient: Login - success
+[30 08 2017 20:04:10.666] [INFO] - - User - Prashant Pai - CheckIn - Patient: Login - success
+[30 08 2017 20:10:57.359] [INFO] -  - User - Prashant Pai select - domain - Patient
+[30 08 2017 20:11:08.216] [INFO] - User - Prashant Pai - select - userstory - Patient: Login
+[30 08 2017 20:11:27.511] [INFO] - User - Prashant Pai - update - components to left pane
+[30 08 2017 20:12:07.857] [INFO] - User - Prashant Pai - compile - Patient: Login - success
+[30 08 2017 20:12:07.857] [INFO] - - User - Prashant Pai - CheckIn - Patient: Login - success
+[31 08 2017 12:31:48.015] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Patient
+[31 08 2017 12:33:42.802] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Patient
+[31 08 2017 12:38:18.784] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Patient: Login
+[31 08 2017 12:38:39.987] [INFO] - User - Ramkumar Shanmugavel - update - components to left pane
+[31 08 2017 12:39:18.211] [INFO] - User - Ramkumar Shanmugavel - compile - Patient: Login - success
+[31 08 2017 12:39:18.212] [INFO] - - User - Ramkumar Shanmugavel - CheckIn - Patient: Login - success
+[31 08 2017 12:58:18.807] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Patient
+[31 08 2017 12:58:25.398] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 12:58:37.154] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 14:52:11.396] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 14:52:18.365] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 15:11:28.217] [INFO] -  - User - Tarunesh Kishor Sahu select - domain - Patient
+[31 08 2017 15:11:35.983] [INFO] -  - User - Tarunesh Kishor Sahu select - domain - Call Center
+[31 08 2017 15:11:44.157] [INFO] - User - Tarunesh Kishor Sahu - select - userstory - Call Center: Login
+[31 08 2017 15:19:10.389] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Patient
+[31 08 2017 15:19:20.893] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Patient: Login
+[31 08 2017 15:19:40.588] [INFO] - User - Ramkumar Shanmugavel - update - components to left pane
+[31 08 2017 15:20:13.566] [INFO] - User - Ramkumar Shanmugavel - compile - Patient: Login - success
+[31 08 2017 15:20:13.578] [INFO] - - User - Ramkumar Shanmugavel - CheckIn - Patient: Login - success
+[31 08 2017 15:24:25.896] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:24:36.682] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 15:31:25.333] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:31:34.324] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 15:32:00.657] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:32:29.668] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:32:37.656] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 15:32:45.521] [INFO] - User - Ramkumar Shanmugavel - update - components to left pane
+[31 08 2017 15:32:58.505] [INFO] - User - Ramkumar Shanmugavel - select - userDashBoard
+[31 08 2017 15:33:07.270] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:33:12.721] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: View Patient's Details
+[31 08 2017 15:33:17.279] [INFO] - User - Ramkumar Shanmugavel - select - userDashBoard
+[31 08 2017 15:33:42.098] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Phlebotomist
+[31 08 2017 15:33:47.787] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Phlebo: Login
+[31 08 2017 15:33:49.976] [INFO] - User - Ramkumar Shanmugavel - select - userDashBoard
+[31 08 2017 15:34:05.835] [INFO] -  - User - Ramkumar Shanmugavel select - domain - Call Center
+[31 08 2017 15:34:17.679] [INFO] - User - Ramkumar Shanmugavel - select - userstory - Call Center: Login
+[31 08 2017 15:34:21.696] [INFO] - User - Ramkumar Shanmugavel - select - userDashBoard
+[31 08 2017 15:39:18.413] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[31 08 2017 15:39:26.557] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[31 08 2017 15:39:34.935] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[31 08 2017 15:39:41.648] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Login
+[31 08 2017 15:39:45.564] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[31 08 2017 15:39:51.814] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[31 08 2017 15:40:01.368] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Login
+[31 08 2017 15:40:24.484] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[31 08 2017 15:40:54.144] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Login - success
+[31 08 2017 15:40:54.144] [INFO] - - User - Dhanasankar Sabanayagam - CheckIn - Patient: Login - success
+[05 09 2017 11:38:28.638] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 11:38:33.629] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 11:39:42.062] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 11:40:00.450] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 11:44:21.373] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[05 09 2017 11:44:37.772] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[05 09 2017 14:44:54.091] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:44:56.799] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 14:45:10.885] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:45:14.076] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 14:45:20.577] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:45:23.577] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 14:45:30.748] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:45:35.047] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 14:46:38.801] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Login
+[05 09 2017 14:46:52.734] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:46:57.063] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 14:47:04.013] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Login
+[05 09 2017 14:47:09.644] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:47:25.879] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 14:47:29.838] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 14:47:32.313] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:49:04.018] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Login
+[05 09 2017 14:49:29.872] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 14:54:23.481] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 14:54:27.021] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 14:54:28.550] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:56:26.242] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:56:43.528] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 14:56:48.056] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 14:57:00.279] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:57:04.416] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 14:57:08.458] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 14:57:20.408] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:57:24.040] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:57:28.353] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:57:31.803] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 14:57:34.934] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:57:36.865] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:57:39.152] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 14:57:42.228] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
+[05 09 2017 14:57:44.274] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Edit Appointment
+[05 09 2017 14:58:48.084] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 14:59:08.463] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 14:59:28.356] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:59:36.887] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 14:59:44.280] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Edit Appointment
+[05 09 2017 15:00:48.086] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:03:43.203] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:03:47.065] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 15:03:49.568] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:03:51.197] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:03:54.215] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Schedule Appointment
+[05 09 2017 15:03:56.233] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Schedule Appointment
+[05 09 2017 15:03:57.234] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:04:00.291] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Add New Patient
+[05 09 2017 15:04:02.304] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: Add New Patient
+[05 09 2017 15:04:03.648] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:04:06.055] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
+[05 09 2017 15:04:08.046] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Edit Appointment
+[05 09 2017 15:04:09.918] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:04:13.178] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:04:17.377] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:05:49.626] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:06:04.738] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:06:06.722] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:06:09.502] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: View Patient's Details
+[05 09 2017 15:06:11.598] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: View Patient's Details
+[05 09 2017 15:06:13.094] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:06:16.163] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 15:06:18.074] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:06:19.707] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:06:23.307] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:06:24.956] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:08:11.605] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: View Patient's Details
+[05 09 2017 15:08:18.078] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:08:24.960] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:10:11.609] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: View Patient's Details
+[05 09 2017 15:14:00.504] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:14:03.524] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Schedule Appointment
+[05 09 2017 15:14:05.662] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Schedule Appointment
+[05 09 2017 15:14:07.798] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:14:10.943] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:14:14.065] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:14:17.946] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Coordinator
+[05 09 2017 15:14:21.422] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Coordinator: Login
+[05 09 2017 15:14:23.638] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Coordinator: Login
+[05 09 2017 15:16:05.699] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Schedule Appointment
+[05 09 2017 15:16:14.072] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:16:20.922] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:16:23.777] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Coordinator: Login
+[05 09 2017 15:16:24.805] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:16:28.947] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - 
+[05 09 2017 15:18:00.070] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:18:03.593] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:18:05.669] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:18:09.164] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:18:12.153] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:18:14.690] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:18:19.895] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:18:23.087] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:18:25.582] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:20:05.673] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:20:14.693] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:20:25.583] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:20:33.538] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:20:36.070] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:20:38.123] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:20:55.621] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:22:05.872] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:22:26.571] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:22:29.864] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 15:22:31.874] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:22:35.392] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:22:43.127] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Patient Search
+[05 09 2017 15:22:44.885] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: Patient Search
+[05 09 2017 15:24:31.881] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:24:44.891] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: Patient Search
+[05 09 2017 15:26:10.857] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:31:29.257] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:33:03.465] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:33:06.548] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: List Appointment Details
+[05 09 2017 15:34:00.146] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: List Appointment Details
+[05 09 2017 15:34:08.498] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:34:12.489] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Schedule Appointment
+[05 09 2017 15:34:48.066] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[05 09 2017 15:43:09.383] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:49:13.076] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:49:16.584] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:49:21.052] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:49:24.394] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Add New Patient
+[05 09 2017 15:49:28.218] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:49:30.995] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:49:36.026] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:49:38.272] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
+[05 09 2017 15:49:42.005] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Edit Appointment
+[05 09 2017 15:49:43.475] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:49:45.700] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Add New Patient
+[05 09 2017 15:49:48.786] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: Add New Patient
+[05 09 2017 15:49:51.453] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:49:53.947] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[05 09 2017 15:49:58.754] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:50:01.102] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Patient Search
+[05 09 2017 15:50:06.800] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Call Center: Patient Search
+[05 09 2017 15:51:51.673] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:51:54.139] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
+[05 09 2017 15:51:58.060] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Call Center
+[05 09 2017 15:52:00.365] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Call Center: Add New Patient
+[05 09 2017 15:52:03.266] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:52:05.478] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:52:09.343] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:52:11.981] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 15:52:15.398] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 15:52:19.103] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: View Profile
+[05 09 2017 15:52:23.849] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:52:26.310] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Deallocate Appointment 
+[05 09 2017 15:57:43.237] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[05 09 2017 15:57:47.348] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[05 09 2017 16:11:23.972] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[05 09 2017 16:11:34.066] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[05 09 2017 16:12:14.410] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[05 09 2017 16:12:24.825] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[05 09 2017 16:12:35.818] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[05 09 2017 16:12:38.041] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[05 09 2017 18:23:24.189] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[05 09 2017 18:23:27.809] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Schedule Appointment
+[05 09 2017 18:23:35.035] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
