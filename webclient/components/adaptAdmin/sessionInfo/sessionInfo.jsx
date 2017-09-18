@@ -173,73 +173,75 @@ export default class UserScenarioStatus extends React.Component{
       });
     }
     if(this.state.SessionFlag === 1){
-      Table1 = (<Table basic='very' celled collapsing >
-        <Table.Header><h3>Team Score Status</h3>
-        <Table.Row>
-          <Table.HeaderCell>Team</Table.HeaderCell>
-          <Table.HeaderCell>Score</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body> {scoreTable}
-      </Table.Body>
-    </Table>);
-    Table2 = (<Table celled padded>
-      <Table.Header><h3 style={{textAlign: 'center'}}>User Status</h3>
-      <Table.Row>
-        <Table.HeaderCell>EmployeeID</Table.HeaderCell>
-        <Table.HeaderCell>Name</Table.HeaderCell>
-        <Table.HeaderCell>Worked on</Table.HeaderCell>
-        <Table.HeaderCell>Team</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body> {WhodidWhat}
-    </Table.Body>
-  </Table>);
-  DownloadButton = (<Button style={{marginLeft: '20%'}} onClick={this.pdfToHTML}>Download Info</Button>);
-  SessionHeader = (<h3>Session Information : {this.state.SessionSelected}</h3>);
-}
-return (
-  <div>
-    <Grid>
-      <Grid.Row>
-        <Grid.Column width="2"/>
-        <Grid.Column width="8">
-          <Form style={{marginTop: '5%', marginLeft: '2%'}}>
-            <Form.Field>
-              <label>
-                <p style={{fontSize: '14px', fontFamily: 'arial'}}>Select Session</p>
-              </label>
-              <Dropdown fluid onChange={this.updatesearchQuerySession.bind(this)} placeholder='Select Session to display Info' fluid search selection options={this.state.Session} required/>
-            </Form.Field>
-          </Form>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-    <div id='HTMLtoPDF'>
-      <Grid style={{marginTop: '10%', marginLeft: '2%'}}>
-        {SessionHeader}
-        <Grid.Column width='5'/>
-        <Grid.Row>
-          <Grid.Column width="6">
-            {Table1}
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Column width='5'/>
-        <Grid.Row>
-          <Grid.Column width="10">
-            {Table2}
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Column width='2'/>
-        <Grid.Column width='2'/>
-        <Grid.Row>
-          {DownloadButton}
-        </Grid.Row>
-        <Grid.Column width='2'/>
-        <Grid.Column width='2'/>
-      </Grid>
-    </div>
-  </div>
-);
-}
+      Table1 = (<Table celled padded >
+        <Table.Header>
+          {/* <h3>Team Score Status</h3> */}
+          <Table.Row>
+            <Table.HeaderCell>Team</Table.HeaderCell>
+            <Table.HeaderCell>Score</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body> {scoreTable}
+        </Table.Body>
+      </Table>);
+      Table2 = (<Table celled padded>
+        <Table.Header>
+          {/* <h3 style={{textAlign: 'center'}}>User Status</h3> */}
+          <Table.Row>
+            <Table.HeaderCell>EmployeeID</Table.HeaderCell>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Worked on</Table.HeaderCell>
+            <Table.HeaderCell>Team</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body> {WhodidWhat}
+        </Table.Body>
+      </Table>);
+      DownloadButton = (<Button style={{marginLeft: '20%'}} onClick={this.pdfToHTML}>Download Info</Button>);
+      SessionHeader = (<h3>Session Information : {this.state.SessionSelected}</h3>);
+    }
+    return (
+      <div>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width="2"/>
+            <Grid.Column width="8">
+              <Form style={{marginTop: '5%', marginLeft: '30%', width: '40%'}}>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Select Session</p>
+                  </label>
+                  <Dropdown fluid onChange={this.updatesearchQuerySession.bind(this)} placeholder='Select Session to display Info' fluid search selection options={this.state.Session} required/>
+                </Form.Field>
+              </Form>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <div id='HTMLtoPDF' style={{marginLeft: '22%'}}>
+          <Grid style={{marginTop: '10%', marginLeft: '2%'}}>
+            {SessionHeader}
+            <Grid.Column width='5'/>
+            <Grid.Row>
+              <Grid.Column width="6">
+                {Table1}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Column width='5'/>
+            <Grid.Row>
+              <Grid.Column width="10">
+                {Table2}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Column width='2'/>
+            <Grid.Column width='2'/>
+            <Grid.Row>
+              {DownloadButton}
+            </Grid.Row>
+            <Grid.Column width='2'/>
+            <Grid.Column width='2'/>
+          </Grid>
+        </div>
+      </div>
+    );
+  }
 }
