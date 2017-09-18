@@ -1,34 +1,34 @@
 import React from 'react';
-import {Form, Grid, Button, Icon, Divider, TextArea, Dropdown} from 'semantic-ui-react';
+import {Form, Grid, Button, Divider, Dropdown} from 'semantic-ui-react';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const ReactToastr = require('react-toastr');
 const {ToastContainer} = ReactToastr;
 const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
 export default class EditScenario extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
-      domain:[],
-      selectedDomain:'',
+      domain: [],
+      selectedDomain: '',
       scenario: [],
-      scenario1 : [],
+      scenario1: [],
       toUpdateScenario: '',
-      probStmt:'',
-      name:'',
-      output:'',
-      evalfun:'',
-      scenarioId:'',
-      code:'',
-      score:'',
-      negativescore:'',
-      video:'',
-      precondition:'',
-      selectedScenarios:[],
+      probStmt: '',
+      name: '',
+      output: '',
+      evalfun: '',
+      scenarioId: '',
+      code: '',
+      score: '',
+      negativescore: '',
+      video: '',
+      precondition: '',
+      selectedScenarios: [],
       selectedAccount: [],
-      selectedGivenScenarios:[],
-      selectedGivenAccount:[]
-    }
+      selectedGivenScenarios: [],
+      selectedGivenAccount: []
+    };
     this.updatesearchQueryScenario = this.updatesearchQueryScenario.bind(this);
     this.updatesearchQueryScenario1 = this.updatesearchQueryScenario1.bind(this);
     this.updatesearchQueryScenario2 = this.updatesearchQueryScenario2.bind(this);
@@ -44,9 +44,8 @@ export default class EditScenario extends React.Component {
     this.updateNewScenario = this.updateNewScenario.bind(this);
     this.checkForEmptyAlert = this.checkForEmptyAlert.bind(this);
     this.checkForScenarioUpdatedSuccessfullyAlert = this.checkForScenarioUpdatedSuccessfullyAlert.bind(this);
-  };
+  }
   nameChange(e) {
-    //console.log("inside name change", e);
     this.setState({name: e.target.value});
   }
   probstmtChange(e) {
@@ -65,326 +64,289 @@ export default class EditScenario extends React.Component {
     this.setState({score: e.target.value});
   }
   negativescore(e) {
-    //console.log("negativescore ",e.target.value);
     this.setState({negativescore: e.target.value});
   }
   video(e) {
     this.setState({video: e.target.value});
   }
   updatesearchQueryScenario1(e, a) {
-    var res = a.value;
-     var arr = Object.keys(res).map(function(key) {
+    let res = a.value;
+    let arr = Object.keys(res).map(function(key) {
       return res[key];
     });
     this.setState({selectedScenarios: arr,
-    selectedAccount: arr});
-  }
-  updatesearchQueryScenario2(e, a) {
-    var res = a.value;
-     var arr = Object.keys(res).map(function(key) {
-      return res[key];
-    });
-    this.setState({selectedGivenScenarios: arr,
-    selectedGivenAccount: arr});
-  }
-  checkForEmptyAlert() {
-    //console.log("inside check for Empty alert");
-    let context = this;
-    this.refs.asd.error(
-      'Please fill all the fields',
-      '', {
-      timeOut: 3000,
-      extendedTimeOut: 3000
+      selectedAccount: arr});
     }
-  );
-  }
-  checkForScenarioUpdatedSuccessfullyAlert() {
-    //console.log("inside check for Scenario updated successfully alert");
-    let context = this;
-    this.refs.asd.success(
-      'User story updated successfully',
-      '', {
-      timeOut: 3000,
-      extendedTimeOut: 3000
-    }
-  );
-  }
-  updateNewScenario() {
-    //console.log("inside update ",this.state.selectedScenarios);
-    let scenarioName = this.refs.scenarioName.value;
-    let probStmt =this.refs.probStmt.value;
-    let crctSeq =this.state.correctSequence;
-    let outputValue =this.refs.outputValue.value;
-    let evalFunc =this.refs.evalFunc.value;
-    let code = this.refs.codeFunc.value;
-    let score = this.refs.score.value;
-    let negativescore = this.refs.negativescore.value;
-    let video = this.refs.video.value;
-    let precondition = this.state.selectedScenarios;
-    let givenpreconditions = this.state.selectedGivenScenarios;
-    var letters = /^[a-zA-Z]+$/;
-    if(scenarioName === '' || probStmt ==='' || outputValue ==='' || evalFunc ==='' || code ==='' || score ==='' || negativescore ==='' || video ==='' || precondition ==='' ){
-      // alert('Empty fields');
-      this.checkForEmptyAlert();
-    }
-    else{
-      let precondition= JSON.stringify(this.state.selectedScenarios);
-      let givenpreconditions= JSON.stringify(this.state.selectedGivenScenarios);
-      let x = this.state.negativescore;
-      if(this.state.negativescore > 0){
-        x = x * (-1);
-      }
-      //console.log("update ",precondition);
-      var data = {
-        probStmt : this.state.probStmt,
-        name : this.state.name,
-        output : this.state.output,
-        evalfun : this.state.evalfun,
-        scenarioId : this.state.scenarioId,
-        code: this.state.code,
-        score: this.state.score,
-        negativescore: x,
-        video: this.state.video,
-        precondition: precondition,
-        givenpreconditions: givenpreconditions
-      }
-      let context = this;
-      //console.log("update 2 ",precondition);
-      $.ajax({
-        url:"/users/updateScenario",
-        type:'POST',
-        data:data,
-        success: function(data) {
-          //console.log("success in ajax ",data);
-          // alert("scenario updated succesfully");
-          context.checkForScenarioUpdatedSuccessfullyAlert();
-          context.setState({probStmt : '',
-          name : '',
-          output : '',
-          evalfun : '',
-          scenarioId : '',
-          code: '',
-          score: '',
-          negativescore: '',
-          video: '',
-          selectedScenarios: [],
-          selectedAccount: [],
-          selectedGivenScenarios:[],
-          selectedGivenAccount:[]
-          });
-        //console.log("set state of scenario ",this.state.selectedScenarios);
-          // this.setState(selectedScenarios = [];
-        }.bind(this),
-        error: function(err)
-        {
-          //console.log('error occurred on AJAX');
-        }.bind(this)
+    updatesearchQueryScenario2(e, a) {
+      let res = a.value;
+      let arr = Object.keys(res).map(function(key) {
+        return res[key];
       });
-    }
-  }
-  componentWillMount(){
-this.component();
-}
-    component(){
-    let domainArray = [];
-    $.ajax({
-      url:"/users/findDomain",
-      type:'GET',
-      success: function(data)
-      {
-        for(let i in data) {
-          //console.log(data[i]);
-          if(i !== null) {
-            domainArray.push({key: data[i].name, value: data[i].name, text: data[i].name});
+      this.setState({selectedGivenScenarios: arr,
+        selectedGivenAccount: arr});
+      }
+      checkForEmptyAlert() {
+        this.refs.asd.error(
+          'Please fill all the fields',
+          '', {
+            timeOut: 3000,
+            extendedTimeOut: 3000
           }
+        );
+      }
+      checkForScenarioUpdatedSuccessfullyAlert() {
+        this.refs.asd.success(
+          'User story updated successfully',
+          '', {
+            timeOut: 3000,
+            extendedTimeOut: 3000
+          }
+        );
+      }
+      updateNewScenario() {
+        let scenarioName = this.refs.scenarioName.value;
+        let probStmt = this.refs.probStmt.value;
+        let outputValue = this.refs.outputValue.value;
+        let evalFunc = this.refs.evalFunc.value;
+        let code = this.refs.codeFunc.value;
+        let score = this.refs.score.value;
+        let negativescore = this.refs.negativescore.value;
+        let video = this.refs.video.value;
+        let precondition = this.state.selectedScenarios;
+        let givenpreconditions = this.state.selectedGivenScenarios;
+        if(scenarioName === '' || probStmt === '' || outputValue === '' || evalFunc === '' || code === '' || score === '' || negativescore === '' || video === '' || precondition === '') {
+          this.checkForEmptyAlert();
         }
-        domainArray.push({key: "unlinked_scenarios", value: "unlinked_scenarios", text: "unlinked_scenarios"});
-        this.setState({
-          domain: domainArray
+        else{
+          let precondition = JSON.stringify(this.state.selectedScenarios);
+          let givenpreconditions = JSON.stringify(this.state.selectedGivenScenarios);
+          let x = this.state.negativescore;
+          if(this.state.negativescore > 0) {
+            x = x * (-1);
+          }
+          let data = {
+            probStmt: this.state.probStmt,
+            name: this.state.name,
+            output: this.state.output,
+            evalfun: this.state.evalfun,
+            scenarioId: this.state.scenarioId,
+            code: this.state.code,
+            score: this.state.score,
+            negativescore: x,
+            video: this.state.video,
+            precondition: precondition,
+            givenpreconditions: givenpreconditions
+          };
+          let context = this;
+          $.ajax({
+            url: '/users/updateScenario',
+            type: 'POST',
+            data: data,
+            success: function(data) {
+              context.checkForScenarioUpdatedSuccessfullyAlert();
+              context.setState({probStmt: '',
+              name: '',
+              output: '',
+              evalfun: '',
+              scenarioId: '',
+              code: '',
+              score: '',
+              negativescore: '',
+              video: '',
+              selectedScenarios: [],
+              selectedAccount: [],
+              selectedGivenScenarios: [],
+              selectedGivenAccount: []
+            });
+          }.bind(this),
+          error: function(err)
+          {
+          }.bind(this)
         });
-      }.bind(this),
-      error: function(err)
-      {
-        //console.log('error occurred on AJAX');
-      }.bind(this)
-    });
-  }
-  updateScenario(e,a) {
-    if(a.value != null) {
-
-      let res = a.value;
-      let context = this;
-      //console.log("scenario find ",res);
-      this.setState({toUpdateScenario:res});
-      $.ajax({
-        url:"/users/findScenarioData",
-        type:'POST',
-        data:{scenario : res},
-        success: function(dataDB)
-        {
-          var data = dataDB.records[0]._fields[0].properties;
-          //console.log('The data is :',data);
-          context.setState({scenarioId:dataDB.records[0]._fields[0].identity.low})
-          context.setState({selectedScenarios:data.precondition,selectedAccount:data.precondition,selectedGivenScenarios:data.dependency,selectedGivenAccount:data.dependency,probStmt:data.problemstatement,name:data.name,output:data.output,evalfun:data.evalfun,code:data.code,score:data.score.low,negativescore:data.negativescore.low,video:data.video},function() {
-          });
-
-        }.bind(this),
-        error: function(err)
-        {
-          //console.log('error occurred on AJAX');
-        }.bind(this)
-      });
+      }
     }
-  }
-  updatesearchQueryScenario(e,a) {
-    // //console.log("e ",e);
-    //console.log("a ",a);
-var empId = cookies.get('empId');
-    let context = this;
-    if(a.value != null) {
-      let res = a.value;
-      this.setState({selectedDomain: res})
-      let scenarioArray =[];
+    componentWillMount() {
+      this.component();
+    }
+    component() {
+      let domainArray = [];
       $.ajax({
-        url:"/users/findScenarios",
-        type:'POST',
-        data:{domain : res,empId:empId},
+        url: '/users/findDomain',
+        type: 'GET',
         success: function(data)
         {
           for(let i in data) {
-             //console.log("in find scenario ",data[i]);
             if(i !== null) {
-              scenarioArray.push({key: data[i].scenarioName, value: data[i].scenarioName, text: data[i].scenarioName});
+              domainArray.push({key: data[i].name, value: data[i].name, text: data[i].name});
             }
           }
-
-          //console.log("scenario ",this.state.scenario);
-          let context = this;
-          let scenarioArray1 = [];
-          $.ajax({
-            url: '/component/getAllScenarios',
-            type: 'GET',
-            success: function(data) {
-              //console.log('in ajax of scenario ' + data);
-              for (let i in data) {
-                if (i !== null) {
-                  scenarioArray1.push({key: data[i].scenarioName, value: data[i].scenarioName, text: data[i].scenarioName});
-                }
-              }
-              context.setState({scenario1: scenarioArray1});
-            },
-            error: function(err) {
-              //console.log('error is ',err);
-            }
-          });
-          context.setState({
-            scenario: scenarioArray
+          domainArray.push({key: 'unlinked_scenarios', value: 'unlinked_scenarios', text: 'unlinked_scenarios'});
+          this.setState({
+            domain: domainArray
           });
         }.bind(this),
         error: function(err)
         {
-          //console.log('error occurred on AJAX');
         }.bind(this)
       });
-      // //console.log("searchquerdomain"+this.state.searchQueryDomain+'ncjdcbhd'+res);
+    }
+    updateScenario(e, a) {
+      if(a.value != null) {
+        let res = a.value;
+        let context = this;
+        this.setState({toUpdateScenario: res});
+        $.ajax({
+          url: '/users/findScenarioData',
+          type: 'POST',
+          data: {scenario : res},
+          success: function(dataDB)
+          {
+            let data = dataDB.records[0]._fields[0].properties;
+            context.setState({scenarioId: dataDB.records[0]._fields[0].identity.low});
+            context.setState({selectedScenarios: data.precondition, selectedAccount: data.precondition, selectedGivenScenarios: data.dependency, selectedGivenAccount: data.dependency, probStmt: data.problemstatement, name: data.name, output: data.output, evalfun: data.evalfun, code: data.code, score: data.score.low, negativescore: data.negativescore.low, video: data.video}, function() {
+            });
+          }.bind(this),
+          error: function(err)
+          {
+          }.bind(this)
+        });
+      }
+    }
+    updatesearchQueryScenario(e, a) {
+      let empId = cookies.get('empId');
+      if(a.value != null) {
+        let res = a.value;
+        this.setState({selectedDomain: res});
+        let scenarioArray = [];
+        $.ajax({
+          url: '/users/findScenarios',
+          type: 'POST',
+          data: {domain: res, empId: empId},
+          success: function(data)
+          {
+            for(let i in data) {
+              if(i !== null) {
+                scenarioArray.push({key: data[i].scenarioName, value: data[i].scenarioName, text: data[i].scenarioName});
+              }
+            }
+            let context = this;
+            let scenarioArray1 = [];
+            $.ajax({
+              url: '/component/getAllScenarios',
+              type: 'GET',
+              success: function(data) {
+                for (let i in data) {
+                  if (i !== null) {
+                    scenarioArray1.push({key: data[i].scenarioName, value: data[i].scenarioName, text: data[i].scenarioName});
+                  }
+                }
+                context.setState({scenario1: scenarioArray1});
+              },
+              error: function(err) {
+              }
+            });
+            context.setState({
+              scenario: scenarioArray
+            });
+          }.bind(this),
+          error: function(err)
+          {
+          }.bind(this)
+        });
+      }
+    }
+    render() {
+    return (
+      <div>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={1}/>
+            <Grid.Column width={14}>
+              <p style={{fontSize: '16px', fontFamily: 'arial'}}><b>Modify existing user story</b></p>
+              <Form>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Customer journey</p>
+                  </label>
+                  <Dropdown onChange={this.updatesearchQueryScenario} placeholder='Select the Customer journey' fluid search selection options={this.state.domain}/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>User story</p>
+                  </label>
+                  <Dropdown onChange={this.updateScenario} fluid placeholder='Select User story to Update' selection options={this.state.scenario}/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Name</p>
+                  </label>
+                  <input autoComplete='off' type='text' ref='scenarioName' value={this.state.name} onChange={this.nameChange} placeholder='Name' required/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Problem Statement</p>
+                    <textarea ref='probStmt' placeholder='Problem Statement' onChange={this.probstmtChange} value={this.state.probStmt} required/>
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Output</p>
+                  </label>
+                  <input autoComplete='off' type='text' ref='outputValue' onChange={this.outputChange} required value={this.state.output} placeholder='output' required/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>eval function</p>
+                  </label>
+                  <input autoComplete='off' type='text' ref='evalFunc' required onChange={this.evalChange} value={this.state.evalfun} placeholder='eval func' required/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Actual Dependencies</p>
+                  </label>
+                  <Dropdown onChange={this.updatesearchQueryScenario1} value={this.state.selectedAccount} placeholder='Dependencies' fluid multiple search selection options={this.state.scenario1} required/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Given Dependencies</p>
+                  </label>
+                  <Dropdown onChange={this.updatesearchQueryScenario2} value={this.state.selectedGivenAccount} placeholder='Dependencies' fluid multiple search selection options={this.state.scenario1} required/>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Code</p>
+                    <input autoComplete='off' type='text' ref='codeFunc' required onChange={this.codeChange} value={this.state.code} placeholder='code path' required/>
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Score</p>
+                    <input autoComplete='off' type='number' ref='score' required onChange={this.score} value={this.state.score} placeholder='score' required/>
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Negative Score</p>
+                    <input autoComplete='off' type='number' ref='negativescore' required onChange={this.negativescore} value={this.state.negativescore} placeholder='Negative score' required/>
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Video</p>
+                    <input autoComplete='off' type='text' ref='video' required onChange={this.video} value={this.state.video} placeholder='video' required/>
+                  </label>
+                </Form.Field>
+              </Form>
+              <Grid.Column width={8}><Button style={{marginTop: '10px'}} fluid color='green' onClick={this.updateNewScenario}>Update  User story</Button></Grid.Column>
+              <Divider/>
+            </Grid.Column>
+            <Grid.Column width={1}/>
+          </Grid.Row>
+        </Grid>
+        <ToastContainer ref='asd'
+          toastMessageFactory={ToastMessageFactory}
+          className='toast-top-center' style={{marginTop: '8%'}}/>
+        </div>
+      );
     }
   }
-  render() {//console.log('in add Scenario');
-  const optionSample = [{ key: 'one', value: 'One',text:'one' },{ key: 'two', value: 'Two',text:'one'},{ key: 'three', value: 'Three',text:'one'}];
-  const defaultOption = optionSample[0];
-  return (
-    <div>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={1}/>
-          <Grid.Column width={14}>
-              <p style={{fontSize:"16px",fontFamily:"arial"}}><b>Modify existing user story</b></p>
-            <Form>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Customer journey</p>
-                </label>
-                <Dropdown onChange={this.updatesearchQueryScenario} placeholder='Select the Customer journey'  fluid search selection options={this.state.domain}/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>User story</p>
-                </label>
-                <Dropdown onChange={this.updateScenario} fluid placeholder='Select User story to Update' selection options={this.state.scenario}/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Name</p>
-                </label>
-                <input autoComplete='off' type='text' ref='scenarioName' value={this.state.name} onChange={this.nameChange} placeholder='Name' required/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Problem Statement</p>
-                  <textarea ref='probStmt' placeholder='Problem Statement' onChange={this.probstmtChange} value={this.state.probStmt} required/>
-                </label>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Output</p>
-                </label>
-                <input autoComplete='off' type='text' ref='outputValue' onChange={this.outputChange} required  value={this.state.output} placeholder='output' required/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>eval function</p>
-                </label>
-                <input autoComplete='off' type='text' ref='evalFunc' required onChange={this.evalChange} value={this.state.evalfun} placeholder='eval func' required/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Actual Dependencies</p>
-                </label>
-                {/* <input autoComplete='off' type='text' ref='precondition' value={this.state.precondition} placeholder='Dependencies' required onChange={this.precondition}  placeholder='video'/> */}
-                <Dropdown onChange={this.updatesearchQueryScenario1} value={this.state.selectedAccount} placeholder='Dependencies' fluid multiple search selection options={this.state.scenario1} required/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Given Dependencies</p>
-                </label>
-                {/* <input autoComplete='off' type='text' ref='precondition' value={this.state.precondition} placeholder='Dependencies' required onChange={this.precondition}  placeholder='video'/> */}
-                <Dropdown onChange={this.updatesearchQueryScenario2} value={this.state.selectedGivenAccount} placeholder='Dependencies' fluid multiple search selection options={this.state.scenario1} required/>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Code</p>
-                  <input autoComplete='off' type='text' ref='codeFunc' required onChange={this.codeChange} value={this.state.code} placeholder='code path' required/>
-                </label>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Score</p>
-                  <input autoComplete='off' type='number' ref='score' required onChange={this.score} value={this.state.score} placeholder='score' required/>
-                </label>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Negative Score</p>
-                  <input autoComplete='off' type='number' ref='negativescore' required onChange={this.negativescore} value={this.state.negativescore} placeholder='Negative score' required/>
-                </label>
-              </Form.Field>
-              <Form.Field>
-                <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Video</p>
-                  <input autoComplete='off' type='text' ref='video' required onChange={this.video} value={this.state.video} placeholder='video' required/>
-                </label>
-              </Form.Field>
-            </Form>
-            <Grid.Column width={8}><Button style={{marginTop:"10px"}} fluid color='green'  onClick={this.updateNewScenario}>Update  User story</Button></Grid.Column>
-            <Divider/>
-          </Grid.Column>
-          <Grid.Column width={1}/>
-        </Grid.Row>
-      </Grid>
-      <ToastContainer ref='asd'
-        toastMessageFactory={ToastMessageFactory}
-        className='toast-top-center' style={{marginTop:'8%'}}/>
-    </div>
-  );
-}
-}

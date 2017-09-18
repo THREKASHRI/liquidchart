@@ -42,8 +42,8 @@ var addUser=(req, res) => {
           ////console.log("success", result);
           return res.send('Successfully registered');
         }).catch(function(error) {
-              ////console.log('promise error: ', error);
-            });
+          ////console.log('promise error: ', error);
+        });
 
       }
     });
@@ -59,8 +59,8 @@ var getUsers=(req, res) => {
       }
       res.send(alldetails);  });
     }
-
-    var addNewDomain  =(req, res) => {
+    //  @Mayanka : Adding a new customer journey
+    var addNewDomain = (req, res) => {
       let session = driver.session();
       let name = req.body.domainName;
       let description = req.body.domainDescription;
@@ -70,24 +70,23 @@ var getUsers=(req, res) => {
         res.send('done');
         session.close();
       }).catch(function(error) {
-        //////console.log(' error: ', error);
       });
     };
 
-var getusertype=(req, res) => {
-  let loginid = req.body.loginid;
-  //console.log("login in getusertype",loginid);
-  users.findOne({loginId: loginid}).then((docs) => {
-    if (docs != null) {
-        //console.log(docs.userType + "    " +docs);
-        res.send(docs);
-    } else {
-      res.send("invalid_data");
-    }
-  }, (err) => {
-    ////console.log(err);
-    res.send("invalid_data");
-  });
+    var getusertype=(req, res) => {
+      let loginid = req.body.loginid;
+      //console.log("login in getusertype",loginid);
+      users.findOne({loginId: loginid}).then((docs) => {
+        if (docs != null) {
+          //console.log(docs.userType + "    " +docs);
+          res.send(docs);
+        } else {
+          res.send("invalid_data");
+        }
+      }, (err) => {
+        ////console.log(err);
+        res.send("invalid_data");
+      });
     }
 
     var deleteUser=(req, res) => {
@@ -258,9 +257,6 @@ var getusertype=(req, res) => {
 
       });
     };
-
-
-
     var updateDomain =(req, res)=> {
       var updatedData = req.body;
       let session = driver.session();
@@ -282,22 +278,20 @@ var getusertype=(req, res) => {
         res.send(result);
       });
     };
-    var getCorrectSequence =(req, res)=> {
-      //////console.log('request'+req.body.length);
+    //  @Mayanka : Fetching the sequence information of a user story
+    var getCorrectSequence = (req, res)=> {
       if(req.body.length == 1){
-        let oneArr =[];
-        let components =[];
+        let oneArr = [];
+        let components = [];
         let query = '';
         oneArr = req.body.components;
         query = 'unwind ['+oneArr+'] as id match (n:component) where ID(n) = id return n';
         session.run(query).then(function(result) {
           for (var x of result.records) {
-            components.push({"header":x._fields[0].properties.name});
+            components.push({"header": x._fields[0].properties.name});
           }
-          //////console.log('1.resultArray and length'+JSON.stringify(resultArray[i]),resultArray[i].length);
           res.send(components)
         }).catch(function(error) {
-          //////console.log(' error: ', error);
         });
       }
       else{
@@ -307,12 +301,12 @@ var getusertype=(req, res) => {
         let tem2 = [];
         let temp = new Array();
         let tem2Length = 0;
-        if(componentArray != undefined){
-          if(componentArray.length == 1){
+        if(componentArray != undefined) {
+          if(componentArray.length == 1) {
             temp.push(componentArray);
           }
           else{
-            for(let i = 0;i<componentArray.length;i++){
+            for(let i = 0; i <componentArray.length; i = i + 1) {
               temp = componentArray[i].split(',');
               temp =  JSON.parse("[" + temp + "]");
               if(temp != undefined){
@@ -329,17 +323,14 @@ var getusertype=(req, res) => {
         components = [];
         let query = '';
         query = 'unwind ['+tem2+'] as id match (n:component) where ID(n) = id return n';
-        //////console.log('query'+query);
         session.run(query).then(function(result) {
           for (var x of result.records) {
             components.push({"header":x._fields[0].properties.name});
             flag += 1;
           }
           resultArray.push(components);
-          //////console.log('1.resultArray and length'+JSON.stringify(resultArray[i]),resultArray[i].length);
           res.send(resultArray)
         }).catch(function(error) {
-          //////console.log(' error: ', error);
         });
       }
     };
@@ -498,9 +489,9 @@ var getusertype=(req, res) => {
       //////console.log("in control ",result1);
       res.send(result1);
     }).catch(function(error) {
-      //////console.log('promise error: ', error);
     });
   };
+  //  @Mayanka : Fetching the  distinct customer journeys with status, 'Inprogress'
   var adminDashboardTotalDomain =(req, res) => {
     let status = "'In progress'";
     let result1 = [];
@@ -511,19 +502,16 @@ var getusertype=(req, res) => {
         "count":(x._fields[0]),
       });
     }
-    ////console.log("in control ",result1);
     res.send(result1);
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 };
+//  @Mayanka : Fetching the  distinct dashboard user stories with status, 'Completed'
 var adminDashboardCompletedScenario =(req, res) => {
   let status = "'Completed'";
   let result1 = [];
   let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario) where m.status ='+status+' return n.name, m.name,m.status,m.domain,m.loginid,m.username';
-  // let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario) where m.status ="completed" return n.name, m.name,m.status,m.domain,m.loginid';
   session.run(query).then(function(result) {
-
     for (var x of result.records) {
       result1.push({
         "team_name": (x._fields[0]),
@@ -531,17 +519,16 @@ var adminDashboardCompletedScenario =(req, res) => {
         "domain_name": (x._fields[3]),
         "userId":(x._fields[5]),
       });
-      //console.log('resultant data to send: ', result1);
       if(result.records.length == result1.length) {
-      res.send(result1);
+        res.send(result1);
       }
     }
     session.close();
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 }
-var adminDashboardTotalScenario =(req, res) => {
+//  @Mayanka : Fetching the all user stories started by the user
+var adminDashboardTotalScenario = (req, res) => {
   let result1 = [];
   let query = 'match (n:dashboardscenario)  return n';
   session.run(query).then(function(result) {
@@ -553,97 +540,139 @@ var adminDashboardTotalScenario =(req, res) => {
         "domain": (x._fields[0].properties.domain),
       });
     }
-    ////console.log("in control ",result1);
     res.send(result1);
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 }
+//  @Mayanka : Archiving the selected customer journeys
 var toggleDomain =(req, res) => {
   let domainName = req.body.name;
   let flagStatus = req.body.flag;
   let query = "match (n:domain) where n.name='"+domainName+"' set n.flag = "+flagStatus+" return n.flag";
   session.run(query).then(function(result) {
-    ////console.log("in toggle");
     res.send("done");
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 }
-
-
+//  @Mayanka : Fetching the customer journeys completed by a user
 var domainsCompletedByUser =(req, res) => {
   let domainName = req.body.domainName;
   let userID = req.body.userId;
   let teamName = req.body.teamName;
   let query = 'match(m:loginid{name:'+userId+'}) merge (m)<-[:completedDomain]-(n:completedDomain{name:'+domainName+'}) return n'
   session.run(query).then(function(result) {
-    ////console.log("result");
     res.send(result);
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 };
+//  @Mayanka : Fetching the count of customer journeys completed
 var fetchCompletedDomain =(req, res) => {
   let query = 'match (n:loginid)<-[]-(m:completedDomain) return count(distinct m.name)'
-  ////console.log("fetchCompletedDomainQuery ",query);
   session.run(query).then(function(result) {
-    ////console.log("fetchCompletedDomainresult",result);
     res.send(result);
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 };
+//  @Mayanka : Fetching individual scores of a user
 var fetchScores =(req, res) => {
   let Result = [];
   let query = 'match (n:loginid) return n'
   session.run(query).then(function(result) {
-
     for (var x of result.records){
       Result.push({
-          "userID":(x._fields[0].properties.username),
-          "score": (x._fields[0].properties.score),
+        "userID":(x._fields[0].properties.username),
+        "score": (x._fields[0].properties.score),
       });
     }
     res.send(Result);
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 };
+//  @Mayanka : Fetching the team wise details of user stories
 var teamStats =(req, res) => {
   let session = driver.session();
   let result1 = [];
   let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario)  return n.name, m.name,m.domain,m.loginid,m.status,m.username'
   session.run(query).then(function(result) {
-        ////console.log("success for getting scenario status for a team", JSON.stringify(result));
-        ////console.log(result.records[0]._fields[3]);
-        for (var x of result.records) {
-          result1.push({
-            "team_name": (x._fields[0]),
-            "scenario_name":(x._fields[1]),
-            "domain_name": (x._fields[2]),
-            "userId":(x._fields[5]),
-            "status":x._fields[4]
-          });
-          ////console.log('resultant data to send: ', result);
-          if(result.records.length == result1.length) {
-          res.send(result1);
-          }
-        }
-        session.close();
+    for (var x of result.records) {
+      result1.push({
+        "team_name": (x._fields[0]),
+        "scenario_name":(x._fields[1]),
+        "domain_name": (x._fields[2]),
+        "userId":(x._fields[5]),
+        "status":x._fields[4]
+      });
+      if(result.records.length == result1.length) {
+        res.send(result1);
+      }
+    }
+    session.close();
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
 };
-
 var getAllTeams = (req, res) => {
-  //console.log("in getAllTeams");
   let query='match (n:team) return n';
-    let session = driver.session();
-    session.run(query).then(function(result) {
-      res.send(result.records);
-    });
+  let session = driver.session();
+  session.run(query).then(function(result) {
+    res.send(result.records);
+  });
 }
+//  @Mayanka : Identifying who did what(userstories)
+var UserPickedScenarios = (req, res) => {
+let SessionName = req.body.session;
+  let query = 'match (k:session{name:"'+SessionName+'"})<-[]-(a:team)<-[]-(n:loginid)<-[]-(m:dashboardscenario) return m.username,m.name,m.loginid,a.name';
+  let session = driver.session();
+  session.run(query).then(function(result) {
+    res.send(result.records);
+  });
+};
+//  @Mayanka : get the names of the session
+var sessionNames = (req, res) => {
+  let session = driver.session();
+  let SessionNames = [];
+  let query1 = 'match(n:session) return n.name';
+  session.run(query1).then(function(result1) {
+    result1.records.map(function(item){
+      SessionNames.push(item._fields[0]);
+    })
+    res.send(SessionNames);
+  }).catch(function(error) {
+    session.close();
+    res.send(error);
+  });
+};
+//  @Mayanka : get the team participating in the respective session
+var sessionWiseTeams = (req, res) => {
+  let session = driver.session();
+  let SessionName = req.body.session;
+  let teamNames = [];
+  let query = 'match (m:team)-[]->(n:session{name:"'+SessionName+'"}) return m.name';
+  session.run(query).then(function(result1) {
+    result1.records.map(function(item){
+      teamNames.push(item._fields[0]);
+    })
+    res.send(teamNames);
+  }).catch(function(error) {
+    session.close();
+    res.send(error);
+  });
+};
+//  @Mayanka : get the  scores of the team participating in a respective session
+var sessionWiseTeamScores = (req, res) => {
+  let session = driver.session();
+  let teams = req.body.teams;
+  let teamNames = [];
+  let query = 'unwind  '+teams+' as teamname match(n:team{name:teamname})<-[:user_of]-(m:loginid) return sum(m.score), n.name';
+  session.run(query).then(function(result1) {
+    result1.records.map(function(item){
+      teamNames.push({'team': item._fields[1], 'score': item._fields[0]});
+    })
+    res.send(teamNames);
+  }).catch(function(error) {
+    session.close();
+    res.send(error);
+  });
+};
 
 module.exports = {
   findAllScenarios,
@@ -678,5 +707,9 @@ module.exports = {
   masterReset,
   resetPassword,
   getusertype,
-  getAllTeams
+  getAllTeams,
+  UserPickedScenarios,
+  sessionNames,
+  sessionWiseTeams,
+  sessionWiseTeamScores
 };

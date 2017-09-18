@@ -35,27 +35,6 @@ export default class userDashboard extends React.Component {
     ////console.log('inside userDashboard');
     let dataContent = [];
     let context = this;
-    // $.ajax({
-    //   url:'/userDashboard/userDashboardScenarioStatus',
-    //   type:'GET',
-    //   success: function(result)
-    //   {
-    //     for(let i = 0; i < result.length ; i++){
-    //       data.push({scenario_name:result[i].scenarioName,domain_name:result[i].domainName,
-    //         status:'Completed',assigned_to:result[i].userId,team_name:'pending'});
-    //       }
-    //       ////console.log('the completed scenarios'+data);
-    //       context.setState({
-    //         SavedUserStats: data
-    //       });
-    //     }.bind(this),
-    //     error: function(err)
-    //     {
-    //       //////console.log('error occurred on AJAX');
-    //     }.bind(this)
-    //   });
-      // scenario status for a team
-      //console.log("teamnamme ",cookies.get('teamName'));
       $.ajax({
         url:'/userDashboard/userDashboardScenarioStatus',
         type:'POST',
@@ -121,12 +100,9 @@ export default class userDashboard extends React.Component {
       // scores of the team
       $.ajax({
         url:'/userDashboard/teamScores',
-        type:'POST',
-        data:{teamName:cookies.get('teamName')},
+        type:'GET',
         success: function(data)
         {
-          ////console.log('team scores',data);
-          // ////console.log(data.records[0]._fields[0].low);
           $.ajax({
             url:'/userDashboard/getTeamScores',
             type:'POST',

@@ -517,7 +517,6 @@ Your score for this User story after checkin would be {this.props.actualScore + 
   }
 
   completedDomain() {
-
     let data = {
       userId: this.props.userId,
       domainName: this.props.domainName,

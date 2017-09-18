@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Grid, Button, Icon, Divider, TextArea, Dropdown, Snackbar, Dimmer, Header} from 'semantic-ui-react';
+import {Form, Grid, Button, Icon, Divider, Dropdown, Dimmer, Header} from 'semantic-ui-react';
 const ReactToastr = require('react-toastr');
 const {ToastContainer} = ReactToastr;
 const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
@@ -11,34 +11,31 @@ class DeleteUser extends React.Component {
     this.getAllUsers = this.getAllUsers.bind(this);
     this.checkForDeletedUserAlert = this.checkForDeletedUserAlert.bind(this);
     this.state = {
-      users : [],
-      searchQueryUser:'',
+      users: [],
+      searchQueryUser: '',
       duModal: false
-    }
+    };
   }
-  componentWillMount(){
+  componentWillMount() {
     this.getAllUsers();
   }
-  updatesearchQueryUser(e,a) {
-    if(a.value != null){
+  updatesearchQueryUser(e, a) {
+    if(a.value != null) {
       let res = a.value;
       this.setState({
         searchQueryUser: res
-      });//console.log("searchquerdomain"+this.state.searchQueryUser+'ncjdcbhd'+res);
+      });
     }
   }
-  getAllUsers(){
+  getAllUsers() {
     let context = this;
     let arr = [];
     $.ajax({
-      url:"/admin/getUsers",
-      type:'GET',
+      url: '/admin/getUsers',
+      type: 'GET',
       success: function(data)
       {
-        //console.log('in delete user'+Object.keys(data));
-        //console.log(JSON.stringify(data));
-        for(let k=0;k<data.length;k++) {
-          //console.log("xxxx ",data[k].userName);
+        for(let k = 0; k < data.length; k = k + 1) {
           if(k !== null) {
             arr.push({key: data[k].empId, value: data[k].empId, text: data[k].userName});
           }
@@ -47,13 +44,10 @@ class DeleteUser extends React.Component {
       }.bind(this),
       error: function(err)
       {
-        //console.log('error occurred on AJAX');
       }.bind(this)
     });
   }
   checkForDeletedUserAlert() {
-    //console.log("inside check for deleted user alert");
-    let context = this;
     this.refs.asd.success(
       'User deleted',
       '', {
@@ -62,22 +56,21 @@ class DeleteUser extends React.Component {
     }
   );
   }
-  deleteUser(){
-    this.setState({duModal:true});
+  deleteUser() {
+    this.setState({duModal: true});
   }
-  handleNoDeleteUserClick(){
-    this.setState({duModal:false});
+  handleNoDeleteUserClick() {
+    this.setState({duModal: false});
   }
   handleYesDeleteUserClick() {
     let context = this;
-    context.setState({duModal:false});
+    context.setState({duModal: false});
     $.ajax({
-      url:"/admin/deleteUser",
-      type:'POST',
-      data:{empid:this.state.searchQueryUser},
+      url: '/admin/deleteUser',
+      type: 'POST',
+      data: {empid: this.state.searchQueryUser},
       success: function(data)
       {
-        // alert('deleted user');
         context.checkForDeletedUserAlert();
         context.setState({
           searchQueryUser: ''
@@ -86,17 +79,16 @@ class DeleteUser extends React.Component {
       }.bind(this),
       error: function(err)
       {
-        //console.log('error occurred on AJAX');
       }.bind(this)
     });
   }
   render() {
     return(
       <div>
-        <Dimmer active={this.state.duModal} onClickOutside={this.handleNoDeleteUserClick.bind(this)} page style={{fontSize:'130%'}}>
-          <Header icon='trash outline' content='Delete user' style={{color:'white',marginLeft:'35%'}}/>
-          <p style={{marginRight:'3.2%'}}>Do you want to delete this user?</p>
-          <Button color='red' inverted onClick={this.handleNoDeleteUserClick.bind(this)} style={{marginLeft:'10%',marginRight:'1%'}}>
+        <Dimmer active={this.state.duModal} onClickOutside={this.handleNoDeleteUserClick.bind(this)} page style={{fontSize: '130%'}}>
+          <Header icon='trash outline' content='Delete user' style={{color: 'white', marginLeft: '35%'}}/>
+          <p style={{marginRight: '3.2%'}}>Do you want to delete this user?</p>
+          <Button color='red' inverted onClick={this.handleNoDeleteUserClick.bind(this)} style={{marginLeft: '10%', marginRight: '1%'}}>
             <Icon name='remove' /> No
           </Button>
           <Button color='green' inverted onClick={this.handleYesDeleteUserClick.bind(this)}>
@@ -107,16 +99,16 @@ class DeleteUser extends React.Component {
           <Grid.Row>
             <Grid.Column width={1}/>
             <Grid.Column width={14}>
-              <p style={{fontSize:"16px",fontFamily:"arial"}}><b>Delete User</b></p>
+              <p style={{fontSize: '16px', fontFamily: 'arial'}}><b>Delete User</b></p>
               <Form>
                 <Form.Field>
                   <label>
-                    <p style={{fontSize:"14px",fontFamily:"arial"}}>Select User</p>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Select User</p>
                   </label>
-                  <Dropdown onChange={this.updatesearchQueryUser.bind(this)} placeholder='Select the user to be removed'  fluid search selection options={this.state.users}/>
+                  <Dropdown onChange={this.updatesearchQueryUser.bind(this)} placeholder='Select the user to be removed' fluid search selection options={this.state.users}/>
                 </Form.Field>
               </Form>
-              <Grid.Column width={8}><Button style={{marginTop:"10px"}} fluid color='green' onClick={this.deleteUser}>Delete</Button></Grid.Column>
+              <Grid.Column width={8}><Button style={{marginTop: '10px'}} fluid color='green' onClick={this.deleteUser}>Delete</Button></Grid.Column>
               <Divider/>
             </Grid.Column>
             <Grid.Column width={1}/>
@@ -124,7 +116,7 @@ class DeleteUser extends React.Component {
         </Grid>
         <ToastContainer ref='asd'
           toastMessageFactory={ToastMessageFactory}
-          className='toast-top-center' style={{marginTop:'8%'}}/>
+          className='toast-top-center' style={{marginTop: '8%'}}/>
       </div>
     );
   }
