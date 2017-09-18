@@ -1,37 +1,36 @@
 import React from 'react';
 import ModalDesign from './ModalDesign';
-import {Button, Dimmer, Header, Icon, Segment, Grid,Image, Card, Popup,Label} from 'semantic-ui-react'
+import {Button, Icon, Image, Card, Popup, Label} from 'semantic-ui-react'
 class Component2 extends React.Component {
   constructor() {
     super();
     this.state = {
       active: true,
-      value1:0
+      value1: 0
     }
   }
 
-  abc(){
-    this.setState({value1:1})
+  abc() {
+    this.setState({value1: 1})
   }
-  closeViewAllScenariodata(){
-    this.setState({value1:0});
+  closeViewAllScenariodata() {
+    this.setState({value1: 0});
   }
   render() {
     const {active} = this.state
-    var context = this;
-    let btn ='';
-
-    if(this.props.status == 'wip'){
+    let context = this;
+    let btn = '';
+    if(this.props.status == 'wip') {
       btn = (
         <Popup
         trigger={
-          <Label as='a' corner style={{borderColor:'#ffb100'}}><Icon name="hourglass half"/></Label>
-        } position="popup" content='Work In Progress' id="popup" />);
+          <Label as='a' corner style={{borderColor: '#ffb100'}}><Icon name='hourglass half'/></Label>
+        } position='popup' content='Work In Progress' id='popup' />);
 
-    } else if(this.props.status == 'notstarted'){
+    } else if(this.props.status == 'notstarted') {
       btn = (<Popup
-      trigger={<Label as='a' corner style={{borderColor:'#5b6a92'}}><Icon name="send"/></Label>
-    } position='bottom center' content='Not started' style={{marginLeft:'0%'}}/>);
+      trigger={<Label as='a' corner style={{borderColor: '#5b6a92'}}><Icon name='send'/></Label>
+    } position='bottom center' content='Not started' style={{marginLeft: '0%'}}/>);
     }else{
       btn = (<Popup
       trigger={<Image label={{
@@ -39,31 +38,23 @@ class Component2 extends React.Component {
         corner: 'right',
         icon: 'check circle',
           color:'green'
-      }}/>} position='bottom center' content='Completed' style={{marginLeft:'12%'}}/>);
+      }}/>} position='bottom center' content='Completed' style={{marginLeft: '12%'}}/>);
     }
-    // var displayname ='';
-    // if(this.props.status == 'wip'){
-    //   displayname = (<Card.Meta>Selected by:{this.props.name}</Card.Meta>);
-    // }else if(this.props.status == 'Completed'){
-    //   displayname = (<Card.Meta>Completed by:{this.props.name}</Card.Meta>);
-    // }
     return (
-
-        <Card style={{textDecoration:'none'}} color='teal' raised={true} onClick={this.abc.bind(this)}>
+        <Card style={{textDecoration: 'none'}} color='teal' raised={true} onClick={this.abc.bind(this)}>
           {btn}
-          <Card.Content style={{textAlign:"left"}}>
-            <Card.Header style={{fontSize:"98%",marginRight:"13%"}}>
+          <Card.Content style={{textAlign: 'left'}}>
+            <Card.Header style={{fontSize: '98%',marginRight: '13%'}}>
               <div>{this.props.scenarioName}</div>
             </Card.Header>
             <div>
-            <Card.Meta style={{marginTop:"5px",marginBottom:"5px",color:"#736969"}}>
+            <Card.Meta style={{marginTop: '5px', marginBottom: '5px', color: '#736969'}}>
               ID:{this.props.scenarioId}
             </Card.Meta>
-
             </div>
           </Card.Content>
-          <Button style={{backgroundColor:"#4c8bda",color:"white"}} onClick={this.abc.bind(this) }>
-            More<Icon name="arrow circle right" size="large"/>
+          <Button style={{backgroundColor: '#4c8bda', color: 'white'}} onClick={this.abc.bind(this) }>
+            More<Icon name='arrow circle right' size='large'/>
           </Button>
           {this.state.value1 == 1
             ?
