@@ -7,7 +7,6 @@ class LogicalComponent extends React.Component {
     this.getId = this.getId.bind(this);
 	}
 getId(id) {
-  //console.log("id in map comp",id);
 	this.props.getId(id);
 }
 	render () {

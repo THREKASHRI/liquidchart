@@ -40,4 +40,8 @@ router.get('/teamStats',adminCtrl.teamStats);
 router.post('/masterReset',adminCtrl.masterReset);
 router.post('/getusertype',adminCtrl.getusertype);
 router.get('/getAllTeams',adminCtrl.getAllTeams);
+router.post('/UserPickedScenarios',adminCtrl.UserPickedScenarios);
+router.get('/sessionNames',adminCtrl.sessionNames);
+router.post('/sessionWiseTeams',adminCtrl.sessionWiseTeams);
+router.post('/sessionWiseTeamScores',adminCtrl.sessionWiseTeamScores);
 module.exports = router;

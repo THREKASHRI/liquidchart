@@ -6,7 +6,7 @@ class CsvUploadSuccess extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(){
+  handleSubmit() {
     hashHistory.push('/adminHome');
   }
   render() {

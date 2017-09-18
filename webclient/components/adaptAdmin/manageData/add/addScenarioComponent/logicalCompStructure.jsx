@@ -1,12 +1,10 @@
 import React from 'react';
-
 class LogicalComponentStructure extends React.Component {
 	constructor () {
 		super();
     this.sendId = this.sendId.bind(this);
 	}
-sendId(){
-  // //console.log("id in struc comp ",id);
+sendId() {
   this.props.getId(this.props.id);
 }
 	render () {
