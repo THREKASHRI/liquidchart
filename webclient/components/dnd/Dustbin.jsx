@@ -8,9 +8,9 @@ import {Label} from 'semantic-ui-react';
 
 const style = {
   minHeight: '250px',
+  // padding:'0 70px !important',
   width: '100%',
   padding:'0px',
-  margin:'0px',
   color: 'black',
   padding: '1rem',
   textAlign: 'center',
@@ -53,11 +53,11 @@ class Dustbin extends Component {
     const isActive = canDrop && isOver;
     let text = '';
     if(this.props.allCards.length == 0){
-      text = <p style={{marginTop: '10%',marginBottom: 10+'px', fontSize:18+'px', color:'#c3c5c9'}}>Drag and drop your components to create your workflow here</p>
+      text = <p style={{marginLeft:'-110px',marginTop: '10%',marginBottom: 10+'px', fontSize:18+'px', color:'#c3c5c9'}}>Drag and drop your components to create your workflow here</p>
     }
 
     return connectDropTarget(
-      <div style={{ ...style}}>
+      <div style={{ ...style,padding:'0 0 0 70px'}}>
         {text}
           <Reorder allCards={this.props.allCards} changeCard={this.changeCard.bind(this)}/>
   </div>,

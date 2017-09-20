@@ -22,7 +22,6 @@ export default class EditScenario extends React.Component {
       code: '',
       score: '',
       negativescore: '',
-      video: '',
       precondition: '',
       selectedScenarios: [],
       selectedAccount: [],
@@ -40,7 +39,6 @@ export default class EditScenario extends React.Component {
     this.codeChange = this.codeChange.bind(this);
     this.score = this.score.bind(this);
     this.negativescore = this.negativescore.bind(this);
-    this.video = this.video.bind(this);
     this.updateNewScenario = this.updateNewScenario.bind(this);
     this.checkForEmptyAlert = this.checkForEmptyAlert.bind(this);
     this.checkForScenarioUpdatedSuccessfullyAlert = this.checkForScenarioUpdatedSuccessfullyAlert.bind(this);
@@ -65,9 +63,6 @@ export default class EditScenario extends React.Component {
   }
   negativescore(e) {
     this.setState({negativescore: e.target.value});
-  }
-  video(e) {
-    this.setState({video: e.target.value});
   }
   updatesearchQueryScenario1(e, a) {
     let res = a.value;
@@ -111,10 +106,9 @@ export default class EditScenario extends React.Component {
         let code = this.refs.codeFunc.value;
         let score = this.refs.score.value;
         let negativescore = this.refs.negativescore.value;
-        let video = this.refs.video.value;
         let precondition = this.state.selectedScenarios;
         let givenpreconditions = this.state.selectedGivenScenarios;
-        if(scenarioName === '' || probStmt === '' || outputValue === '' || evalFunc === '' || code === '' || score === '' || negativescore === '' || video === '' || precondition === '') {
+        if(scenarioName === '' || probStmt === '' || outputValue === '' || evalFunc === '' || code === '' || score === '' || negativescore === '' || precondition === '') {
           this.checkForEmptyAlert();
         }
         else{
@@ -133,7 +127,6 @@ export default class EditScenario extends React.Component {
             code: this.state.code,
             score: this.state.score,
             negativescore: x,
-            video: this.state.video,
             precondition: precondition,
             givenpreconditions: givenpreconditions
           };
@@ -152,7 +145,6 @@ export default class EditScenario extends React.Component {
               code: '',
               score: '',
               negativescore: '',
-              video: '',
               selectedScenarios: [],
               selectedAccount: [],
               selectedGivenScenarios: [],
@@ -203,7 +195,7 @@ export default class EditScenario extends React.Component {
           {
             let data = dataDB.records[0]._fields[0].properties;
             context.setState({scenarioId: dataDB.records[0]._fields[0].identity.low});
-            context.setState({selectedScenarios: data.precondition, selectedAccount: data.precondition, selectedGivenScenarios: data.dependency, selectedGivenAccount: data.dependency, probStmt: data.problemstatement, name: data.name, output: data.output, evalfun: data.evalfun, code: data.code, score: data.score.low, negativescore: data.negativescore.low, video: data.video}, function() {
+            context.setState({selectedScenarios: data.precondition, selectedAccount: data.precondition, selectedGivenScenarios: data.dependency, selectedGivenAccount: data.dependency, probStmt: data.problemstatement, name: data.name, output: data.output, evalfun: data.evalfun, code: data.code, score: data.score.low, negativescore: data.negativescore.low}, function() {
             });
           }.bind(this),
           error: function(err)
@@ -328,12 +320,6 @@ export default class EditScenario extends React.Component {
                   <label>
                     <p style={{fontSize: '14px', fontFamily: 'arial'}}>Negative Score</p>
                     <input autoComplete='off' type='number' ref='negativescore' required onChange={this.negativescore} value={this.state.negativescore} placeholder='Negative score' required/>
-                  </label>
-                </Form.Field>
-                <Form.Field>
-                  <label>
-                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Video</p>
-                    <input autoComplete='off' type='text' ref='video' required onChange={this.video} value={this.state.video} placeholder='video' required/>
                   </label>
                 </Form.Field>
               </Form>

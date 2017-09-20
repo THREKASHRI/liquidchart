@@ -60,7 +60,7 @@ export default class Penalise extends React.Component {
   }
 
   updateScore(e){
-    this.setState({penalityScore:e.target.value});
+    this.setState({penalityScore:Number(e.target.value)});
   }
 
   getAllTeams() {
@@ -102,6 +102,7 @@ export default class Penalise extends React.Component {
         penalityScore: context.state.penalityScore
       },
       success: function() {
+        context.setState({selectedTeam:'',penalityScore:0})
         context.checkForPenaliseSuccess();
         this.refs.penalityScore.value = "";
       },
@@ -145,7 +146,7 @@ export default class Penalise extends React.Component {
                       fontFamily: "arial"
                     }}>Team name</p>
                   </label>
-                  <Dropdown onChange={this.updateTeam} fluid placeholder='Select Team name' search selection options={this.state.teamList}/>
+                  <Dropdown value={this.state.selectedTeam} onChange={this.updateTeam} fluid placeholder='Select Team name' search selection options={this.state.teamList}/>
                 </Form.Field>
                 <Form.Field>
                   <label>
@@ -154,7 +155,7 @@ export default class Penalise extends React.Component {
                       fontFamily: "arial"
                     }}>Deduct score</p>
                   </label>
-                  <input autoComplete='off' type='number' min={0} onChange={this.updateScore} name='penalityScore' ref='penalityScore' placeholder='Enter penality score' required/>
+                  <input value={this.state.penalityScore} autoComplete='off' type='number' min={0} onChange={this.updateScore} name='penalityScore' ref='penalityScore' placeholder='Enter penality score' required/>
                 </Form.Field>
               </Form>
               <Button style={{marginTop:'10px'}} fluid color='green' type='submit' onClick={this.penalise}>Deduct</Button>

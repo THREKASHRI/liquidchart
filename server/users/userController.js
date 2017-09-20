@@ -315,7 +315,7 @@ var updateScenario = (req, res) => {
   var updatedData = req.body;
   let session = driver.session();
   // console.log("update ",updatedData.precondition);
-  let query = 'match (n:scenario) where id(n)=' + updatedData.scenarioId + ' set n.output="' + updatedData.output + '",n.problemstatement="' + updatedData.probStmt + '",n.code="' + updatedData.code + '",n.name="' + updatedData.name + '",n.evalfun="' + updatedData.evalfun + '",n.score=' + updatedData.score + ',n.negativescore=' + updatedData.negativescore + ',n.video="' + updatedData.video + '",n.dependency=' + updatedData.givenpreconditions + ',n.precondition=' + updatedData.precondition + ' return n ';
+  let query = 'match (n:scenario) where id(n)=' + updatedData.scenarioId + ' set n.output="' + updatedData.output + '",n.problemstatement="' + updatedData.probStmt + '",n.code="' + updatedData.code + '",n.name="' + updatedData.name + '",n.evalfun="' + updatedData.evalfun + '",n.score=' + updatedData.score + ',n.negativescore=' + updatedData.negativescore + ',n.dependency=' + updatedData.givenpreconditions + ',n.precondition=' + updatedData.precondition + ' return n ';
 // console.log(query, " in update scenario");
   session.run(query).then(function(result) {
     ////console.log("success after update");

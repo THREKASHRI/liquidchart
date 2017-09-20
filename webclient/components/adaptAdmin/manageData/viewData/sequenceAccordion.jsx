@@ -1,5 +1,6 @@
 import React from 'react';
 import {Accordion, Segment } from 'semantic-ui-react';
+import _ from 'lodash';
 class SequenceAccordion extends React.Component {
   constructor() {
     super();

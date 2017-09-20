@@ -65,9 +65,9 @@ class MainComponent extends React.Component {
               <Grid.Column width={3} style={{
                 marginTop: '1%'
               }}>
-                {/* <Image style={{
+                <Image style={{
                   borderRadius: '8%'
-                }} src={require('./../../../webserver/pictures/' + this.state.picture)}/> */}
+                }} src={require('./../../../webserver/pictures/' + this.state.picture)}/>
                 <h5>
                   <b>Emp Id :</b>
                   {this.state.allDetails.empId}</h5>

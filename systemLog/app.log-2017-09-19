@@ -1,0 +1,61 @@
+[19 09 2017 10:23:15.224] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[19 09 2017 10:23:26.187] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[19 09 2017 10:38:21.248] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Phlebo: Login
+[19 09 2017 11:07:01.952] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Phlebo: Login
+[19 09 2017 11:08:20.049] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Login
+[19 09 2017 11:08:23.353] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[19 09 2017 11:08:32.920] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Login
+[19 09 2017 11:09:51.854] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Login
+[19 09 2017 11:09:55.049] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[19 09 2017 11:09:57.817] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Login
+[19 09 2017 11:10:28.152] [INFO] - User - Prashant Pai - select - profile
+[19 09 2017 11:10:36.305] [INFO] -  - User - Prashant Pai select - domain - Phlebotomist
+[19 09 2017 11:10:42.288] [INFO] - User - Prashant Pai - select - userstory - Phlebo: View Scheduled Appointments
+[19 09 2017 11:10:50.767] [INFO] - User - Prashant Pai - update - components to left pane
+[19 09 2017 11:52:19.890] [INFO] - User - Prashant Pai - click - clear sequence - Phlebo: View Scheduled Appointments
+[19 09 2017 11:52:28.051] [INFO] - User - Prashant Pai - click - clear sequence - Phlebo: View Scheduled Appointments
+[19 09 2017 11:52:32.663] [INFO] - User - Prashant Pai - click - clear sequence - Phlebo: View Scheduled Appointments
+[19 09 2017 16:01:49.671] [INFO] - User - Prashant Pai - click - clear sequence - Phlebo: View Scheduled Appointments
+[19 09 2017 16:01:55.680] [INFO] - User - Prashant Pai - click - clear sequence - Phlebo: View Scheduled Appointments
+[19 09 2017 16:12:14.633] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 16:12:25.035] [INFO] -  - User - Prashant Pai select - domain - Phlebotomist
+[19 09 2017 16:12:35.464] [INFO] -  - User - Prashant Pai select - domain - Customer Care
+[19 09 2017 16:12:44.145] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 16:12:52.771] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 16:13:02.408] [INFO] - User - Prashant Pai - update - components to left pane
+[19 09 2017 16:52:31.563] [INFO] - User - Prashant Pai - click - clear sequence - Patient: List Appointment Details
+[19 09 2017 16:52:35.772] [INFO] - User - Prashant Pai - click - clear sequence - Patient: List Appointment Details
+[19 09 2017 16:52:36.492] [INFO] - User - Prashant Pai - click - clear sequence - Patient: List Appointment Details
+[19 09 2017 16:52:38.057] [INFO] - User - Prashant Pai - click - clear sequence - Patient: List Appointment Details
+[19 09 2017 18:58:29.873] [INFO] - User - Prashant Pai - click - clear sequence - Patient: List Appointment Details
+[19 09 2017 18:59:29.720] [INFO] - User- User - Prashant Pai - click - Exit Userstory - Patient: List Appointment Details
+[19 09 2017 18:59:33.320] [INFO] -  - User - Prashant Pai select - domain - Coordinator
+[19 09 2017 18:59:57.734] [INFO] -  - User - Prashant Pai select - domain - Coordinator
+[19 09 2017 19:05:21.098] [INFO] -  - User - Prashant Pai select - domain - Coordinator
+[19 09 2017 19:26:29.415] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 19:26:34.092] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 19:27:00.541] [INFO] - User- User - Prashant Pai - click - Exit Userstory - Patient: List Appointment Details
+[19 09 2017 19:27:02.442] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 19:27:06.703] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 19:29:19.661] [INFO] - User - Prashant Pai - select - profile
+[19 09 2017 19:29:24.171] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 19:29:29.654] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 19:34:20.672] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[19 09 2017 19:34:30.141] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[19 09 2017 19:34:38.143] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Schedule Appointment
+[19 09 2017 19:34:49.955] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Schedule Appointment
+[19 09 2017 19:34:51.789] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[19 09 2017 19:34:55.449] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
+[19 09 2017 19:35:13.565] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: View Scheduled Appointments
+[19 09 2017 19:35:48.848] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Coordinator
+[19 09 2017 19:35:55.298] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Coordinator: List Appointment
+[19 09 2017 19:43:02.814] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Coordinator: List Appointment
+[19 09 2017 19:43:10.750] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[19 09 2017 19:47:23.264] [INFO] - User - Prashant Pai - select - profile
+[19 09 2017 19:47:31.900] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 19:47:38.554] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 19:53:58.681] [INFO] - User- User - Prashant Pai - click - Exit Userstory - Patient: List Appointment Details
+[19 09 2017 19:54:00.847] [INFO] -  - User - Prashant Pai select - domain - Phlebotomist
+[19 09 2017 20:17:37.621] [INFO] -  - User - Prashant Pai select - domain - Patient
+[19 09 2017 20:17:43.031] [INFO] - User - Prashant Pai - select - userstory - Patient: List Appointment Details
+[19 09 2017 20:17:53.962] [INFO] - User - Prashant Pai - update - components to left pane

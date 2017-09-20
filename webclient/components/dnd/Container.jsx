@@ -27,7 +27,6 @@ import {
 } from 'semantic-ui-react';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Compile from './compile';
-var ind = 0;
 var code = '';
 var test = '';
 var infra = '';
@@ -79,7 +78,9 @@ export default class Container extends Component {
       theCheatCode: '',
       newDependencies:[],
       teamName:'',
-      demoVideo:false
+      demoVideo:false,
+      display:'block',
+      workarea: 9
     };
     this.updateStatus = this.updateStatus.bind(this);
     this.componentDimmer = this.componentDimmer.bind(this);
@@ -107,9 +108,9 @@ export default class Container extends Component {
 
   var b = cookies.get('loginStatus');
     if(b == 'true'){
-      this.setState({dimmer:<Dimmer style={{textAlign:'left'}} active={this.state.active} onClickOutside={this.handleClose} page>
+      this.setState({dimmer:<Dimmer style={{textAlign:'left'}} active={this.state.active} onClickOutside={this.handleClose} >
         <div style={{margin:'10%'}}>
-          <h3>Instructions</h3>
+          <h3>Instructions:</h3>
 
         <h4><li>Required suitable components can either be selected from the components library or by clicking on the individual headers.</li></h4>
         <h4><li>To select the components, click on the specific card from the pop-up screen.</li></h4>
@@ -148,10 +149,6 @@ export default class Container extends Component {
   componentDidMount(){
     cookies.set('loginStatus', false);
     window.addEventListener("keypress", this.handlePressedKey);
-    this.scrollToBottom();
-  }
-  componentDidUpdate() {
-    this.scrollToBottom();
   }
   scrollToBottom = () => {
   const node = ReactDOM.findDOMNode(this.messagesEnd);
@@ -201,6 +198,7 @@ export default class Container extends Component {
         var si = data[0].statusInformation;
         si.map((item,index)=>{
           if(item.scenarioId == data[0].currentScenario){
+            console.log('data[0].currentDomain',data[0].currentDomain);
             selected = item.componentState;
             context.getComponents(data[0].currentDomain, data[0].currentScenario,selected);
           //   context.setState({selected:item.componentState},function(){
@@ -524,20 +522,21 @@ export default class Container extends Component {
 
   progressCheck(correctSeq) {
     this.setState({correctSeq: correctSeq});
+    var ind = 0;
     var correctSeqLen = [];
     for (var i of correctSeq) {
       i = i.split('-');
       correctSeqLen.push(i.length);
     }
     correctSeqLen.sort(function(a, b){return a - b});
-    //console.log('correctSeqLen',correctSeqLen);
     if (ind < correctSeqLen.length) {
       if (this.state.status.length != 0) {
         if (this.state.status.split('-').length <= correctSeqLen[ind]) {
           var p = Math.round((this.state.status.split('-').length / correctSeqLen[ind]) * 100);
-          //console.log('pppp',p);
+          console.log('pppp',p);
           this.setState({progress: p})
         } else {
+            this.setState({progress: 100});
           ind++;
         }
       } else {
@@ -688,6 +687,16 @@ export default class Container extends Component {
     });
   }
 
+  expand(){
+    console.log('expand');
+    this.setState({display:'none',workarea:16});
+  }
+
+  compress(){
+    console.log('compress');
+    this.setState({display:'block',workarea:9});
+  }
+
   render()
   {
     const {active} = this.state
@@ -709,7 +718,8 @@ export default class Container extends Component {
       this.state.selectedComponents.map((item, index) => {
         let x = item.components.map((item, index) =><div style={{
           padding: '10px'
-        }}><Box id = {
+        }}><Box scrollToBottom={this.scrollToBottom.bind(this)}
+        id = {
           item.id
         }
         name = {
@@ -791,6 +801,7 @@ export default class Container extends Component {
                   paddingLeft: '0px',
                   paddingRight: '0px',
                   fontFamily: 'arial',
+                  display:this.state.display
                   // backgroundColor:'lightblue'
                 }}>
                   <div>
@@ -905,21 +916,36 @@ export default class Container extends Component {
                     </Scrollbars>
                   </div>
                 </Grid.Column>
-                <Grid.Column width={9} style={{backgroundColor:'#f0eff4'}}>
+                <Grid.Column width={this.state.workarea} style={{backgroundColor:'#f0eff4',height:'505px'}}>
                   <div>
                     <Button inverted color='orange' style={{
                       float: 'left'
                     }} onClick={this.exitScenarioClick.bind(this)}>Exit user story</Button>
                     {clear}
+                    {this.state.display == 'block' ?
+                    <Button onClick={this.expand.bind(this)} inverted style={{
+                      float: 'right',
+                      color:'grey',
+                      border:'2px solid grey',
+                      padding:'4px 0 4px 8px',
+                      marginLeft:'8px'
+                    }}><Icon name='expand' onClick={this.expand.bind(this)}/></Button>
+                    :<Button onClick={this.compress.bind(this)} inverted style={{
+                      float: 'right',
+                      color:'grey',
+                      border:'2px solid grey',
+                      padding:'4px 0 4px 8px',
+                      marginLeft:'8px'
+                    }}><Icon name='compress' onClick={this.compress.bind(this)}/></Button>}
                     <Compile teamName={this.state.teamName} compile={compile} scoreState={this.scoreState.bind(this)}
                       actualScore={this.state.actualScore} negativescore={this.state.negativescore} score={this.state.score} progressCheck={this.progressCheck.bind(this)} userId={cookies.get('empId')} scenarioId={this.state.scenarioId} domainName={this.state.domainName}
                       seq={this.state.status} correctSeq={this.state.correctSeq} changeColor={this.changeColor.bind(this)} currentScenarioName={this.state.currentScenarioName} preConditions={this.state.preConditions}/>
                     <Button inverted color='blue' onClick={this.readInstructionButtonClick.bind(this)} style={{
                       float: 'right'
                     }}>Instructions</Button>
-                    <hr/>
+                    {/* <hr/> */}
                     <h5 style={{
-                      marginTop: "0%",
+                      marginTop: "15px",
                       marginLeft: "1%",
                       fontFamily: 'arial'
                     }}>
@@ -930,7 +956,7 @@ export default class Container extends Component {
                     <Scrollbars renderTrackHorizontal={props => <div {...props} className="track-horizontal" style={{
                       display: 'none',
                       position: 'right'
-                    }}/>} autoHeight autoHide autoHeightMin={300}>
+                    }}/>} autoHeight autoHide autoHeightMin={350}>
                     <div>
                       <Dustbin allCards={this.state.allCards} changeCard={this.changeCard.bind(this)} style={{
                         minHeight: '250px'
@@ -942,7 +968,9 @@ export default class Container extends Component {
                     </Scrollbars>
                   </div>
                 </Grid.Column>
-                <Grid.Column width={4}>
+                <Grid.Column width={4} style={{
+                  display:this.state.display
+                }}>
                   <h4 style={{
                     marginTop: "2%",
                     marginLeft: "3%",

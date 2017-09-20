@@ -20,7 +20,7 @@ class childComponent extends React.Component {
       video: ''
     }
   }
-// To get all customer journey
+  // To get all customer journey
   componentWillMount() {
     let arr = [];
     $.ajax({
@@ -69,7 +69,21 @@ class childComponent extends React.Component {
     var arr2 = [];
     var arr = [];
     var domainName1 = this.state.searchQuery;
-      this.props.domainName2(this.state.searchQuery);
+    $.ajax({
+      url: "/users/currentDomain",
+      type: 'POST',
+      data: {
+        empId: cookies.get('empId'),
+        domainName: this.state.searchQuery
+      },
+      success: function(data) {
+        console.log("added");
+        this.props.domainName2(this.state.searchQuery);
+      }.bind(this),
+      error: function(err) {
+        console.log('error occurred on AJAX');
+      }.bind(this)
+    });
     $.ajax({
       url: '/users/findScenarios',
       type: 'POST',
@@ -102,9 +116,8 @@ class childComponent extends React.Component {
               </div>
               <div>
                 {/* dropdown */}
-                <Dropdown onChange={this.updatesearchQuery.bind(this)}
-                   placeholder='Select Customer Journey'
-                   style={{ fontFamily: 'Arial'
+                <Dropdown onChange={this.updatesearchQuery.bind(this)} placeholder='Select Customer Journey' style={{
+                  fontFamily: 'Arial'
                 }} search selection options={this.state.domain}/>
                 <Button primary onClick={this.handleSubmit.bind(this)} style={{
                   marginLeft: '1%',
@@ -118,8 +131,7 @@ class childComponent extends React.Component {
                             marginTop: '11px',
                             marginBottom: '-3%'
                           }}>
-                            <Scrollbars renderTrackHorizontal={props => <div {...props}
-                               className='track-horizontal' style={{
+                            <Scrollbars renderTrackHorizontal={props => <div {...props} className='track-horizontal' style={{
                               display: 'none',
                               position: 'right'
                             }}/>} autoHeight autoHide>
@@ -154,36 +166,25 @@ class childComponent extends React.Component {
                           lineHeight: '1.8em'
                         }}>
                           <b>Max Health app</b>
-                          provides a portal that connects the patients and the phlebotomists
-                           directly and make it easy for booking, tracking and recording of the
-                            appointments. The application also provides managerial and
-                             organizational facilities to the hospital. There are four types of
-                              users for the app with different functionalities-
+                          provides a portal that connects the patients and the phlebotomists directly and make it easy for booking, tracking and recording of the appointments. The application also provides managerial and organizational facilities to the hospital. There are four types of users for the app with different functionalities-
                           <b>Customer Care, Patient, Coordinator and Phlebotomist</b>.</p>
                         <p style={{
                           marginTop: '2%',
                           textAlign: 'justify',
                           lineHeight: '1.8em'
-                        }}>Each of these users are inter-connected and are required to send
-                         information to each other for completion of a successful transaction.
-                          For example, a new user needs to call customer care for registration
-                           and book an appointment. Once appointment is booked, the information
-                            is sent to the coordinator. Coordinator then allocates a phlebotomist
-                             to the appointment who will get the necessary data and the same will
-                              be communicated to the patient.</p>
+                        }}>Each of these users are inter-connected and are required to send information to each other for completion of a successful transaction. For example, a new user needs to call customer care for registration and book an appointment. Once appointment is booked, the information is sent to the coordinator. Coordinator then allocates a phlebotomist to the appointment who will get the necessary data and the same will be communicated to the patient.</p>
                       </Grid.Column>
                       <Grid.Column>
                         <div className='checking'>
                           <iframe style={{
                             width: '273px',
                             marginTop: '26%'
-                          }} src='https://www.youtube.com/embed/NyfSE5NWMuM?rel=0&amp;showinfo=0'
-                           frameBorder='0' allowFullScreen/>
+                          }} src='https://www.youtube.com/embed/NyfSE5NWMuM?rel=0&amp;showinfo=0' frameBorder='0' allowFullScreen/>
                         </div>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
-                }
+}
               </div>
             </center>
             {/* footer */}
@@ -204,21 +205,21 @@ class childComponent extends React.Component {
       );
     } else {
       domainPage = (
-      <div>
-      <Card color='red' style={{
-      margin: 'auto',
-      marginTop: '100px'
-    }
-  } >
-  {/* Loader */}
-  <Card.Content>
-    <Card.Header>Loading content...
-    </Card.Header>
-    <Card.Description>If not loaded in 5 seconds Please Reload to continue...</Card.Description>
-  </Card.Content> < /Card> < /div >)
-}
-return (
-  <div>{domainPage}</div>
+        <div>
+          <Card color='red' style={{
+            margin: 'auto',
+            marginTop: '100px'
+          }}>
+            {/* Loader */}
+            <Card.Content>
+              <Card.Header>Loading content...
+              </Card.Header>
+              <Card.Description>If not loaded in 5 seconds Please Reload to continue...</Card.Description>
+            </Card.Content>
+            </Card>
+              </div >) }
+               return (
+                <div>{domainPage}</div>
 );
 }
 }

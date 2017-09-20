@@ -35,7 +35,7 @@ class MyCard extends React.Component {
       nColor = '#e02142';
       bColor = 'white';
       tColor = '#e02142';
-      fSize = '20px';
+      // fSize = '20px';
       iColor = 'red';
       description = this.props.errorMsg;
     }
@@ -122,7 +122,7 @@ class MyCard extends React.Component {
     var card;
     if (checked)
       (card = <div>
-        <Popup trigger={< Card style = {{ margin: 'auto',border:'2px solid '+tColor/*, borderLeft: '15px solid '+cColor*/,backgroundColor:bColor, textDecoration:'none' }} > <Card.Content style={{
+        <Popup trigger={< Card style = {{ margin:'auto',border:'2px solid '+tColor,backgroundColor:bColor, textDecoration:'none' }} > <Card.Content style={{
           color: 'black'
         }}>
           {num}
