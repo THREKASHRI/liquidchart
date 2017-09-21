@@ -23,7 +23,8 @@ import {
   Segment,
   Icon,
   Modal,
-  Header
+  Header,
+  Checkbox
 } from 'semantic-ui-react';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Compile from './compile';
@@ -80,7 +81,8 @@ export default class Container extends Component {
       teamName:'',
       demoVideo:false,
       display:'block',
-      workarea: 9
+      workarea: 9,
+      info: 'block'
     };
     this.updateStatus = this.updateStatus.bind(this);
     this.componentDimmer = this.componentDimmer.bind(this);
@@ -688,13 +690,20 @@ export default class Container extends Component {
   }
 
   expand(){
-    console.log('expand');
     this.setState({display:'none',workarea:16});
   }
 
   compress(){
-    console.log('compress');
-    this.setState({display:'block',workarea:9});
+    this.setState({display:'block',workarea:9,info:'block'});
+  }
+
+  info(){
+    if(this.state.info == 'block'){
+    this.setState({info:'none',workarea:13})
+    }
+    else{
+    this.setState({info:'block',workarea:9})
+    }
   }
 
   render()
@@ -823,7 +832,7 @@ export default class Container extends Component {
                     <Scrollbars renderTrackHorizontal={props => <div {...props} className="track-horizontal" style={{
                       display: 'none',
                       position: 'right'
-                    }}/>} autoHide autoHeight autoHeightMin={450}>
+                    }}/>} autoHide autoHeight autoHeightMin={400}>
                       <Accordion style={{
                         fontFamily: 'arial'
                       }}>
@@ -950,13 +959,15 @@ export default class Container extends Component {
                       fontFamily: 'arial'
                     }}>
                       <b>{this.state.problemstatement}</b>
-                    </h5><br/>
+                      {this.state.display == 'block' ?<div style={{margin:'-3% 0 3% 0'}}><div style={{float:'right'}}>{(this.state.info == 'block')?<Checkbox onClick={this.info.bind(this)} checked toggle/>:<Checkbox onClick={this.info.bind(this)} toggle/>}</div><span style={{float:'right',margin:'1.5% 1% 0 0'}}>Info</span></div>:null}
+                    </h5>
+                    <br/>
 
                     {(this.state.progress == 0)?null:<div><p style={{float:'left',marginRight:'5px',marginTop:'-7px'}}>{this.state.progress}%</p><Progress size='tiny' percent={this.state.progress} color='green'/></div>}
                     <Scrollbars renderTrackHorizontal={props => <div {...props} className="track-horizontal" style={{
                       display: 'none',
                       position: 'right'
-                    }}/>} autoHeight autoHide autoHeightMin={350}>
+                    }}/>} autoHeight autoHide autoHeightMin={400}>
                     <div>
                       <Dustbin allCards={this.state.allCards} changeCard={this.changeCard.bind(this)} style={{
                         minHeight: '250px'
@@ -969,7 +980,7 @@ export default class Container extends Component {
                   </div>
                 </Grid.Column>
                 <Grid.Column width={4} style={{
-                  display:this.state.display
+                  display:this.state.info
                 }}>
                   <h4 style={{
                     marginTop: "2%",

@@ -7,7 +7,7 @@ import Reorder from './reorder.jsx';
 import {Label} from 'semantic-ui-react';
 
 const style = {
-  minHeight: '250px',
+  minHeight: '300px',
   // padding:'0 70px !important',
   width: '100%',
   padding:'0px',
