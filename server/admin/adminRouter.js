@@ -46,4 +46,6 @@ router.post('/sessionWiseTeamScores',adminCtrl.sessionWiseTeamScores);
 router.post('/addNewSession',adminCtrl.addNewSession);
 router.post('/linkTeam',adminCtrl.linkTeam);
 router.get('/getAllTeamstoLink',adminCtrl.getAllTeamstoLink);
+router.post('/getAllTeamstoDelink',adminCtrl.getAllTeamstoDelink);
+router.post('/delinkTeam',adminCtrl.delinkTeam);
 module.exports = router;

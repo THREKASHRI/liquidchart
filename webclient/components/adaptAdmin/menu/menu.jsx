@@ -86,7 +86,7 @@ export default class AdminMenu extends Component {
             <Menu.Item name='linkTeam' active={activeItem === 'linkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
               Link Team
             </Menu.Item>
-            <Menu.Item name='linkTeam' active={activeItem === 'linkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
+            <Menu.Item name='DelinkTeam' active={activeItem === 'DelinkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
               Delink Team
             </Menu.Item>
           </Accordion.Content>

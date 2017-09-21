@@ -28,6 +28,7 @@ import EnggServices from '../enggServices/enggServices';
 import AddSession from '../manageData/session/addSession';
 import SessionInfo from '../sessionInfo/sessionInfo';
 import LinkTeam from '../manageData/session/linkTeam';
+import DelinkTeam from '../manageData/session/delinkTeam';
 export default class Content extends React.Component {
     constructor(props) {
         super(props);
@@ -238,6 +239,10 @@ export default class Content extends React.Component {
             case 'linkTeam':
             {
                 return <LinkTeam/>;
+            }
+            case 'DelinkTeam':
+            {
+                return <DelinkTeam/>;
             }
         }
     }

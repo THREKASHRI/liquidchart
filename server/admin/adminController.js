@@ -734,7 +734,7 @@ var sessionWiseTeamScores = (req, res) => {
 var addNewSession =(req, res) => {
   let session = driver.session();
   let name = req.body.SessionName;
-  let query = 'create (n:session{name: "'+name+'"})';
+  let query = 'create (n:session{name: "'+name+'",pushed=[false,false,false,false]})';
   session.run(query).then(() =>{
     res.send('done');
     session.close();
@@ -750,15 +750,15 @@ var linkTeam =(req, res) => {
   let result1 = [];
   let aa = JSON.stringify(teamname);
   let query ;
-  console.log("cwd ",typeof(req.body.TeamName));
-  console.log("cds ",req.body.TeamName," ",aa);
+  // console.log("cwd ",typeof(req.body.TeamName));
+  // console.log("cds ",req.body.TeamName," ",aa);
   if(typeof(req.body.TeamName)!='string'){
     query = 'unwind '+aa+' as name1 match (m:session {name:"'+sessionname+'"}) match (n:team) where n.name=name1 merge (m)<-[r:team_of]-(n) return m,n,r';
-    console.log("scenario in link"+query);
+    // console.log("scenario in link"+query);
   }
   else{
-    query = 'match (m:session {name:"'+sessionname+'"}) match (n:team) where n.name="'+teamname+'" merge (m)<-[r:team_of]-(n) return m,n,r'
-    console.log("query in link ",query);
+    query = 'match (m:session {name:"'+sessionname+'"}) match (n:team) where n.name="'+teamname+'" merge (m)<-[r:team_of]-(n) return m,n,r';
+    // console.log("query in link ",query);
   }
   session.run(query).then(function(result) {
     for (var x of result.records) {
@@ -766,7 +766,7 @@ var linkTeam =(req, res) => {
         "sessionid":(x._fields[0].identity.low),
       });
     }
-    console.log("in control ",result1);
+    // console.log("in control ",result1);
     res.send(result1);
   }).catch(function(error) {
     //////console.log('promise error: ', error);
@@ -779,6 +779,40 @@ var getAllTeamstoLink = (req, res) => {
   session.run(query).then(function(result) {
     // console.log("ecd ",JSON.stringify(result));
     res.send(result.records);
+  });
+};
+
+var getAllTeamstoDelink =(req, res) => {
+  let session = driver.session();
+  let domain = req.body.session;
+  //////console.log("domain");
+  let query = 'match (n:session{name:"'+domain+'"})<-[:team_of]-(m:team) return m';
+  //////console.log(query);
+  session.run(query).then(function(result) {
+    res.send(result);
+  }).catch(function(error) {
+    //////console.log('promise error: ', error);
+  });
+};
+
+var delinkTeam =(req, res) => {
+  let teamname = req.body.TeamName;
+  let sessionname = req.body.sessionName;
+  let session = driver.session();
+  let aa = JSON.stringify(teamname);
+  let query ;
+  if(typeof(req.body.TeamName)!='string'){
+    query = 'unwind '+aa+' as name1 match (m:session {name:"'+sessionname+'"}) match (n:team) where n.name=name1 match (m)<-[r:team_of]-(n) detach delete r return m,n,r';
+    // //console.log("scenario "+query);
+  }
+  else{
+    query = 'match (m:session {name:"'+sessionname+'"}) match (n:team) where n.name="'+teamname+'" match (m)<-[r:team_of]-(n) detach delete r return m,n,r'
+
+    // //console.log("delink ",query);
+  }
+  session.run(query).then(function(result) {
+    res.send(result);
+  }).catch(function(error) {
   });
 };
 
@@ -821,5 +855,7 @@ module.exports = {
   sessionWiseTeamScores,
   addNewSession,
   linkTeam,
-  getAllTeamstoLink
+  getAllTeamstoLink,
+  getAllTeamstoDelink,
+  delinkTeam
 };
