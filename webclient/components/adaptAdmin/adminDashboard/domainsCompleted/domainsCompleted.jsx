@@ -6,13 +6,12 @@ export default class DomainsCompleted extends React.Component {
     super();
   };
   render() {
-    let DomainsCompleted = 0;
+    let DomainsCompleted = 1;
     // if(this.props.LiveCount != ''){
     //   DomainsCompleted = this.props.LiveCount;
     // }
     let Pending = this.props.Total;
-    DomainsCompleted += this.props.SavedCount;
-    Pending = Pending - DomainsCompleted;
+    DomainsCompleted = this.props.SavedCount;
     return (
       <Segment compact>
         <h4>Customer journey</h4>

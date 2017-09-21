@@ -41,7 +41,7 @@ function setupRestRoutes(app) {
   let storage = multer.diskStorage({
     destination: function(req, file, cb) {
       cb(null, './server/CsvFiles');
-        cb(null, 'D:\\default.graphdb');
+        cb(null, 'C:\\Users\\th351985\\Documents\\Neo4j\\default.graphdb\\default.graphdb');
     },filename: function(req, file, cb) {
       const name = 'arun.csv';
       cb(null, name);
@@ -137,7 +137,7 @@ function setupRestRoutes(app) {
     //bulk upload of component
   let storage1 = multer.diskStorage({
      destination: function(req, file, cb) {
-         cb(null, 'D:\\default.graphdb');
+         cb(null, 'C:\\Users\\th351985\\Documents\\Neo4j\\default.graphdb\\default.graphdb');
      },filename: function(req, file, cb) {
          const name = 'componentUploadnew.csv';
          cb(null, name);

@@ -121,7 +121,7 @@ var getusertype=(req, res) => {
               //console.log(err);
             } else {
               let session = driver.session();
-              let query = 'Match (n:dashboardscenario) detach delete n';
+              let query = 'match (n:scenario)-[r:dashboardscenario]->(a:loginid) detach delete r';
               session.run(query).then(() =>{
                 session.close();
                 let sessionx = driver.session();
@@ -504,7 +504,7 @@ var getusertype=(req, res) => {
   var adminDashboardTotalDomain =(req, res) => {
     let status = "'In progress'";
     let result1 = [];
-    let query = 'match (n:dashboardscenario) where n.status='+status+' return distinct n.domain';
+    let query = 'match (m:domain)<-[]-(n:scenario)-[r:dashboardscenario]->(a:loginid) where r.status='+status+' return distinct m.name';
     session.run(query).then(function(result) {
       for (var x of result.records) {////console.log('in controller'+JSON.stringify(x._fields[0]));
       result1.push({
@@ -520,7 +520,7 @@ var getusertype=(req, res) => {
 var adminDashboardCompletedScenario =(req, res) => {
   let status = "'Completed'";
   let result1 = [];
-  let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario) where m.status ='+status+' return n.name, m.name,m.status,m.domain,m.loginid,m.username';
+  let query = 'match (n:team)<-[]-(w:loginid)<-[r:dashboardscenario]-(m:scenario)-[]->(q:domain) where r.status ='+status+' return n.name, m.name,r.status,q.name,w.name,w.username';
   // let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario) where m.status ="completed" return n.name, m.name,m.status,m.domain,m.loginid';
   session.run(query).then(function(result) {
 
@@ -543,17 +543,17 @@ var adminDashboardCompletedScenario =(req, res) => {
 }
 var adminDashboardTotalScenario =(req, res) => {
   let result1 = [];
-  let query = 'match (n:dashboardscenario)  return n';
+  let query = 'match (q:loginid)<-[r:dashboardscenario]-(w:scenario)-[]->(e:domain) return q,w,e';
   session.run(query).then(function(result) {
     for (var x of result.records) {
       result1.push({
-        "name":(x._fields[0].properties.name),
-        "completedno": (x._fields[0].properties.completedno),
-        "loginid":(x._fields[0].properties.loginid),
-        "domain": (x._fields[0].properties.domain),
+        "name":(x._fields[1].properties.name),
+        "loginid":(x._fields[0].properties.name),
+        "domain": (x._fields[2].properties.name)
       });
     }
-    ////console.log("in control ",result1);
+  // result1 = result.records[0]._fields[0].low;
+  //  console.log("in control ",result1);
     res.send(result1);
   }).catch(function(error) {
     ////console.log('promise error: ', error);
@@ -571,29 +571,80 @@ var toggleDomain =(req, res) => {
   });
 }
 
-
-var domainsCompletedByUser =(req, res) => {
-  let domainName = req.body.domainName;
-  let userID = req.body.userId;
-  let teamName = req.body.teamName;
-  let query = 'match(m:loginid{name:'+userId+'}) merge (m)<-[:completedDomain]-(n:completedDomain{name:'+domainName+'}) return n'
-  session.run(query).then(function(result) {
-    ////console.log("result");
-    res.send(result);
-  }).catch(function(error) {
-    ////console.log('promise error: ', error);
-  });
-};
 var fetchCompletedDomain =(req, res) => {
-  let query = 'match (n:loginid)<-[]-(m:completedDomain) return count(distinct m.name)'
-  ////console.log("fetchCompletedDomainQuery ",query);
-  session.run(query).then(function(result) {
-    ////console.log("fetchCompletedDomainresult",result);
-    res.send(result);
+  let domainarray = [];
+  let domaintotal = [];
+  let domaincompleted = [];
+  let domainpend = [];
+  let completedcount = 0;
+  let pendingcount = 0;
+  let donutdomain = [];
+let query = 'match (n:domain) return n.name';
+session.run(query).then(function(result) {
+  result.records.map(function(item){
+    domainarray.push(item._fields[0]);
+  })
+  domainarray=JSON.stringify(domainarray);
+  // console.log("resul");
+  let query1 = 'unwind ' + domainarray + ' as id match (n:domain{name:id})<-[]-(m:scenario) return count(m),id';
+  let sessionx = driver.session();
+  sessionx.run(query1).then(function(result1) {
+    // console.log("result1");
+    result1.records.map(function(item){
+      domaintotal.push({"domainname":(item._fields[1]),"scenariocount":(item._fields[0].low)});
+    })
+    let query2 = 'unwind ' + domainarray + ' as id match (n:domain{name:id})<-[]-(m:scenario)-[r:dashboardscenario{status:"Completed"}]->() return count(m),id';
+    let sessiony = driver.session();
+    sessiony.run(query2).then(function(result2) {
+      // console.log("result2");
+      result2.records.map(function(item){
+        domaincompleted.push({"domainname":(item._fields[1]),"scenariocount":(item._fields[0].low)});
+      })
+      let query3 = 'unwind ' + domainarray + ' as id match (n:domain{name:id})<-[]-(m:scenario)-[r:dashboardscenario{status:"In progress"}]->() return count(m),id';
+      let sessionr = driver.session();
+      // console.log("query ",query3);
+      sessionr.run(query3).then(function(result3) {
+        // console.log("result3 ",result3);
+        result3.records.map(function(item){
+          // console.log("item ",domainpend);
+          let b = false;
+          domaincompleted.map((item1,index1)=>{
+            if(item1.domainname == item._fields[1]){
+              b = true;
+            }
+          })
+          if(!b){
+            domainpend.push({"domainname":(item._fields[1]),"scenariocount":(item._fields[0].low)});
+          }
+        })
+              for(let i = 0; i < domaintotal.length; i++){
+        for(let j = 0; j < domaincompleted.length; j++){
+          if(domaintotal[i].domainname === domaincompleted[j].domainname)
+          {
+            if(domaintotal[i].scenariocount == domaincompleted[j].scenariocount){
+              completedcount++;
+            }
+            else {
+              pendingcount++;
+            }
+          }
+        }
+      }
+      pendingcount = pendingcount + domainpend.length;
+      donutdomain.push({"completed":(completedcount),"pending":(pendingcount)});
+      // console.log("donut ",donutdomain);
+      res.send(donutdomain);
+    }).catch(function(error) {
+    });
   }).catch(function(error) {
-    ////console.log('promise error: ', error);
   });
+}).catch(function(error) {
+console.log('promise error: ', error);
+});
+})
 };
+
+
 var fetchScores =(req, res) => {
   let Result = [];
   let query = 'match (n:loginid) return n'
@@ -613,7 +664,7 @@ var fetchScores =(req, res) => {
 var teamStats =(req, res) => {
   let session = driver.session();
   let result1 = [];
-  let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario)  return n.name, m.name,m.domain,m.loginid,m.status,m.username'
+  let query = 'match (n:team)<-[]-(e:loginid)<-[r:dashboardscenario]-(m:scenario)-[]->(w:domain)  return n.name, m.name,w.name,e.name,r.status,e.username'
   session.run(query).then(function(result) {
         ////console.log("success for getting scenario status for a team", JSON.stringify(result));
         ////console.log(result.records[0]._fields[3]);
@@ -671,7 +722,6 @@ module.exports = {
   adminDashboardTotalScenario,
   adminDashboardCompletedScenario,
   adminDashboardTotalDomain,
-  domainsCompletedByUser,
   fetchCompletedDomain,
   fetchScores,
   teamStats,

@@ -63,7 +63,7 @@ export default class adminDashboard extends React.Component {
         type:'GET',
         success: function(data)
         {
-          ////console.log('data length'+data.length);
+          // console.log('data length'+data.length);
           this.setState({
             Total: data.length
           });
@@ -80,7 +80,7 @@ export default class adminDashboard extends React.Component {
         success: function(data)
         {//console.log('domain total'+JSON.stringify(data));
         this.setState({
-          DomainTotal: data.length
+          DomainTotal1: data.length
         });
       }.bind(this),
       error: function(err)
@@ -92,9 +92,10 @@ export default class adminDashboard extends React.Component {
       url:'/admin/fetchCompletedDomain',
       type:'GET',
       success: function(data)
-      {
+      {console.log("donut ",data[0].pending);
         this.setState({
-          CompletedDomain: data.records[0]._fields[0].low
+          CompletedDomain: data[0].completed,
+          DomainTotal: data[0].pending
         });
       }.bind(this),
       error: function(err)
@@ -107,6 +108,7 @@ export default class adminDashboard extends React.Component {
       type:'GET',
       success: function(data)
       {
+        console.log("fetch ",data);
         for(let i in data){
           if(data[i].score != undefined){
             Score.push({'userID':data[i].userID,'score':data[i].score.low})
@@ -150,7 +152,7 @@ totalScenarios() {
     type:'GET',
     success: function(data)
     {
-      ////console.log('data length'+data.length);
+      console.log('data length'+data.length);
       this.setState({
         Total: data.length
       });

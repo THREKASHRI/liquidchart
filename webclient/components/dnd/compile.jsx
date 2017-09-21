@@ -477,6 +477,7 @@ Your score for this User story after checkin would be {this.props.actualScore + 
       maxScore:this.props.score,
       actualScore:actualScore
     };
+    console.log("completedScenarios ",data);
     $.ajax({
       url: '/dnd/completedScenarios',
       type: 'PUT',

@@ -6,7 +6,7 @@ let dashboard = {
   userDashboardTotalScenario: function(req, res) {
     //console.log("userDashboardTotalScenario");
     let session = driver.session();
-    let query = 'match (m:dashboardscenario)-[]->()-[]->(n:team{name:"'+req.body.teamName+'"}) return count(m)';
+    let query = 'match (:scenario)-[r:dashboardscenario]->(:loginid)-[]->(n:team{name:"'+req.body.teamName+'"}) return count(r)';
     //////console.log("query to find user dashboard total scenario: ", query);
     session.run(query).then(function(result) {
 
@@ -20,8 +20,8 @@ let dashboard = {
   },
   userDashboardCompletedScenario: function(req, res) {
     let session = driver.session();
-    let query = 'match (m:dashboardscenario)-[]->()-[]->(n:team{name:"'+req.body.teamName+'"}) WHERE m.status="Completed" return count(m)';
-    //////console.log("query to find user dashboard total scenario: ", query);
+    let query = 'match (m:scenario)-[r:dashboardscenario]->(:loginid)-[]->(n:team{name:"'+req.body.teamName+'"}) WHERE r.status="Completed" return count(m)';
+    //console.log("query to find user dashboard total scenario: ", query);
     session.run(query).then(function(result) {
 
       session.close();
@@ -116,13 +116,13 @@ let dashboard = {
     let session = driver.session();
     let result1 = [];
     logger.info(req.body.userType+" - "+req.body.userName+" - select - userDashBoard");
-    let query = 'match(n:dashboardscenario)-[]->()-[]->(m:team{name:"'+req.body.teamName+'"}) return n';
+    let query = 'match (e:domain)<-[]-(n:scenario)-[r:dashboardscenario]->(q:loginid)-[]->(m:team{name:"'+req.body.teamName+'"}) return r,n,q,e';
     session.run(query).then(function(result) {
       for (var x of result.records) {
         result1.push({
-          "scenarioName":(x._fields[0].properties.name),
-          "userId":(x._fields[0].properties.username),
-          "domainName": (x._fields[0].properties.domain),
+          "scenarioName":(x._fields[1].properties.name),
+          "userId":(x._fields[2].properties.username),
+          "domainName": (x._fields[3].properties.name),
           "status":(x._fields[0].properties.status)
         });
         //console.log('resultant data to send: ', result1);
@@ -174,7 +174,7 @@ let dashboard = {
       resultObj.domainName = req.body.domainNames;
       ////console.log('object after domain name',resultObj);
       sizeOfArray = 1;
-      let query = 'match(n:dashboardscenario)-[]->()-[]->(m:team{name:"'+req.body.teamName+'"}) where n.domain="'+req.body.domainNames+'" AND n.status="Completed" return count(distinct n.scenarioId)';
+      let query = 'match(e:domain{name:"'+req.body.domainNames+'"})<-[]-(n:scenario)-[r:dashboardscenario{status:"Completed"}]->(q:loginid)-[]->(m:team{name:"'+req.body.teamName+'"}) return count(distinct id(n))';
       ////console.log("query to find team progress status: ", query);
       session.run(query).then(function(result) {
         ////console.log('The result is: ',JSON.stringify(result));
@@ -208,7 +208,7 @@ let dashboard = {
       let resultObject = {};
         resultObject.domainName = req.body.domainNames[i];
         // //console.log('inside for...',req.body.domainNames[i]);
-        let query = 'match(n:dashboardscenario)-[]->()-[]->(m:team{name:"'+req.body.teamName+'"}) where n.domain="'+req.body.domainNames[i]+'" AND n.status="Completed" return count(distinct n.scenarioId)';
+        let query = 'match(e:domain{name:"'+req.body.domainNames[i]+'"})<-[]-(n:scenario)-[r:dashboardscenario{status:"Completed"}]->(q:loginid)-[]->(m:team{name:"'+req.body.teamName+'"}) return count(distinct id(n))';
         // //console.log("query to find team progress status: ", query);
         session.run(query).then(function(result) {
 
@@ -250,11 +250,12 @@ let dashboard = {
   totalDomain: function(req, res) {
     let session = driver.session();
     let arr = [];
-    let query = 'match (n:team{name:"'+req.body.teamName+'"})<-[]-()<-[]-(m:dashboardscenario) return distinct m.domain';
+    let query = 'match (n:team{name:"'+req.body.teamName+'"})<-[]-(:loginid)<-[]-(:scenario)-[]->(m:domain) return distinct m.name';
     //////console.log("query to find team progress status: ", query);
     session.run(query).then(function(result) {
-      //////console.log('comp',JSON.stringify(result));
+      // console.log('comp',JSON.stringify(result));
       for (var i = 0; i < result.records.length; i++) {
+        // console.log("totaldomain ",result.records[i]._fields[0]);
         arr.push(result.records[i]._fields[0]);
       }
       res.send(arr);

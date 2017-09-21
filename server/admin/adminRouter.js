@@ -32,8 +32,7 @@ router.post('/delinkScenario',adminCtrl.delinkScenario);
 router.get('/adminDashboardCompletedScenario',adminCtrl.adminDashboardCompletedScenario);
 router.post('/toggleDomain',adminCtrl.toggleDomain);
 router.get('/adminDashboardTotalScenario',adminCtrl.adminDashboardTotalScenario);
-router.get('/adminDashboardTotalDomain',adminCtrl.adminDashboardTotalDomain)
-router.post('/domainsCompletedByUser',adminCtrl.domainsCompletedByUser);
+router.get('/adminDashboardTotalDomain',adminCtrl.adminDashboardTotalDomain);
 router.get('/fetchCompletedDomain',adminCtrl.fetchCompletedDomain);
 router.get('/fetchScores',adminCtrl.fetchScores);
 router.get('/teamStats',adminCtrl.teamStats);

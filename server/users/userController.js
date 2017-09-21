@@ -110,32 +110,36 @@ var complete =[];
       //console.log("aa",docs1[0].teamName);
       teamName = docs1[0].teamName;
       let query = 'match (n:domain {name: "' + domainName + '"})<-[:scenario_of]-(m:scenario) return m ORDER BY m';
-      let query1 = 'match (n:dashboardscenario{status:"In progress",domain:"' + domainName + '"}) RETURN distinct n';
-      let query2 = 'match (n:dashboardscenario{status:"Completed",domain:"' + domainName + '"}) RETURN distinct n';
+      let query1 = 'match (q:loginid)<-[n:dashboardscenario{status:"In progress"}]-(w:scenario)-[]->(o:domain{name:"' + domainName + '"}) RETURN distinct q,w';
+      let query2 = 'match (q:loginid)<-[n:dashboardscenario{status:"Completed"}]-(w:scenario)-[]->(o:domain{name:"' + domainName + '"}) RETURN distinct q,w';
       let session = driver.session();
       session.run(query1).then(function(result) {
+        // console.log("in progress ", JSON.stringify(result));
         var i1 = 0,
           i2 = 0;
           for (var i = 0; i < result.records.length; i++) {
-            incomplete[i] = result.records[i]._fields[0].properties.scenarioId;
+            incomplete[i] = result.records[i]._fields[1].identity.low;
+            // console.log("incomplete ",result.records[i]._fields[1].identity.low);
           incompletearr.push({
-            "name":result.records[i]._fields[0].properties.scenarioId,
-            "loginId": result.records[i]._fields[0].properties.loginid,
+            "name":result.records[i]._fields[1].identity.low,
+            "loginId": result.records[i]._fields[0].properties.name,
             "username": result.records[i]._fields[0].properties.username
           });
+          // console.log("incomplete ",result.records[i]._fields[0].properties.username);
           }
         session.close();
         let sessionx = driver.session();
         sessionx.run(query2).then(function(result) {
+          // console.log("completed ", JSON.stringify(result));
           var j = 0,
             j1 = 0,
             j2 = 0;
 
             for (var i = 0; i < result.records.length; i++) {
-              complete[i] = result.records[i]._fields[0].properties.scenarioId;
+              complete[i] = result.records[i]._fields[1].identity.low;
               completedarr.push({
-                "name1":result.records[i]._fields[0].properties.scenarioId,
-                "loginId1": result.records[i]._fields[0].properties.loginid,
+                "name1":result.records[i]._fields[1].identity.low,
+                "loginId1": result.records[i]._fields[0].properties.name,
                 "username1": result.records[i]._fields[0].properties.username
               });
 
@@ -150,12 +154,11 @@ var complete =[];
 
           let sessiony = driver.session();
           sessiony.run(query).then(function(result) {
-      //console.log("in ajax ");
             var k1 = 0,
               k2 = 0,
               k3 = 0;
             for (var x of result.records) {
-              if (incomplete.includes(x._fields[0].identity.low.toString())) {
+              if (incomplete.includes(x._fields[0].identity.low)) {
                 for (var i = 0; i < incompletearr.length; i++) {
                   if (incompletearr[i].name == x._fields[0].identity.low.toString()) {
                     if (!result1.includes(x._fields[0].identity.low.toString())) {
@@ -174,7 +177,7 @@ var complete =[];
                 }
               }  }
 
-               else if (complete.includes(x._fields[0].identity.low.toString())) {
+               else if (complete.includes(x._fields[0].identity.low)) {
 
                 for (var i = 0; i < completedarr.length; i++) {
                   if (completedarr[i].name1 == x._fields[0].identity.low.toString()) {
@@ -236,7 +239,7 @@ var currentDomain = (req, res) => {
   });
 }
 var currentScenario = (req, res) => {
-  //console.log('inside dashboard scenario creation: ', req.body);
+  // console.log('inside dashboard scenario creation: ', req.body);
   logger.info(req.body.userType + " - " + req.body.userName + " - select - userstory - " + req.body.scenarioName);
   var empId = req.body.empId;
   var scenarioId = req.body.scenarioId;
@@ -257,17 +260,16 @@ var currentScenario = (req, res) => {
     'statusInformation.scenarioId': scenarioId
   }, function(err, docs) {
     if (docs.length == 0) {
-
       users.find({
         'empId': empId
       }, function(err, docs1) {
         ////console.log("....."+docs1[0].teamName);
 
         ////console.log("----------------"+JSON.stringify(docs1));
-        let query = 'match (n:team{name:"' + docs1[0].teamName + '"})<-[az:user_of]-(m:loginid{name:"' + loginId + '"}) create (m)<-[w:scenario]-(r:dashboardscenario{scenarioId:"' + scenarioId + '",name:"' + scenarioName + '",loginid:"' + docs1[0].loginId + '",username:"' + docs1[0].userName + '",completedAt:"",domain:"' + currentDomain + '",status:"In progress"}) return r';
-        ////console.log('query check for creating a new scenario node :',query);
+        let query = 'match (n:team{name:"' + docs1[0].teamName + '"})<-[az:user_of]-(m:loginid{name:"' + loginId + '"}) match(o:scenario) where id(o)=' + scenarioId + ' create (m)<-[r:dashboardscenario{status:"In progress",completedAt:""}]-(o) return m,o,r';
+        // console.log('query check for creating a new scenario node :',query);
         session.run(query).then(function(result) {
-          ////console.log('inside scenario new add',JSON.stringify(result));
+          // console.log('inside scenario new add',JSON.stringify(result));
         });
       });
       //////console.log("not found");
@@ -414,12 +416,12 @@ var getAllSprints = (req, res) => {
   var sprint4=["1263","1343","1372","1353","1296","1341","1291","1312","1131","1387","1399"];
   let a=JSON.stringify(req.body.preconditionData);
 
-  let query1 = 'unwind  '+JSON.stringify(sprint1)+' as id match (a:dashboardscenario) where a.scenarioId=id AND a.status="Completed" return a.name';
+  let query1 = 'unwind  '+JSON.stringify(sprint1)+' as id match (a:scenario)-[r:dashboardscenario]->(:loginid) where id(a)=id AND r.status="Completed" return a.name';
 //console.log('query1 ',query1);
-  let query2 = 'unwind  '+JSON.stringify(sprint2)+' as id match (a:dashboardscenario) where a.scenarioId=id AND a.status="Completed" return a.name';
+  let query2 = 'unwind  '+JSON.stringify(sprint2)+' as id match (a:scenario)-[r:dashboardscenario]->(:loginid) where id(a)=id AND r.status="Completed" return a.name';
 // console.log('query2 ',query2);
-let query3 = 'unwind  '+JSON.stringify(sprint3)+' as id match (a:dashboardscenario) where a.scenarioId=id AND a.status="Completed" return a.name';
-  let query4 = 'unwind  '+JSON.stringify(sprint4)+' as id match (a:dashboardscenario) where a.scenarioId=id AND a.status="Completed" return a.name';
+let query3 = 'unwind  '+JSON.stringify(sprint3)+' as id match (a:scenario)-[r:dashboardscenario]->(:loginid) where id(a)=id AND r.status="Completed" return a.name';
+  let query4 = 'unwind  '+JSON.stringify(sprint4)+' as id match (a:scenario)-[r:dashboardscenario]->(:loginid) where id(a)=id AND r.status="Completed" return a.name';
   let arr1 = [];
   let arr2 = [];
   let arr3 = [];

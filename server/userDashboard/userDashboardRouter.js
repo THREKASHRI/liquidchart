@@ -1,7 +1,6 @@
 let express = require('express');
 let router = express.Router();
 let dashboard = require('./userDashboardController');
-console.log("inside user dashboard router");
 router.post('/userDashboardTotalScenario', dashboard.userDashboardTotalScenario);
 router.post('/userDashboardCompletedScenario', dashboard.userDashboardCompletedScenario);
 router.post('/teamScores', dashboard.teamScores);

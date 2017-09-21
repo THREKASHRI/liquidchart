@@ -26,11 +26,13 @@ import MasterReset from '../masterReset/masterReset';
 import ResetPassword from '../resetPassword/resetPassword';
 import Penalise from '../penalise/penalise';
 import EnggServices from '../enggServices/enggServices';
+import Session from '../manageData/session/session'
 export default class Content extends React.Component {
     constructor(props) {
         super(props);
     }
-    render() {//console.log('in sidebar '+this.props.sidebarItemSelected);
+    render() {
+      // console.log('in sidebar '+this.props.sidebarItemSelected);
     switch (this.props.sidebarItemSelected) {
         case 'adminHome':
         {
@@ -39,6 +41,10 @@ export default class Content extends React.Component {
         case 'viewData':
         {
             return <ViewData/>;
+        }
+        case 'session':
+        {
+            return <Session/>;
         }
         case 'toggleDomain':
         {

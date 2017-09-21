@@ -6,6 +6,7 @@ export default class ScenariosCompleted extends React.Component {
     super();
   };
   render() {
+    // console.log(" in scenario completed ",this.props.TotalScenarios);
     let ScenariosCompleted = 0;
     if(this.props.DBCompletedCount != ''){
       ScenariosCompleted = this.props.DBCompletedCount.length;

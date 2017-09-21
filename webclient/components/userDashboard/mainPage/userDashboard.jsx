@@ -134,7 +134,7 @@ export default class userDashboard extends React.Component {
             data:{teamName:cookies.get('teamName'),teamNames:data},
             success: function(data1)
             {
-              ////console.log('team scores with score',data1);
+              console.log('team scores with score',data1);
               this.setState({
                 Scores: data1
               });
@@ -175,7 +175,7 @@ export default class userDashboard extends React.Component {
             data:{teamName:cookies.get('teamName'),domainNames:data},
             success: function(data)
             {
-              //console.log('Team progress data: ',JSON.stringify(data));
+              // console.log('Team progress data: ',JSON.stringify(data));
               // ////console.log(data.records[0]._fields[0].low);
               context.setState({
                 domainStatsLogic: data

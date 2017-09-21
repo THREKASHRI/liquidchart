@@ -40,6 +40,7 @@ class childComponent extends React.Component {
   //   teamName:cookies.get('teamName'),
   //   score:this.state.score
   // });//console.log('emiting data',this.props.domainName);
+  console.log("in button component ",this.props.scenarioId);
   $.ajax({
     url:"/users/currentScenario",
     type:'PUT',

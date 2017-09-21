@@ -71,15 +71,15 @@ var checkForPreConditions = (req, res) =>{
   let session = driver.session();
   let query;
   let a=JSON.stringify(req.body.preconditionData);
-  //console.log("req.body.preconditionData ",typeof a);
+  // console.log("req.body.preconditionData ",a);
   if(typeof req.body.preconditionData != 'string') {
-     query = 'unwind  '+ a +' as id match (a:dashboardscenario) where a.name=id AND a.status="Completed" return a.name';
+     query = 'unwind  '+ a +' as id match (a:scenario)-[r:dashboardscenario]->(:loginid) where a.name=id AND r.status="Completed" return a.name';
 }
 else{
- query = 'match (a:dashboardscenario) where a.name="'+req.body.preconditionData+'" AND a.status="Completed" return a.name';
+ query = 'match (a:scenario)-[r:dashboardscenario]->(:loginid) where a.name="'+req.body.preconditionData+'" AND r.status="Completed" return a.name';
 }
 
-  //console.log('query for checking preconditions ', query);
+  // console.log('query for checking preconditions ', query);
     session.run(query).then(function(result) {
       //console.log("success for precondition ",result);
           res.send(result);
@@ -137,7 +137,7 @@ var deleteStatus = (req, res) => {
   session.run(query).then(function(result) {
     //console.log("query ", result.records[0]._fields[0]);
     session.close();
-    let query1 = 'match (n:loginid {name:"' + req.body.userId + '"})<-[:scenario]-(m:dashboardscenario) where m.scenarioId="' + req.body.scenarioId + '" detach delete m return n';
+    let query1 = 'match (n:loginid {name:"' + req.body.userId + '"})<-[r:dashboardscenario]-(m:scenario) where id(m)=' + req.body.scenarioId + ' detach delete r return n';
 //console.log("query ",query1);
 let sessionx = driver.session();
     sessionx.run(query1).then(function(result1) {
@@ -178,7 +178,7 @@ let sessionx = driver.session();
 var completedScenarios = (req, res) => {
   ////console.log("IN completedScenarios controller"+req.body.userId+"---------"+req.body.scenarioId);
   var aq = new Date().getTime();
-  let query = 'match(n:loginid{name:"' + req.body.loginId + '"})<-[:scenario]-(a:dashboardscenario) where id(a)=' + req.body.preconditionData + ' SET a.status="Completed", a.completedAt="' + aq + '" return a';
+  let query = 'match (n:loginid{name:"' + req.body.loginId + '"})<-[a:dashboardscenario]-(m:scenario) where id(a)=' + req.body.preconditionData + ' SET a.status="Completed",a.completedAt="' + aq + '" return a';
   //console.log('query for setting completed ', query);
   session.run(query).then(function(result) {
     // res.send(result);
@@ -285,7 +285,7 @@ var completedScenarios = (req, res) => {
 
 var getDashboardScenarioId = (req, res) => {
   //console.log(req.body);
-  let query = 'match (n:dashboardscenario)-[r:scenario]->(a:loginid{name:"' + req.body.loginId + '"}) where n.scenarioId="' + req.body.actualId + '" return n';
+  let query = 'match (n:scenario)-[r:dashboardscenario]->(a:loginid{name:"' + req.body.loginId + '"}) where id(n)=' + req.body.actualId + ' return r';
   //console.log('query for getting dashboard scenario id: ', query);
   session.run(query).then(function(result) {
     //console.log(result.records);
