@@ -217,8 +217,7 @@ class childComponent extends React.Component {
               <Card.Description>If not loaded in 5 seconds Please Reload to continue...</Card.Description>
             </Card.Content>
             </Card>
-              </div >)
-             }
+              </div >) }
                return (
                 <div>{domainPage}</div>
 );

@@ -25,8 +25,9 @@ import MasterReset from '../masterReset/masterReset';
 import ResetPassword from '../resetPassword/resetPassword';
 import Penalise from '../penalise/penalise';
 import EnggServices from '../enggServices/enggServices';
-import Session from '../manageData/session/session';
+import AddSession from '../manageData/session/addSession';
 import SessionInfo from '../sessionInfo/sessionInfo';
+import LinkTeam from '../manageData/session/linkTeam';
 export default class Content extends React.Component {
     constructor(props) {
         super(props);
@@ -224,11 +225,19 @@ export default class Content extends React.Component {
             }
             case 'Engineering Services':
             {
-                return <EnggServices/>;
+                return <EnggServices/>;linkTeam
             }
             case 'Session Info':
             {
                 return <SessionInfo/>;
+            }
+            case 'addSession':
+            {
+                return <AddSession/>;
+            }
+            case 'linkTeam':
+            {
+                return <LinkTeam/>;
             }
         }
     }

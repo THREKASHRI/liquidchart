@@ -43,4 +43,7 @@ router.post('/UserPickedScenarios',adminCtrl.UserPickedScenarios);
 router.get('/sessionNames',adminCtrl.sessionNames);
 router.post('/sessionWiseTeams',adminCtrl.sessionWiseTeams);
 router.post('/sessionWiseTeamScores',adminCtrl.sessionWiseTeamScores);
+router.post('/addNewSession',adminCtrl.addNewSession);
+router.post('/linkTeam',adminCtrl.linkTeam);
+router.get('/getAllTeamstoLink',adminCtrl.getAllTeamstoLink);
 module.exports = router;

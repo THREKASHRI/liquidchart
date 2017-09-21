@@ -70,6 +70,27 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
+            <Icon name='find' size='large' style={{
+              float: 'left',
+              color: '#737373',
+              marginRight: '5px'
+            }}/>
+            <b>Session</b>
+          </Accordion.Title><Divider style={{
+            marginBottom: '0px'
+          }}/>
+          <Accordion.Content>
+            <Menu.Item name='addSession' active={activeItem === 'addSession'} id='accordionMenu' onClick={this.handleItemClick}>
+              Add
+            </Menu.Item>
+            <Menu.Item name='linkTeam' active={activeItem === 'linkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
+              Link Team
+            </Menu.Item>
+            <Menu.Item name='linkTeam' active={activeItem === 'linkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
+              Delink Team
+            </Menu.Item>
+          </Accordion.Content>
+          <Accordion.Title id='accordian' color='black'>
             <Icon name='translate' size='large' style={{
               float: 'left',
               color: '#737373',

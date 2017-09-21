@@ -106,20 +106,29 @@ export default class adminDashboard extends React.Component {
             SavedScores: Score
           });
         }
-      }
+      }.bind(this),
+      error: function(err)
+      {
+        //console.log('error occurred on AJAX');
+      }.bind(this)
       });
       $.ajax({
         url: '/admin/teamStats',
         type: 'GET',
         success: function(data)
         {
+          // console.log("data team ",data);
           this.setState({
             SavedTeamStats: data
           });
           this.setState({
             SavedUserStats: data
           });
-        }
+        }.bind(this),
+        error: function(err)
+        {
+          //console.log('error occurred on AJAX');
+        }.bind(this)
   });
 }
 totalScenarios() {
