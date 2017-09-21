@@ -832,7 +832,7 @@ export default class Container extends Component {
                     <Scrollbars renderTrackHorizontal={props => <div {...props} className="track-horizontal" style={{
                       display: 'none',
                       position: 'right'
-                    }}/>} autoHide autoHeight autoHeightMin={450}>
+                    }}/>} autoHide autoHeight autoHeightMin={400}>
                       <Accordion style={{
                         fontFamily: 'arial'
                       }}>
@@ -967,7 +967,7 @@ export default class Container extends Component {
                     <Scrollbars renderTrackHorizontal={props => <div {...props} className="track-horizontal" style={{
                       display: 'none',
                       position: 'right'
-                    }}/>} autoHeight autoHide autoHeightMin={350}>
+                    }}/>} autoHeight autoHide autoHeightMin={400}>
                     <div>
                       <Dustbin allCards={this.state.allCards} changeCard={this.changeCard.bind(this)} style={{
                         minHeight: '250px'

@@ -8,7 +8,7 @@ class VideoComponent extends React.Component {
   }
   render() {
     return (
-      <Segment>
+      <Segment id='videomain'>
         <div className='checking'>
           <iframe width="400" id="videoSize" src={this.props.video} frameBorder="0" allowFullScreen></iframe>
         </div>
