@@ -1,2 +1,11 @@
 [21 09 2017 11:02:18.148] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
 [21 09 2017 11:02:25.009] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[21 09 2017 11:26:39.261] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: View Profile
+[21 09 2017 11:27:05.629] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[21 09 2017 11:38:44.149] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: View Profile
+[21 09 2017 11:38:46.004] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: View Profile
+[21 09 2017 11:38:47.521] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: View Profile
+[21 09 2017 11:38:49.620] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: View Profile
+[21 09 2017 11:40:36.375] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: View Profile
+[21 09 2017 11:40:38.420] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[21 09 2017 11:42:36.380] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: View Profile
