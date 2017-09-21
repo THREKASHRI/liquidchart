@@ -690,7 +690,7 @@ export default class Container extends Component {
   }
 
   expand(){
-    this.setState({display:'none',workarea:16});
+    this.setState({display:'none',workarea:16,info:'none'});
   }
 
   compress(){

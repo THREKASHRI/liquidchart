@@ -128,7 +128,7 @@ class MyCard extends React.Component {
           {num}
           {name}
           {icon}
-        </Card.Content> < /Card>} content={description} size='small' wide='huge'/>
+        </Card.Content> < /Card>} on='click' content={description} size='small' wide='huge'/>
       </div>)
     return (
       <div>

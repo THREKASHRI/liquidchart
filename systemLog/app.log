@@ -172,3 +172,15 @@
 [21 09 2017 14:40:31.963] [INFO] -  - User - Demo User select - domain - Coordinator
 >>>>>>> c5c27ffa2aa5a1c2697243e2f71d883a446993ee
 [21 09 2017 18:35:13.385] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[21 09 2017 19:40:54.790] [INFO] - User - Demo User - select - profile
+[21 09 2017 19:41:10.184] [INFO] -  - User - Demo User select - domain - Patient
+[21 09 2017 19:41:12.172] [INFO] - User - Demo User - select - userDashBoard
+[21 09 2017 19:41:33.516] [INFO] - User - Demo User - select - userDashBoard
+[21 09 2017 19:41:48.880] [INFO] -  - User - Demo User select - domain - Patient
+[21 09 2017 19:42:09.357] [INFO] -  - User - Demo User select - domain - Coordinator
+[21 09 2017 19:42:34.158] [INFO] - User - Demo User - select - userstory - Coordinator: Login
+[21 09 2017 19:43:21.965] [INFO] - User - Demo User - update - components to left pane
+[21 09 2017 19:47:38.408] [INFO] - User - Demo User - select - userDashBoard
+[21 09 2017 19:47:45.738] [INFO] -  - User - Demo User select - domain - Coordinator
+[21 09 2017 19:47:49.498] [INFO] - User - Demo User - select - userstory - Coordinator: Login
+[21 09 2017 19:47:53.044] [INFO] - User - Demo User - compile - Coordinator: Login - failure
