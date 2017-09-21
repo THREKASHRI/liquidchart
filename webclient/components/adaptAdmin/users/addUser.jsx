@@ -7,7 +7,7 @@ export default class AddUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userTypeSelected:'',
+      userTypeSelected: '',
       ajaxTrigger: false
     };
     this.addNewUser = this.addNewUser.bind(this);
@@ -18,52 +18,46 @@ export default class AddUser extends React.Component {
     this.checkForOnlyAlphabetsInNameAlert = this.checkForOnlyAlphabetsInNameAlert.bind(this);
     this.checkForEnterCorrectEmpIdAlert = this.checkForEnterCorrectEmpIdAlert.bind(this);
   }
-  updateUserType(e,a) {
+  updateUserType(e, a) {
     if(a.value != null) {
       let res = a.value;
-      this.setState({userTypeSelected:res});
+      this.setState({userTypeSelected: res});
     }
   }
   checkForAddedUserAlert() {
-    //console.log("inside check for Added user alert");
-    let context = this;
     this.refs.asd.success(
       'User added',
       '', {
-      timeOut: 3000,
-      extendedTimeOut: 3000
-    }
-  );
+        timeOut: 3000,
+        extendedTimeOut: 3000
+      }
+    );
   }
   checkForOnlyAlphabetsInNameAlert() {
-    //console.log("inside check for only alphabets in name alert");
-    let context = this;
     this.refs.asd.error(
       'Only alphabets allowed in Employee name',
       '', {
-      timeOut: 3000,
-      extendedTimeOut: 3000
-    }
-  );
+        timeOut: 3000,
+        extendedTimeOut: 3000
+      }
+    );
   }
   checkForEnterCorrectEmpIdAlert() {
-    //console.log("inside check for Enter correct emp ID alert");
-    let context = this;
     this.refs.asd.error(
       'Enter correct Employee ID',
       '', {
-      timeOut: 3000,
-      extendedTimeOut: 3000
-    }
-  );
+        timeOut: 3000,
+        extendedTimeOut: 3000
+      }
+    );
   }
-  addNewUser(e,value){
+  addNewUser(e, value) {
     e.preventDefault();
     let dataValue;
     let name;
-    let  employeeid;
-    let  email;
-    let  usertype;
+    let employeeid;
+    let email;
+    let usertype;
     let teamname;
     let loginId;
     let context = this;
@@ -72,18 +66,17 @@ export default class AddUser extends React.Component {
       employeeid = this.refs.newEmployeeID.value;
       loginId = this.refs.newEmployeeID.value;
       email = this.refs.newEmailID.value;
-      usertype =  this.state.userTypeSelected;
+      usertype = this.state.userTypeSelected;
       teamname = this.refs.newTeamName.value;
-      dataValue = {name :name,employeeid:employeeid,email:email,teamname:teamname,usertype:usertype, loginId:loginId};
-      // this.setState({ajaxTrigger:true});
+      dataValue = {name: name, employeeid: employeeid, email: email, teamname: teamname, usertype: usertype, loginId: loginId};
     }
-    if(this.state.userTypeSelected == 'Admin'){
+    if(this.state.userTypeSelected == 'Admin') {
       name = this.refs.newUserName.value;
       employeeid = this.refs.newEmployeeID.value;
       loginId = this.refs.newEmployeeID.value;
       email = this.refs.newEmailID.value;
-      usertype =  this.state.userTypeSelected;
-      dataValue = {name :name,employeeid:employeeid,email:email,usertype:usertype, loginId:loginId};
+      usertype = this.state.userTypeSelected;
+      dataValue = {name: name, employeeid: employeeid, email: email, usertype: usertype, loginId: loginId};
       // this.setState({ajaxTrigger:true});
     }
     if(this.state.userTypeSelected == 'Pair') {
@@ -91,133 +84,115 @@ export default class AddUser extends React.Component {
       employeeid = this.refs.newEmployeeID.value;
       loginId = this.refs.loginId.value;
       email = this.refs.newEmailID.value;
-      usertype =  this.state.userTypeSelected;
+      usertype = this.state.userTypeSelected;
       teamname = this.refs.newTeamName.value;
-      dataValue = {name :name,employeeid:employeeid,email:email,teamname:teamname,usertype:usertype, loginId:loginId};
-        //console.log('data after pairing',dataValue);
-      // this.setState({ajaxTrigger:true});
+      dataValue = {name: name, employeeid: employeeid, email: email, teamname: teamname, usertype: usertype, loginId: loginId};
     }
-    // if(this.state.ajaxTrigger){
-    //console.log('ajax triggered');
     $.ajax({
-      url:"/admin/addUser",
+      url: '/admin/addUser',
       type: 'POST',
-      data:dataValue,
+      data: dataValue,
       success: function(response)
       {
-        // alert('Added User');
         context.checkForAddedUserAlert();
-        //console.log(response);
       }.bind(this),
       error: function(err)
       {
-        //console.log('error occurred on AJAX');
       }.bind(this)
     });
-    if(this.state.userTypeSelected == 'Admin'){
+    if(this.state.userTypeSelected == 'Admin') {
       this.refs.newUserName.value = '';
-      this.refs.newEmployeeID.value= '';
-      this.refs.newEmailID.value= '';
-      this.state.userTypeSelected= '';
-      // this.refs.newTeamName.value= '';
-    } else if(this.state.userTypeSelected == 'User'){
+      this.refs.newEmployeeID.value = '';
+      this.refs.newEmailID.value = '';
+      this.state.userTypeSelected = '';
+    } else if(this.state.userTypeSelected == 'User')
+    {
       this.refs.newUserName.value = '';
-      this.refs.newEmployeeID.value= '';
-      this.refs.newEmailID.value= '';
-      this.state.userTypeSelected= '';
-      this.refs.newTeamName.value= '';
+      this.refs.newEmployeeID.value = '';
+      this.refs.newEmailID.value = '';
+      this.state.userTypeSelected = '';
+      this.refs.newTeamName.value = '';
     } else if(this.state.userTypeSelected == 'Pair') {
       this.refs.newUserName.value = '';
-      this.refs.newEmployeeID.value= '';
-      this.refs.newEmailID.value= '';
-      this.state.userTypeSelected= '';
-      this.refs.newTeamName.value= '';
-    }
-  }
-  validateData(){
-  if(this.state.userTypeSelected != 'Pair'){
-    let context = this;
-    //console.log('validate data');
-    let UserName = this.refs.newUserName.value;
-    let EmpID = this.refs.newEmployeeID.value;
-
-      //console.log('inside else');
-      // alert('only alphabets in name');
-
-    if (EmpID.length != 6) {
       this.refs.newEmployeeID.value = '';
-      // alert('Enter correct emp ID');
-      if(this.state.userTypeSelected != 'Pair'){
-      context.checkForEnterCorrectEmpIdAlert();
+      this.refs.newEmailID.value = '';
+      this.state.userTypeSelected = '';
+      this.refs.newTeamName.value = '';
     }
   }
-}
+  validateData() {
+    if(this.state.userTypeSelected != 'Pair') {
+      let context = this;
+      let EmpID = this.refs.newEmployeeID.value;
+      if (EmpID.length != 6) {
+        this.refs.newEmployeeID.value = '';
+        if(this.state.userTypeSelected != 'Pair') {
+          context.checkForEnterCorrectEmpIdAlert();
+        }
+      }
+    }
   }
-  validateDataPair(){
-    //console.log('validate data');
-    let context = this;
-    let UserName1 = this.refs.newUserName1.value;
-    let UserName2 = this.refs.newUserName2.value;
-      this.refs.newUserName1.value = '';
-      this.refs.newUserName2.value = '';
+  validateDataPair() {
+    this.refs.newUserName1.value = '';
+    this.refs.newUserName2.value = '';
   }
   render() {
     let fieldsToShow = '';
-    let userTypeList = [{ key: 'Admin', value: 'Admin',text:'Admin' },{ key: 'User', value: 'User',text:'User' },{ key: 'Pair', value: 'Pair',text:'Pair' }];
+    let userTypeList = [{ key: 'Admin', value: 'Admin', text: 'Admin' }, { key: 'User', value: 'User', text: 'User' }, { key: 'Pair', value: 'Pair', text: 'Pair' }];
     if(this.state.userTypeSelected == 'Admin') {
       fieldsToShow = (<div><Form.Field>
         <label>
-          <p style={{fontSize:"14px",fontFamily:"arial"}}> Name</p>
+          <p style={{fontSize: '14px', fontFamily: 'arial'}}> Name</p>
         </label>
         <input autoComplete='off' type='text' name='newUserName' ref='newUserName' placeholder='Name'  required/>
       </Form.Field>
       <Form.Field>
         <label>
-          <p style={{fontSize:"14px",fontFamily:"arial"}}> Employee ID</p>
+          <p style={{fontSize: '14px', fontFamily: 'arial'}}> Employee ID</p>
         </label>
         <input autoComplete='off' type='text' name='newEmployeeID' ref='newEmployeeID' placeholder='Emloyee ID' required/>
       </Form.Field>
       <Form.Field>
         <label>
-            <p style={{fontSize:"14px",fontFamily:"arial"}}> Email</p>
+          <p style={{fontSize: '14px', fontFamily: 'arial'}}> Email</p>
         </label>
         <input autoComplete='off' type='email' name='newEmailID' ref='newEmailID' placeholder='email ID' required/>
       </Form.Field>
-      <Button fluid color='green'  type='submit' onClick={this.validateData} >Add user</Button>
-  </div>
-    );
-  }
-  if(this.state.userTypeSelected == 'User') {
-    fieldsToShow = (<div><Form.Field>
-      <label>
-        <h4> Name</h4>
-      </label>
-      <input autoComplete='off' type='text' name='newUserName' ref='newUserName' placeholder='Name' required/>
-    </Form.Field>
-    <Form.Field>
-      <label>
-        <h4> Employee ID</h4>
-      </label>
-      <input autoComplete='off' type='text' name='newEmployeeID' ref='newEmployeeID' placeholder='Emloyee ID' required/>
-    </Form.Field>
-    <Form.Field>
-      <label>
-        <h4> Email</h4>
-      </label>
-      <input autoComplete='off' type='email' name='newEmailID' ref='newEmailID' placeholder='email ID' required/>
-    </Form.Field>
-    <Form.Field>
-      <label>
-        <h4> Team Name</h4>
-      </label>
-      <input autoComplete='off' type='text' name='newTeamName' ref='newTeamName' placeholder='Team Name' required/>
-    </Form.Field>
-    <Button fluid color='green'  type='submit' onClick={this.validateData}>Add user</Button>
-  </div>);
-  }
-  if(this.state.userTypeSelected == 'Pair') {
-    fieldsToShow = (<div>
-      <p className='noteForAdmin'>Note: separate the data of the pair with '&'</p><Form.Field>
+      <Button fluid color='green' type='submit' onClick={this.validateData} >Add user</Button>
+    </div>
+  );
+}
+if(this.state.userTypeSelected == 'User') {
+  fieldsToShow = (<div><Form.Field>
+    <label>
+      <h4> Name</h4>
+    </label>
+    <input autoComplete='off' type='text' name='newUserName' ref='newUserName' placeholder='Name' required/>
+  </Form.Field>
+  <Form.Field>
+    <label>
+      <h4> Employee ID</h4>
+    </label>
+    <input autoComplete='off' type='text' name='newEmployeeID' ref='newEmployeeID' placeholder='Emloyee ID' required/>
+  </Form.Field>
+  <Form.Field>
+    <label>
+      <h4> Email</h4>
+    </label>
+    <input autoComplete='off' type='email' name='newEmailID' ref='newEmailID' placeholder='email ID' required/>
+  </Form.Field>
+  <Form.Field>
+    <label>
+      <h4> Team Name</h4>
+    </label>
+    <input autoComplete='off' type='text' name='newTeamName' ref='newTeamName' placeholder='Team Name' required/>
+  </Form.Field>
+  <Button fluid color='green' type='submit' onClick={this.validateData}>Add user</Button>
+</div>);
+}
+if(this.state.userTypeSelected == 'Pair') {
+  fieldsToShow = (<div>
+    <p className='noteForAdmin'>Note: separate the data of the pair with '&'</p><Form.Field>
       <label>
         <h4> Names of the Pair</h4>
       </label>
@@ -247,33 +222,32 @@ export default class AddUser extends React.Component {
       </label>
       <input autoComplete='off' type='text' name='newTeamName' ref='newTeamName' placeholder='Team Name' required/>
     </Form.Field>
-    <Button fluid color='green'  type='submit' onClick={this.validateData}>Add user</Button>
-</div>);
-  }
-  return (
-    <div>
-      <Grid>
-        <Grid.Row><Grid.Column width={1}></Grid.Column>
-        <Grid.Column width={14}>
-            <p style={{fontSize:"16px",fontFamily:"arial"}}><b>Add user</b></p>
-          <Form onSubmit={this.addNewUser}>
-            <Form.Field>
-              <label>
-                  <p style={{fontSize:"14px",fontFamily:"arial"}}> User Type</p>
-              </label>
-              <Dropdown onChange={this.updateUserType} fluid placeholder='Select User type' selection options={userTypeList}/>
-              {/* <input autoComplete='off' type='text' name='usertype' ref='usertype' placeholder='Admin or user' required/> */}
-            </Form.Field>
-            {fieldsToShow}
-          </Form>
-          <Divider/>
-        </Grid.Column>
-        <Grid.Column width={1}/>
-      </Grid.Row>
-    </Grid>
-    <ToastContainer ref='asd'
-      toastMessageFactory={ToastMessageFactory}
-      className='toast-top-center' style={{marginTop:'8%'}}/>
+    <Button fluid color='green' type='submit' onClick={this.validateData}>Add user</Button>
+  </div>);
+}
+return (
+  <div>
+    <Grid>
+      <Grid.Row><Grid.Column width={1}/>
+      <Grid.Column width={14}>
+        <p style={{fontSize: '16px', fontFamily: 'arial'}}><b>Add user</b></p>
+        <Form onSubmit={this.addNewUser}>
+          <Form.Field>
+            <label>
+              <p style={{fontSize: '14px', fontFamily: 'arial'}}> User Type</p>
+            </label>
+            <Dropdown onChange={this.updateUserType} fluid placeholder='Select User type' selection options={userTypeList}/>
+          </Form.Field>
+          {fieldsToShow}
+        </Form>
+        <Divider/>
+      </Grid.Column>
+      <Grid.Column width={1}/>
+    </Grid.Row>
+  </Grid>
+  <ToastContainer ref='asd'
+    toastMessageFactory={ToastMessageFactory}
+    className='toast-top-center' style={{marginTop: '8%'}}/>
   </div>
 );
 }

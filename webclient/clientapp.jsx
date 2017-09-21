@@ -1,14 +1,12 @@
 // requiring the needed packages
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {browserHistory, hashHistory, Route, Router} = require('react-router');
+const { hashHistory, Route, Router} = require('react-router');
 const NavBar = require('./components/js/NavBar.jsx');
-//const Home = require('./clientapp1.jsx');
 const login = require('./components/login/login.jsx');
 const dnd = require('./components/dnd/index.jsx').default;
-const uploadCSV = require('./components/uploadCSV/uploadCSV.jsx');
-const AdminLandingPage =  require('./components/adaptAdmin/adminLandingPage/adminLandingPage.jsx');
-const ContactAdmin =  require('./components/login/contactAdmin.jsx');
+const AdminLandingPage = require('./components/adaptAdmin/adminLandingPage/adminLandingPage.jsx');
+const ContactAdmin = require('./components/login/contactAdmin.jsx');
 const home = require('./components/js/landingPage.jsx');
 const landing = require('./components/js/landing.jsx');
 const credits = require('./components/js/creditsPage.jsx');
@@ -22,7 +20,11 @@ const MainComp = React.createClass({
         return (
             <div>
                 <NavBar/>
-                <br/><br/><br/><br/> {this.props.children}
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                {this.props.children}
             </div>
         );
     }
@@ -32,7 +34,6 @@ ReactDOM.render(
     <Route path="/" component={login}/>
     <Route path="/contactAdmin" component={ContactAdmin}/>
     <Route component={MainComp}>
-        {/* <Route path="/favourites" component={About}/> */}
         <Route path="/home" component={home}/>
         <Route path="/landingPage" component={landing}/>
         <Route path="/adminHome" component={AdminLandingPage}/>
@@ -40,7 +41,6 @@ ReactDOM.render(
         <Route path="/credits" component={credits}/>
         <Route path="/profile" component={profile}/>
         <Route path="/tools" component={tools}/>
-        {/* <Route path="/userDashboard" component={userDashboard}/> */}
         <Route path="/uploadSuccess" component={upload}/>
         <Route path="/userDashboard" component={userDashboard}/>
 

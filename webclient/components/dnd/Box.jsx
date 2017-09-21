@@ -34,6 +34,7 @@ const boxSource = {
 
     if (dropResult) {
       props.addCard(item.id,item.name,item.description,item.cardColor,item.category,item.errorMsg);
+      props.scrollToBottom();
     }
   },
 };

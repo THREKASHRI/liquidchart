@@ -101,9 +101,9 @@ class Login extends React.Component {
     }
   }
   LoginUser() {
-    //console.log("inside login  user");
+    // console.log("inside login  user");
     if(this.checkCredentials() == "nodata"){}else{
-      //console.log("ajax calling");
+      // console.log("ajax calling");
       let context = this;
       $.ajax({
         url:"/users/login",
@@ -112,7 +112,7 @@ class Login extends React.Component {
         data:{username :this.state.username,password:this.state.password},
         success: function(res)
         {
-          //console.log('inside success',res);
+          // console.log('inside success',res);
           if(res == 'password_mismatch'){
             context.checkforPasswordMismatch();
           }

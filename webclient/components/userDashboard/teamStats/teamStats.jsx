@@ -18,7 +18,7 @@ export default class TeamStats extends React.Component{
     }
     let domainProgress = this.props.domainStatsLogic.map(function(item,key) {
       let a = (item.completedScenarios/item.actualScenarios)*100;
-      return(<div><h4>{item.domainName} : {parseInt(a)}%</h4>
+      return(<div style={{marginBottom:'25px'}}><h4 style={{marginBottom:'0px'}}>{item.domainName} : {parseInt(a)}%</h4>
       <Line percent={a} strokeWidth="1.5" strokeColor="#2ecc71" />
       </div>);
     })

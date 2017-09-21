@@ -139,11 +139,11 @@ module.exports = {
     "no-catch-shadow": 2, // disallow the catch clause parameter name being the same as a variable in the outer scope (off by default in the node environment)
     "no-delete-var": 2, // disallow deletion of variables
     "no-label-var": 2, // disallow labels that share a name with a variable
-    "no-shadow": 2, // disallow declaration of variables already declared in the outer scope
+    //"no-shadow": 2, // disallow declaration of variables already declared in the outer scope
     "no-shadow-restricted-names": 2, // disallow shadowing of names such as arguments
     "no-undef": 2, // disallow use of undeclared variables unless mentioned in a /*global */ block
     "no-undef-init": 2, // disallow use of undefined when initializing variables
-    "no-undefined": 2, // disallow use of undefined variable (off by default)
+    //"no-undefined": 2, // disallow use of undefined variable (off by default)
     "no-unused-vars": 2, // disallow declaration of variables that are not used in the code
     "no-use-before-define": 2, // disallow use of variables before they are defined
 
@@ -154,10 +154,10 @@ module.exports = {
     //
     //"indent": [1, 2], // this option sets a specific tab width for your code (off by default)
     // "brace-style": 1, // enforce one true brace style (off by default)
-    "camelcase": 1, // require camel case names
+    //"camelcase": 1, // require camel case names
     "comma-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after comma
     "comma-style": [1, "last"], // enforce one true comma style (off by default)
-    "consistent-this": [1, "_this"], // enforces consistent naming when capturing the current execution context (off by default)
+    //"consistent-this": [1, "_this"], // enforces consistent naming when capturing the current execution context (off by default)
     "eol-last": 1, // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0, // require function expressions to have a name (off by default)
     "func-style": 0, // enforces use of function declarations or expressions (off by default)
@@ -176,7 +176,7 @@ module.exports = {
     "no-spaced-func": 1, // disallow space between function identifier and application
     "no-ternary": 0, // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1, // disallow trailing whitespace at the end of lines
-    "no-underscore-dangle": 1, // disallow dangling underscores in identifiers
+    //"no-underscore-dangle": 1, // disallow dangling underscores in identifiers
     "no-extra-parens": 1, // disallow wrapping of non-IIFE statements in parens
     "one-var": [1, "never"], // allow just one var statement per function (off by default)
     "operator-assignment": [1, "never"], // require assignment operator shorthand where possible or prohibit it entirely (off by default)
@@ -213,8 +213,8 @@ module.exports = {
     // While the names of the rules may not match up with the JSHint/JSLint counterpart,
     // the functionality is the same.
     //
-    "max-depth": [2, 3], // specify the maximum depth that blocks can be nested (off by default)
-    "max-len": [2, 100, 2], // specify the maximum length of a line in your program (off by default)
+    "max-depth": [2, 4], // specify the maximum depth that blocks can be nested (off by default)
+    "max-len": [2, 550, 2], // specify the maximum length of a line in your program (off by default)
     "max-params": [2, 5], // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": 0, // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0, // disallow use of bitwise operators (off by default)
@@ -234,7 +234,7 @@ module.exports = {
     "react/no-did-update-set-state": 2, // Prevent usage of setState in componentDidUpdate
     "react/no-multi-comp": 0, // Prevent multiple component definition per file
     "react/no-unknown-property": 2, // Prevent usage of unknown DOM property
-    "react/prop-types": 2, // Prevent missing props validation in a React component definition
+    //"react/prop-types": 2, // Prevent missing props validation in a React component definition
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
     "react/jsx-wrap-multilines": 2, // Prevent missing parentheses around multilines JSX

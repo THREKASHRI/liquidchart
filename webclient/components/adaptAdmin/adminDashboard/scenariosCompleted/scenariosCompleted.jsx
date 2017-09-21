@@ -2,41 +2,30 @@ import React from 'react';
 import DonutChart from 'react-donut-chart';
 import {Segment} from 'semantic-ui-react';
 export default class ScenariosCompleted extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
-  };
+  }
   render() {
-    // console.log(" in scenario completed ",this.props.TotalScenarios);
+    //  Calculating the no. of completed user stories
     let ScenariosCompleted = 0;
-    if(this.props.DBCompletedCount != ''){
+    if(this.props.DBCompletedCount !== '') {
       ScenariosCompleted = this.props.DBCompletedCount.length;
     }
-    let Pending = Math.abs(this.props.TotalScenarios-ScenariosCompleted);//console.log('pending',Pending);
-    // if(this.props.LiveCompletedScenarios != ''){
-    //   LiveLength = this.props.LiveCompletedScenarios.length-1;
-    //   if(this.props.LiveCompletedScenarios[LiveLength].status == 'inprogress'){
-    //     Pending += 1;
-    //   }
-    //   else if(this.props.LiveCompletedScenarios[LiveLength].status == 'completed'){
-    //     ScenariosCompleted += 1;
-    //   }
-    //   Pending = Math.abs(Pending - ScenariosCompleted);
-    // }
-    // //console.log('pending after live',Pending);;
-    // //console.log('the live stats'+JSON.stringify(this.props.LiveCompletedScenarios[LiveLength]));
+    let Pending = Math.abs(this.props.TotalScenarios - ScenariosCompleted);
+    //  Assigning the completed count to a donut chart
     return (
-        <Segment compact>
+      <Segment compact>
         <h4>User story</h4>
-        <DonutChart height={220} width={330} colors={['#e67333','#2ecc71']}
+        <DonutChart height={220} width={330} colors={['#e67333', '#2ecc71']}
           data={[{
             label: 'Pending',
-            value: Pending,
+            value: Pending
           },
           {
             label: 'Completed',
-            value: ScenariosCompleted,
+            value: ScenariosCompleted
           }]} />
         </Segment>
-      )
+      );
     }
   }

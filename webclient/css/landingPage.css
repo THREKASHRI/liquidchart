@@ -241,6 +241,9 @@ margin-top: -8%;
     /* margin-bottom: 0; */
     margin-top: -25% !important;
 }
+#topscoreposition{
+  margin-top: -31% !important;
+}
 .rh5v-Overlay_inner{
   display: none !important;
 }

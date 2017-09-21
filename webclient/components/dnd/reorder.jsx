@@ -1,71 +1,64 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+
+// Components
+import DragSortableList from 'react-drag-sortable';
 import Card from './card';
-import {Button} from 'semantic-ui-react';
 
-var SortableItem = SortableElement(({
-  name,
-  remove,
-  position,
-  description,
-  cardColor,
-  errorMsg,
-  category,
-  checked
-}) => <div style={{
-  padding: '5px'
-}}><Card checked={checked} category={category} errorMsg={errorMsg} cardColor={cardColor} name={name} description={description} place='right' remove={remove} position={position}/></div>);
-
-var SortableList = SortableContainer(({items, remove}) => {
-  return (
-    <div>
-      {items.map(function(value, index) {
-        value.position = index;
-        // //console.log(value.position);
-        return (<SortableItem key={`item-${index}`} index={index} position={value.position} checked={value.checked} category={value.category} cardColor={value.cardColor} errorMsg={value.errorMsg} description={value.description} name={value.name} remove={remove}/>)
-      })
-}
-    </div>
-  );
-});
+var listGrid = [];
 
 export default class SortableComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: props.allCards,
-      status: ""
+      allCards: props.allCards
     };
-    this.onSortEnd = this.onSortEnd.bind(this);
   }
+
   remove(position) {
     var cards = this.props.allCards;
-    //console.log('before splice',cards);
     cards.splice(position, 1);
-    //console.log('after splice',cards);
     this.props.changeCard(cards);
-    this.setState({items: this.props.allCards});
-
+    this.setState({allCards: this.props.allCards});
   }
 
-  onSortEnd({oldIndex, newIndex}) {
-    this.setState({items: this.props.allCards})
+  onSort(sortedList) {
+    let allCards = [];
+    console.log("sortedList", sortedList);
+    sortedList.map((item, index) => {
+      var x = item.content.props.children.props;
+      allCards.push({
+        cardColor: x.cardColor,
+        category: x.category,
+        checked: x.checked,
+        description: x.description,
+        id: x.id,
+        name: x.name
+      })
+    })
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex)
-    });
-    this.props.changeCard(this.state.items);
-    // if(this.props.changeCard(this.state.items) == 'success'){
-    // //console.log('aaaaaaaa',this.props.allCards);
-    // this.setState({items: this.props.allCards})
-    // }
-  };
+      allCards: allCards
+    }, function() {
+      this.props.changeCard(this.state.allCards);
+    })
+  }
 
   render() {
+    var listGrid = [];
+    // console.log('allCards',this.props.allCards);
+    this.props.allCards.map((item, index) => {
+      listGrid.push({content: (
+          <div style={{
+            padding: '5px'
+          }}>
+            <Card id={item.id} checked={item.checked} category={item.category} errorMsg={item.errorMsg} cardColor={item.cardColor} name={item.name} description={item.description} place='right' remove={this.remove.bind(this)} position={index}/>
+          </div>
+        )})
+    })
     return (
-      <div>
-        <SortableList items={this.props.allCards} onSortEnd={this.onSortEnd} remove={this.remove.bind(this)}/>
+      <div style={{margin:'auto'}}>
+        <DragSortableList items={listGrid} dropBackTransitionDuration={0.3} onSort={this.onSort.bind(this)} type="grid"/>
       </div>
-    );
+    )
   }
 }

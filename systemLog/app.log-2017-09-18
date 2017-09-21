@@ -1,48 +1,52 @@
-[18 09 2017 11:06:23.228] [INFO] - User - Dhanasankar Sabanayagam - select - profile
-[18 09 2017 11:06:32.101] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 11:07:04.354] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Give Feedback
-[18 09 2017 13:33:26.471] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 13:47:14.493] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 13:47:20.906] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
-[18 09 2017 13:47:26.075] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Customer Care
-[18 09 2017 13:56:16.493] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 13:59:53.017] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:05:00.739] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:06:57.671] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:08:30.292] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:12:22.301] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:15:00.811] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:16:31.449] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:16:48.100] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
-[18 09 2017 14:16:54.827] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Customer Care
-[18 09 2017 14:17:23.934] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:17:39.098] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:17:58.311] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Give Feedback
-[18 09 2017 14:18:03.013] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 14:18:08.511] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:18:18.558] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Edit Appointment
-[18 09 2017 14:18:28.958] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 14:20:03.020] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 14:22:03.026] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 14:22:19.504] [INFO] - User - Abhishek Agarwal - select - profile
-[18 09 2017 14:22:24.525] [INFO] -  - User - Abhishek Agarwal select - domain - Patient
-[18 09 2017 14:24:03.032] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 14:26:03.043] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Patient: Give Feedback
-[18 09 2017 16:09:50.616] [INFO] -  - User - Abhishek Agarwal select - domain - Patient
-[18 09 2017 16:16:18.071] [INFO] -  - User - Abhishek Agarwal select - domain - Patient
-[18 09 2017 16:29:33.316] [INFO] -  - User - Abhishek Agarwal select - domain - Patient
-[18 09 2017 17:59:25.401] [INFO] - User - Dhanasankar Sabanayagam - select - profile
-[18 09 2017 17:59:28.828] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
-[18 09 2017 17:59:29.901] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
-[18 09 2017 17:59:36.638] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: View Scheduled Appointments
-[18 09 2017 18:01:53.267] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:03:53.293] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:04:21.805] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:05:53.297] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:06:21.806] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:13:09.098] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:15:05.781] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:17:05.784] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 18:19:05.791] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
-[18 09 2017 19:55:58.507] [INFO] - User - Dhanasankar Sabanayagam - select - profile
-[18 09 2017 19:56:00.965] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:27:48.040] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 10:27:55.423] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[18 09 2017 10:28:07.368] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Patient: Give Feedback
+[18 09 2017 10:28:26.860] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[18 09 2017 10:28:41.414] [INFO] - User - Dhanasankar Sabanayagam - update - components to left pane
+[18 09 2017 10:29:19.886] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:22.019] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:30.054] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:32.894] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:35.204] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:39.004] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Give Feedback - failure
+[18 09 2017 10:29:42.570] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:44.773] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Give Feedback - failure
+[18 09 2017 10:29:46.699] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:47.953] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:48.878] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Give Feedback - failure
+[18 09 2017 10:29:50.049] [INFO] - User - Dhanasankar Sabanayagam - click - clear sequence - Patient: Give Feedback
+[18 09 2017 10:29:54.024] [INFO] - User - Dhanasankar Sabanayagam - compile - Patient: Give Feedback - failure
+[18 09 2017 10:30:27.895] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:36:13.831] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:36:56.635] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:38:11.446] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[18 09 2017 10:38:22.529] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Add new appointment
+[18 09 2017 10:38:26.305] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:38:47.027] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[18 09 2017 10:38:51.179] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Add new appointment
+[18 09 2017 10:38:54.474] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:38:57.923] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[18 09 2017 10:38:59.730] [INFO] - User - Dhanasankar Sabanayagam - select - userDashBoard
+[18 09 2017 10:40:54.476] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:42:54.483] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:44:54.487] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:46:54.489] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:48:54.489] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:50:54.489] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:52:54.492] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:54:54.496] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:56:54.498] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 10:58:54.514] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 11:00:54.568] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 11:02:54.607] [INFO] - User- User - Dhanasankar Sabanayagam - click - Exit Userstory - Phlebo: Add new appointment
+[18 09 2017 16:51:27.897] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 16:52:35.190] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 16:52:58.372] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 16:53:02.227] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 16:53:05.017] [INFO] - User - Dhanasankar Sabanayagam - select - profile
+[18 09 2017 16:53:30.590] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[18 09 2017 16:53:37.386] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Patient
+[18 09 2017 16:53:41.855] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[18 09 2017 16:54:05.433] [INFO] - User - Dhanasankar Sabanayagam - select - userstory - Phlebo: Checkin
+[18 09 2017 16:54:13.813] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
+[18 09 2017 16:58:33.168] [INFO] -  - User - Dhanasankar Sabanayagam select - domain - Phlebotomist
