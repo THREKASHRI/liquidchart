@@ -24,7 +24,7 @@ export default class LinkScenario extends React.Component {
     let domainArray = [];
     let domainNameandDescriptionArr = [];
     $.ajax({
-      url: '/admin/sessionNames',
+      url: '/admin/sessionNameswithFlag',
       type: 'GET',
       success: function(data) {
           // console.log("session ",data);

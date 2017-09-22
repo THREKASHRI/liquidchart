@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form, Grid, Dropdown, Card} from 'semantic-ui-react';
-import Sequence from './SequenceAccordion';
+import Sequence from './sequenceAccordion';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 export default class ViewData extends React.Component {

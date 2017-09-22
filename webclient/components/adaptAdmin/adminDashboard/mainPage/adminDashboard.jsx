@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid} from 'semantic-ui-react';
 import DomainCompleted from '../domainsCompleted/domainsCompleted';
 import ScenarioCompleted from '../scenariosCompleted/scenariosCompleted';
-import TopScorers from '../topscorers/topscorers';
+import TopScorers from '../topScorers/topScorers';
 import UserScenarioStatus from '../userScenarioStatus/userScenarioStatus';
 import TeamStats from '../teamStats/teamStats';
 export default class adminDashboard extends React.Component {

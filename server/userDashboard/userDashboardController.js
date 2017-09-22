@@ -50,18 +50,23 @@ getTeamScores: function (req,res) {
   // second map to get scores
   let finalObjArray = [];
   req.body.teamNames.map(function(item,key){
-    //console.log('ínside  map getteamscores',item)
+    console.log('ínside  map getteamscores',item,key)
     let aa = {};
     let penalty;
     aa.teamName = item;
     let queryTeam = 'match(n:team{name:"'+item+'"}) return n.score';
+    // console.log("dcjn",queryTeam);
     session.run(queryTeam).then(function(result3) {
       penalty = result3.records[0]._fields[0].low;
       let query = 'match(n:team{name:"'+item+'"})<-[]-(m:loginid) return sum(m.score)';
+      // console.log("sacx",query);
       session.run(query).then(function(result2) {
         aa.score = result2.records[0]._fields[0].low - penalty;
         finalObjArray.push(aa);
+        // console.log("c",finalObjArray);
+        console.log("(key+1) == req.body.teamNames.length",(key+1) ,"==", req.body.teamNames.length);
         if((key+1) == req.body.teamNames.length){
+          console.log("kcnk");
           res.send(finalObjArray);
         }
       }).catch(function(error) {

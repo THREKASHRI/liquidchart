@@ -4,7 +4,7 @@ import Axios from 'axios';
 import Snackbar from 'material-ui/Snackbar';
 import DomainCompleted from '../domainsCompleted/domainsCompleted';
 import ScenarioCompleted from '../scenariosCompleted/scenariosCompleted';
-import TopScorers from '../topscorers/topscorers';
+import TopScorers from '../topScorers/topScorers';
 import UserScenarioStatus from '../userScenarioStatus/userScenarioStatus';
 import TeamStats from '../teamStats/teamStats';
 import Cookies from 'universal-cookie';
@@ -103,6 +103,7 @@ export default class userDashboard extends React.Component {
         type:'GET',
         success: function(data)
         {
+          console.log("dsvcxt",data);
           $.ajax({
             url:'/userDashboard/getTeamScores',
             type:'POST',

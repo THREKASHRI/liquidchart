@@ -24,27 +24,43 @@ var addUser=(req, res) => {
     });
 
   } else{
-    //////console.log('admin skipped');
+    //console.log('admin skipped');
     newUser.empId = req.body.employeeid;
     newUser.userName = req.body.name;
     newUser.emailId = req.body.email;
     newUser.userType = req.body.usertype;
     newUser.teamName = req.body.teamname;
     newUser.loginId = req.body.loginId;
+    let count = 0;
     newUser.save(function(err) {
       if (err) {
-        //////console.log(err);
+        //console.log(err);
         return res.send('Error in registration');
       } else {
         let session = driver.session();
-        let query =  'merge (n:team{name:"'+newUser.teamName+'"})<-[:user_of]-(a:loginid{name:"'+newUser.loginId+'",username:"'+newUser.userName+'"}) return n';
+        let query ='match (n:team{name:"'+newUser.teamName+'"}) return n';
+        //console.log("query ",query);
         session.run(query).then(function(result) {
-          ////console.log("success", result);
-          return res.send('Successfully registered');
+          if(result.records.length){
+             let query =  'match (n:team{name:"'+newUser.teamName+'"}) merge (n)<-[:user_of]-(a:loginid{name:"'+newUser.loginId+'",username:"'+newUser.userName+'"}) return n';
+            session.run(query).then(function(result) {
+              ////console.log("success", result);
+              return res.send('Successfully registered');
+            }).catch(function(error) {
+              ////console.log('promise error: ', error);
+            });
+          }else{
+           let query =  'merge (n:team{name:"'+newUser.teamName+'"})<-[:user_of]-(a:loginid{name:"'+newUser.loginId+'",username:"'+newUser.userName+'"}) return n';
+          session.run(query).then(function(result) {
+            ////console.log("success", result);
+            return res.send('Successfully registered');
+          }).catch(function(error) {
+            ////console.log('promise error: ', error);
+          });
+          }
         }).catch(function(error) {
           ////console.log('promise error: ', error);
         });
-
       }
     });
   }
@@ -698,6 +714,7 @@ var sessionNames = (req, res) => {
     res.send(error);
   });
 };
+
 //  : get the team participating in the respective session
 var sessionWiseTeams = (req, res) => {
   let session = driver.session();
@@ -734,7 +751,8 @@ var sessionWiseTeamScores = (req, res) => {
 var addNewSession =(req, res) => {
   let session = driver.session();
   let name = req.body.SessionName;
-  let query = 'create (n:session{name: "'+name+'",pushed=[false,false,false,false]})';
+  let query = 'create (n:session{name: "'+name+'",pushed:[false,false,false,false],flag:1}) return n';
+  // console.log("dsc",query);
   session.run(query).then(() =>{
     res.send('done');
     session.close();
@@ -816,6 +834,57 @@ var delinkTeam =(req, res) => {
   });
 };
 
+var deletesession  =(req, res) => {
+  let name = req.body.sessionName;
+  //////console.log("name "+name);
+  let query = 'match (n:session{name: "'+name+'"}) detach delete n';
+  session.run(query).then(() =>{
+    res.send('done');
+    session.close();
+  }).catch(function(error) {
+    //////console.log(' error: ', error);
+  });
+};
+
+var sessionDetails  =(req, res) => {
+  // let name = req.body.sessionName;
+  //////console.log("name "+name);
+  let query = 'match (n:session) return n';
+  session.run(query).then(function(result) {
+    res.send(result);
+    session.close();
+  }).catch(function(error) {
+    //////console.log(' error: ', error);
+  });
+};
+
+var toggleSession =(req, res) => {
+  let domainName = req.body.name;
+  let flagStatus = req.body.flag;
+  let query = "match (n:session) where n.name='"+domainName+"' set n.flag = "+flagStatus+" return n.flag";
+  console.log("cfgdchv",query);
+  session.run(query).then(function(result) {
+    console.log("hgvh",result);
+    res.send("done");
+  }).catch(function(error) {
+  });
+};
+
+var sessionNameswithFlag = (req, res) => {
+  let session = driver.session();
+  let SessionNames = [];
+  let query1 = 'match(n:session{flag:1}) return n.name';
+  session.run(query1).then(function(result1) {
+    result1.records.map(function(item){
+      SessionNames.push(item._fields[0]);
+    })
+    res.send(SessionNames);
+  }).catch(function(error) {
+    session.close();
+    res.send(error);
+  });
+};
+
 module.exports = {
   findAllScenarios,
   addNewDomain,
@@ -857,5 +926,9 @@ module.exports = {
   linkTeam,
   getAllTeamstoLink,
   getAllTeamstoDelink,
-  delinkTeam
+  delinkTeam,
+  deletesession,
+  sessionDetails,
+  toggleSession,
+  sessionNameswithFlag
 };

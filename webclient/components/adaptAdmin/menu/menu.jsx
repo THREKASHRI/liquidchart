@@ -70,7 +70,7 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
-            <Icon name='find' size='large' style={{
+            <Icon name='sort alphabet ascending' size='large' style={{
               float: 'left',
               color: '#737373',
               marginRight: '5px'
@@ -83,11 +83,17 @@ export default class AdminMenu extends Component {
             <Menu.Item name='addSession' active={activeItem === 'addSession'} id='accordionMenu' onClick={this.handleItemClick}>
               Add
             </Menu.Item>
+            <Menu.Item name='deleteSession' active={activeItem === 'deleteSession'} id='accordionMenu' onClick={this.handleItemClick}>
+              Delete
+            </Menu.Item>
             <Menu.Item name='linkTeam' active={activeItem === 'linkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
               Link Team
             </Menu.Item>
             <Menu.Item name='DelinkTeam' active={activeItem === 'DelinkTeam'} id='accordionMenu' onClick={this.handleItemClick}>
               Delink Team
+            </Menu.Item>
+            <Menu.Item name='toggleSession' active={activeItem === 'toggleSession'} id='accordionMenu' onClick={this.handleItemClick}>
+              Enable/Disable
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>

@@ -15,7 +15,7 @@ import DeleteComponent from '../manageData/delete/deleteComponent';
 import BulkAddComponent from '../../uploadCSV/uploadComponent';
 import UploadCsv from '../../uploadCSV/uploadCSV';
 import AddUser from '../users/addUser';
-import EditUser from '../users/editUser';
+import EditUser from '../users/editUSer';
 import DeleteUser from '../users/deleteUser';
 import DeleteSeq from '../manageData/delete/deleteSeq';
 import Toggle from '../manageData/hideDomain/hideDomain';
@@ -29,6 +29,8 @@ import AddSession from '../manageData/session/addSession';
 import SessionInfo from '../sessionInfo/sessionInfo';
 import LinkTeam from '../manageData/session/linkTeam';
 import DelinkTeam from '../manageData/session/delinkTeam';
+import DeleteSession from '../manageData/session/deleteSession';
+import ToggleSession from '../manageData/session/toggleSession';
 export default class Content extends React.Component {
     constructor(props) {
         super(props);
@@ -236,6 +238,10 @@ export default class Content extends React.Component {
             {
                 return <AddSession/>;
             }
+            case 'deleteSession':
+            {
+                return <DeleteSession/>;
+            }
             case 'linkTeam':
             {
                 return <LinkTeam/>;
@@ -243,6 +249,10 @@ export default class Content extends React.Component {
             case 'DelinkTeam':
             {
                 return <DelinkTeam/>;
+            }
+            case 'toggleSession':
+            {
+                return <ToggleSession/>;
             }
         }
     }

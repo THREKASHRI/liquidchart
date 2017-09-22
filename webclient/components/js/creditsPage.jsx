@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-import DimmerContent from './CreditsPageChild';
+import DimmerContent from './creditsPageChild';
 const {Link} = require('react-router');
 
 class CreditsPage extends React.Component {

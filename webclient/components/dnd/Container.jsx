@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 import Dustbin from './Dustbin';
 import Box from './Box';
-import Sequence from '../adaptAdmin/manageData/viewData/SequenceAccordion';
+import Sequence from '../adaptAdmin/manageData/viewData/sequenceAccordion';
 import ComponentDimmer from './ComponentDimmer';
 import {
   Grid,

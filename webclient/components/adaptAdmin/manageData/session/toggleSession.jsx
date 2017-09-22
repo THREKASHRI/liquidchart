@@ -23,23 +23,27 @@ export default class HideDomain extends React.Component {
     let domains = [];
     let status = [];
     $.ajax({
-      url: '/admin/getAllDomain',
+      url: '/admin/sessionDetails',
       type: 'GET',
-      success: function(res) {
-        for (let i = 0; i < res.records.length; i = i + 1) {
-          arr.push({content: res.records[i]._fields[0].properties.name});
-        }
-        for (let j = 0; j < res.records.length; j = j + 1) {
-          status.push({name: res.records[j]._fields[0].properties.name, flag: res.records[j]._fields[0].properties.flag.low});
-        }
-        for (let k = 0; k < arr.length; k = k + 1) {
-          domains.push({key: arr[k].content, value: arr[k].content, text: arr[k].content});
-        }
-        context.setState({domainArray: domains});
-        context.setState({flagStatus: status});
-      },
+      success: function(data) {
+          // console.log("session ",data);
+          for (let i in data) {
+            if (i !== null) {
+              let ss= data.records;
+              // console.log("gvc ",ss[0]._fields[0].properties.flag.low);
+              for (var i = 0; i < ss.length; i++) {
+                domains.push({key: ss[i]._fields[0].properties.name, value: ss[i]._fields[0].properties.name, text: ss[i]._fields[0].properties.name});
+              }
+              for (let j = 0; j < ss.length; j = j + 1) {
+                // console.log("dsvs",ss[j]._fields[0]);
+                    status.push({name: ss[j]._fields[0].properties.name, flag: ss[j]._fields[0].properties.flag.low});
+                  }
+            }
+          }
+        this.setState({domainArray: domains,flagStatus: status});
+      }.bind(this),
       error: function(err) {
-      }
+      }.bind(this)
     });
   }
   //   Archiving user selected customer journey
@@ -76,7 +80,7 @@ export default class HideDomain extends React.Component {
       context.setState({currentFlag: 'Enabled'});
     }
     $.ajax({
-      url: '/admin/toggleDomain',
+      url: '/admin/toggleSession',
       type: 'POST',
       data: {name: name, flag: flag},
       success: function(res) {
@@ -104,6 +108,8 @@ export default class HideDomain extends React.Component {
     else{
       FlagStatus = '';
     }
+
+    console.log("dddc",statusFlag, "edw",this.state.currentFlag);
     //   UI of Archieve customer journey
     return(
       <div>
@@ -111,16 +117,16 @@ export default class HideDomain extends React.Component {
           <Grid.Row>
             <Grid.Column width={1}/>
             <Grid.Column width={14}>
-              <p style={{fontSize: '16px', fontFamily: 'arial'}}><b>Enable or Disable Customer journey</b></p>
+              <p style={{fontSize: '16px', fontFamily: 'arial'}}><b>Enable or Disable Session</b></p>
               <Form>
                 <Form.Field>
                   <label>
-                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Select Customer journey</p>
+                    <p style={{fontSize: '14px', fontFamily: 'arial'}}>Select Session</p>
                   </label>
                   <Dropdown fluid onChange={this.updatesearchQueryDomain.bind(this)} value={this.state.selectedAccount} placeholder='Select the Domain to be changed' fluid search selection options={this.state.domainArray} required/>
                 </Form.Field>
                 {FlagStatus}
-                <p style={{fontSize: '12px', fontFamily: 'arial'}}>Press Toggle to enable/disable a Customer journey</p>
+                <p style={{fontSize: '12px', fontFamily: 'arial'}}>Press Toggle to enable/disable a Session</p>
               </Form>
               {(this.state.currentFlag == '' ) ? <Grid.Column width={1}><Button style={{marginTop: '10px'}} fluid color='green'  onClick={this.toggleDomain}>Toggle</Button></Grid.Column>:
               <Grid.Column width={1}><Button style={{marginTop:'10px'}} fluid color='green'  onClick={this.toggleDomain}>{statusFlag}</Button></Grid.Column>}

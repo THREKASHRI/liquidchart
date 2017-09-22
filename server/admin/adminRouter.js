@@ -48,4 +48,8 @@ router.post('/linkTeam',adminCtrl.linkTeam);
 router.get('/getAllTeamstoLink',adminCtrl.getAllTeamstoLink);
 router.post('/getAllTeamstoDelink',adminCtrl.getAllTeamstoDelink);
 router.post('/delinkTeam',adminCtrl.delinkTeam);
+router.post('/deletesession',adminCtrl.deletesession);
+router.get('/sessionDetails',adminCtrl.sessionDetails);
+router.post('/toggleSession',adminCtrl.toggleSession);
+router.get('/sessionNameswithFlag',adminCtrl.sessionNameswithFlag);
 module.exports = router;

@@ -114,6 +114,7 @@ function setupRestRoutes(app) {
       let session = driver.session();
       let aaaa = JSON.stringify(teamArray);
       let query1 =  'unwind '+aaaa+' as id merge (n:team{name:id,score:0}) return n';
+      console.log("dmsc",query1);
       session.run(query1).then(function(result1) {
       console.log("success", result1);
       let query2 = 'LOAD CSV  FROM "'+'file:///arun.csv'+'" AS line\
