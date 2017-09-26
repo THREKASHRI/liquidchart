@@ -252,6 +252,40 @@ export default class AdminMenu extends Component {
               Session Info
             </Menu.Item>
           </Accordion.Content>
+          <Accordion.Title id='accordian' color='black'>
+            <Icon name='info' size='large' style={{
+              float: 'left',
+              color: '#737373',
+              marginRight: '5px'
+            }}/>
+          <b>Help Desk</b>
+          </Accordion.Title>
+          <Divider style={{
+            marginBottom: '0px'
+          }}/>
+          <Accordion.Content >
+            <Menu.Item name='addServices' active={activeItem === 'addServices'} id='accordionMenu' onClick={this.handleItemClick}>
+            Add Service
+            </Menu.Item>
+            <Menu.Item name='editService' active={activeItem === 'editService'} id='accordionMenu' onClick={this.handleItemClick}>
+          Edit Service
+            </Menu.Item>
+            <Menu.Item name='deleteService' active={activeItem === 'deleteService'} id='accordionMenu' onClick={this.handleItemClick}>
+        Delete Service
+            </Menu.Item>
+            <Menu.Item name='linkService' active={activeItem === 'linkService'} id='accordionMenu' onClick={this.handleItemClick}>
+          Link Service
+            </Menu.Item>
+            <Menu.Item name='delinkService' active={activeItem === 'delinkService'} id='accordionMenu' onClick={this.handleItemClick}>
+          Delink Service
+            </Menu.Item>
+            <Menu.Item name='archiveService' active={activeItem === 'archiveService'} id='accordionMenu' onClick={this.handleItemClick}>
+        Archive
+            </Menu.Item>
+            <Menu.Item name='delinkService' active={activeItem === 'delinkService'} id='accordionMenu' onClick={this.handleItemClick}>
+          Delink Service
+            </Menu.Item>
+          </Accordion.Content>
         </Accordion>
       </Sidebar><br/><br/><br/>
       <Content sidebarItemSelected={activeItem} style={{

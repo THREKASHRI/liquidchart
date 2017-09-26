@@ -31,6 +31,13 @@ import LinkTeam from '../manageData/session/linkTeam';
 import DelinkTeam from '../manageData/session/delinkTeam';
 import DeleteSession from '../manageData/session/deleteSession';
 import ToggleSession from '../manageData/session/toggleSession';
+import AddServices from '../helpDeskAdmin/addService';
+import EditService from '../helpDeskAdmin/editService';
+import DeleteService from '../helpDeskAdmin/deleteService';
+import LinkService from '../helpDeskAdmin/LinkService';
+import DelinkService from '../helpDeskAdmin/delinkService';
+import ArchiveService from '../helpDeskAdmin/archiveService';
+
 export default class Content extends React.Component {
     constructor(props) {
         super(props);
@@ -253,6 +260,30 @@ export default class Content extends React.Component {
             case 'toggleSession':
             {
                 return <ToggleSession/>;
+            }
+            case 'addServices':
+            {
+              return <AddServices/>;
+            }
+            case 'editService':
+            {
+              return <EditService/>;
+            }
+            case 'deleteService':
+            {
+              return <DeleteService/>;
+            }
+            case 'linkService':
+            {
+              return <LinkService/>;
+            }
+            case 'delinkService':
+            {
+              return <DelinkService/>;
+            }
+            case 'archiveService':
+            {
+              return <ArchiveService/>;
             }
         }
     }

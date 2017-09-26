@@ -35,6 +35,7 @@ function setupRestRoutes(app) {
   app.use('/Components', require(path.join(__dirname, './Components')));
     app.use('/trial', require(path.join(__dirname, './trial')));
     app.use('/userDashboard', require(path.join(__dirname, './userDashboard')));
+      app.use('/helpDeskAdmin', require(path.join(__dirname, './helpDeskAdmin')));
 
 
 
