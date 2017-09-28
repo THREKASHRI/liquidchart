@@ -137,11 +137,33 @@ render(){
 let totalscore= this.state.score - this.state.teamScore;
 console.log("helpdesk team score",this.state.teamScore);
 console.log('totalscore',totalscore);
-  return(
+if(totalscore == 4 || totalscore < 4){
+return(
 <div style={{marginTop:'4%'}}>
 <Grid>
 <Grid.Column width={3}>
 <div  className="col-padding colPaddingInProfile" style={{marginLeft:'30%'}}>
+            <button data-toggle="modal" data-target="#TeamName" type="button" id = "twoButtonInProfile" className="outline btn btn-circle btn-xl circleButton">
+              <br/>
+              Team name
+              <p style={{textAlign:'center'}}>{this.state.teamName}</p>
+              Score
+              <p style={{textAlign:'center'}}>{totalscore}</p>
+            </button>
+          </div>
+</Grid.Column>
+<Grid.Column width={10}>
+<h3 style={{textAlign:'center',marginTop:'10%'}}>You dont have sufficient team score to utilize the services</h3>
+</Grid.Column>
+</Grid>
+</div>
+)}
+else{
+  return(
+  <div style={{marginTop:'4%'}}>
+  <Grid>
+  <Grid.Column width={3}>
+  <div  className="col-padding colPaddingInProfile" style={{marginLeft:'30%'}}>
               <button data-toggle="modal" data-target="#TeamName" type="button" id = "twoButtonInProfile" className="outline btn btn-circle btn-xl circleButton">
                 <br/>
                 Team name
@@ -150,8 +172,8 @@ console.log('totalscore',totalscore);
                 <p style={{textAlign:'center'}}>{totalscore}</p>
               </button>
             </div>
-</Grid.Column>
-<Grid.Column width={5}>
+  </Grid.Column>
+  <Grid.Column width={5}>
     {this.state.dynamicCards.length > 0 ? <FlipCard dynamicCards ={this.state.dynamicCards} penaltyscore={this.state.teamScore}/>: null}
     </Grid.Column>
     <Grid.Column floated='right' width={8} style={{marginTop:'2%',marginLeft:'-3%'}}>
@@ -160,9 +182,10 @@ console.log('totalscore',totalscore);
 
 
 
-</Grid>
-</div>
+  </Grid>
+  </div>
   );
+}
 }
 }
 module.exports = Helpdesk;

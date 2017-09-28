@@ -24,6 +24,7 @@ class ComponentModal extends React.Component {
 this.state = {
 domainArray:[],
 active:true,
+active1:true,
 dependencyStatus: false
 }
 this.showDependencies = this.showDependencies.bind(this);
@@ -123,6 +124,7 @@ this.penalty = this.penalty.bind(this);
       searchQueryScenario: res
     }, function() {
       this.getPreConditions();
+this.setState({active1: false})
     });
   }
   getPreConditions() {
@@ -145,13 +147,14 @@ console.log('precondition',this.state.searchQueryScenario);
 showDependencies() {
   this.setState({dependencyStatus:true});
 this.penalty();
+this.setState({active1: true});
 }
-
 render() {
+const { active1 } = this.state;
     const {active} = this.state;
     console.log('inside render',this.state.precondition);
     let dependencyData = '';
-    if(this.state.dependencyStatus) {
+    if(this.state.dependencyStatus == true) {
           dependencyData = this.state.precondition;
     }
     return(
@@ -168,7 +171,7 @@ render() {
     </div>
 <h4 style={{color:'black'}}>{dependencyData}</h4>
 <Card.Content>
-    <Button primary onClick={this.showDependencies} style={{marginTop:'5%'}}>Submit</Button>
+    <Button primary disabled={active1} onClick={this.showDependencies} style={{marginTop:'5%'}}>Submit</Button>
 </Card.Content>
     </Card>
     </Dimmer>

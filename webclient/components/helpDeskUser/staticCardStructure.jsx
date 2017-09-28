@@ -51,14 +51,16 @@ depedencyModal:false});
       this.refs.asd.success(
         'Service request added successfully',
         '', {
-          timeOut: 3000,
-          extendedTimeOut: 3000
+          timeOut: 5000,
+          extendedTimeOut: 5000
         }
       );
     }
 serviceaccepted(){
+location.reload();
 this.checkForaddedNewServiceAlert();
 this.penalty();
+
 }
   render() {
     let price = this.props.cost
