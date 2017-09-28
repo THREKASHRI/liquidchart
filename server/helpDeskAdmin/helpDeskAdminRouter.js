@@ -12,4 +12,5 @@ router.post('/linkServices',HelpDeskAdminCtrl.linkServices);
 router.post('/delinkServices',HelpDeskAdminCtrl.delinkServices);
 router.post('/findlinkServices',HelpDeskAdminCtrl.findlinkServices);
 router.post('/toggleService',HelpDeskAdminCtrl.toggleService);
+router.post('/findSessionServices',HelpDeskAdminCtrl.findSessionServices);
 module.exports = router;

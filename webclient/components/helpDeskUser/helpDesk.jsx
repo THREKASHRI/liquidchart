@@ -174,10 +174,10 @@ else{
             </div>
   </Grid.Column>
   <Grid.Column width={5}>
-    {this.state.dynamicCards.length > 0 ? <FlipCard dynamicCards ={this.state.dynamicCards} penaltyscore={this.state.teamScore}/>: null}
+    {this.state.dynamicCards.length > 0 ? <FlipCard dynamicCards ={this.state.dynamicCards} penaltyscore={this.state.teamScore} totalteamscore={totalscore}/>: null}
     </Grid.Column>
     <Grid.Column floated='right' width={8} style={{marginTop:'2%',marginLeft:'-3%'}}>
-      {this.state.staticCards.length >0 ? <StaticCards staticCards ={this.state.staticCards} penaltyscore={this.state.teamScore}/> : null}
+      {this.state.staticCards.length >0 ? <StaticCards staticCards ={this.state.staticCards} penaltyscore={this.state.teamScore} totalteamscore={totalscore}/> : null}
     </Grid.Column>
 
 

@@ -10,6 +10,7 @@ class serviceCard extends React.Component{
     console.log('ssssss',this.props.staticCards);
      let staticCard =this.props.staticCards;
 let score = this.props.penaltyscore;
+let totalteamscore = this.props.totalteamscore;
      console.log(staticCard.length);
      let arr = this.props.staticCards.map(function(item){
        console.log('myitem',item);
@@ -17,7 +18,7 @@ let score = this.props.penaltyscore;
        console.log('descreption'+item.description);
      return(
        <div>
-       <StaticCardStructure serviceName ={item.serviceName} description ={item.description} cost ={item.cost} score={score}
+       <StaticCardStructure serviceName ={item.serviceName} description ={item.description} cost ={item.cost} score={score} totalteamscore={totalteamscore}
        />
        </div>
      )

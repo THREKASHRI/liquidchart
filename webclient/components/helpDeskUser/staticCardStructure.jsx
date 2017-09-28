@@ -12,10 +12,26 @@ class serviceCardStructure extends React.Component {
     super();
     this.state = {
 cancelModal:false,
-depedencyModal: false
+depedencyModal: false,
+active1:false
     }
 this.penalty = this.penalty.bind(this);
   }
+componentWillMount(){
+this.scoreCheck();
+}
+scoreCheck(){
+  console.log('showback',this.props.totalteamscore);
+  let seqcost = parseInt(this.props.cost);
+  console.log('showback sequence',seqcost);
+  if(this.props.totalteamscore < seqcost)
+  {
+  console.log('setstate');
+  this.setState({active1:true},function(){
+  console.log('active1sfvsc',this.state.active1);
+  })
+  }
+}
 openDependencyModal(){
 this.setState({depedencyModal: true});
 }
@@ -63,6 +79,7 @@ this.penalty();
 
 }
   render() {
+const { active1 } = this.state;
     let price = this.props.cost
     return (
       <div>
@@ -112,9 +129,9 @@ this.penalty();
             <Card.Content extra>
               Cost :{this.props.cost}
               {(this.props.serviceName != 'Architecture Support') ?
-                          <Button primary onClick={this.openstaticcard.bind(this)} style={{marginLeft:'30%'}}>Select</Button> : null}
+                          <Button primary disabled={active1} onClick={this.openstaticcard.bind(this)} style={{marginLeft:'30%'}}>Select</Button> : null}
                           {(this.props.serviceName == 'Architecture Support') ?
-                          <Button primary onClick={this.openDependencyModal.bind(this)} style={{marginLeft:'30%'}}>Select</Button>
+                          <Button primary disabled={active1} onClick={this.openDependencyModal.bind(this)} style={{marginLeft:'30%'}}>Select</Button>
                            : null}
             </Card.Content>
 

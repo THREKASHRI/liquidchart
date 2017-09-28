@@ -74,10 +74,10 @@ console.log('inside linkimg');
     cost:cost
   }
     console.log('my data for linking',data);
-  // if(data.nameSession === '' || data.cost === ''||data.name==='' ) {
-  //   this.checkForErrorAlert();
-  // }
-
+  if(data.nameSession === '' || data.cost === ''||data.name==='' ) {
+    this.checkForErrorAlert();
+  }
+else{
   $.ajax({
     url:'/helpDeskAdmin/linkServices',
     type:'POST',
@@ -97,7 +97,7 @@ console.log('inside linkimg');
     }.bind(this)
   });
 }
-
+}
 getSessions(){
   let context = this;
   let sessions = [];
@@ -125,13 +125,13 @@ let servicesNames = [];
 let serviceDes =[];
 let keyPair =[];
 $.ajax({
-  url:'helpDeskAdmin/adminViewServiceDetails',
-  type:'GET',
+  url:'helpDeskAdmin/findSessionServices',
+  type:'POST',
   success:function(data){
     console.log('getServicesCost',data);
     data.map((item)=>{
        servicesNames.push({content:item.name});
-       serviceDes.push({name:item.name, description:item.description})
+      //  serviceDes.push({name:item.name, description:item.description})
     })
     servicesNames.map((item)=>{
       keyPair.push({key:item.content,value:item.content,text:item.content});
@@ -140,9 +140,9 @@ $.ajax({
     context.setState({serviceArray:keyPair}, function(){
       console.log('serviceArray',this.state.serviceArray);
     });
-    context.setState({serviceDescription:serviceDes},function(){
-      console.log('serviceDescription',this.state.serviceDescription);
-    })
+    // context.setState({serviceDescription:serviceDes},function(){
+    //   console.log('serviceDescription',this.state.serviceDescription);
+    // })
   }
 })
 }
@@ -217,3 +217,4 @@ updateSearchQuerySession(e,a) {
   }
 }
 module.exports = LinkService ;
+ 

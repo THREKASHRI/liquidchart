@@ -157,6 +157,19 @@ console.log();
     session.close();
   });
 }
+var findSessionServices =function(req,res){
+let query ='match (n:services)where not ((n:services)-[:cost]-())return n'
+let session = driver.session();
+let arr =[];
+session.run(query).then(function(result){
+  result.records.map((item)=>{
+    arr.push({"name":item._fields[0].properties.name})
+  });
+  console.log(arr);
+  res.send(arr);
+  session.close();
+})
+}
   module.exports = {
     adminAddService,
     adminViewServiceDetails,
@@ -166,5 +179,6 @@ console.log();
     linkServices,
     delinkServices,
     findlinkServices,
-    toggleService
+    toggleService,
+    findSessionServices
   }

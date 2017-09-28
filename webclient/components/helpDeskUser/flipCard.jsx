@@ -10,13 +10,14 @@ class flipCard extends React.Component{
      let flipCard =this.props.dynamicCards;
      console.log(flipCard.length);
 let score = this.props.penaltyscore;
+let totalteamscore = this.props.totalteamscore;
 console.log('flipcard score',this.props.penaltyscore);
      let arr = flipCard.map(function(item){
        console.log('myitemaaa'+item.serviceName);
 console.log('myitem cost'+item.cost.value);
      return(
        <div>
-       <FlipCardStructure serviceName ={item.serviceName} description = {item.description}  cost ={item.cost} score={score}/>
+       <FlipCardStructure serviceName ={item.serviceName} description = {item.description}  cost ={item.cost} score={score} totalteamscore={totalteamscore}/>
        </div>
      )
    }

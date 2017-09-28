@@ -24,13 +24,15 @@ class flipCardStructure extends React.Component {
       isFlipped: false,
       searchQueryScenario: '',
       searchcategory: '',
-      componentModal: false
+      componentModal: false,
+      active1:false
     };
     this.getCorrectSequence = this.getCorrectSequence.bind(this);
 this.penalty = this.penalty.bind(this);
   }
   componentWillMount() {
     this.getAllDomain();
+this.scoreCheck();
   }
   handleOnFlip(flipped) {
     if (flipped) {
@@ -46,7 +48,18 @@ this.penalty = this.penalty.bind(this);
   showBack() {
     this.setState({isFlipped: true});
   }
-
+    scoreCheck(){
+      console.log('showback',this.props.totalteamscore);
+      let seqcost = parseInt(this.props.cost);
+      console.log('showback sequence',seqcost);
+      if(this.props.totalteamscore < seqcost)
+      {
+      console.log('setstate');
+      this.setState({active1:true},function(){
+      console.log('active1sfvsc',this.state.active1);
+      })
+      }
+}
   showFront() {
     this.setState({isFlipped: false});
   }
@@ -238,6 +251,7 @@ error: function(err){
 }
   render() {
     //console.log('code', this.state.componentsequence);
+const { active1 } = this.state;
     let options = [
       {
         key: 0,
@@ -293,7 +307,7 @@ error: function(err){
                 <Card.Content extra>
                   Cost : {this.props.cost}
 
-                  <Button circular primary icon='arrow right' ref="backButton" onClick={this.showBack.bind(this)} floated='right'/>
+                  <Button circular primary disabled={active1} icon='arrow right' ref="backButton" onClick={this.showBack.bind(this)} floated='right'/>
 
                 </Card.Content>
 
