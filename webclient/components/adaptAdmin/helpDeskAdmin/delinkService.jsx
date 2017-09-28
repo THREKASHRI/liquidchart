@@ -7,7 +7,6 @@ const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animati
 class DelinkService extends React.Component{
   constructor(){
     super();
-    super();
     this.state ={
       sessionArray:[],
       serviceArray:[],
@@ -92,19 +91,36 @@ class DelinkService extends React.Component{
   })
   }
   updateSearchQuerySession(e,a) {
-    console.log("bye");
-    console.log('sssssss',a.value);
-    let context = this;
-    if(a.value!=null){
-      let res = a.value;
-      console.log('res printed', res);
-      let arr = Object.keys(res).map(function(key) {
-        return res[key];
-      });
-      console.log('arr', arr);
-      context.setState({searchQuerySession: res});
+  let res = a.value;
+  console.log('pinky',res);
+  let sessionLinkedArray = [];
+  console.log('asadaddad',this.state.searchQuerySession);
+  this.setState({searchQuerySession:res},function(){
+    console.log('rose',this.state.searchQuerySession);
+  });
+  let   data ={
+      name:res
     }
+    console.log('data in delink',data);
+  $.ajax({
+    url:'/helpDeskAdmin/findlinkServices',
+    type:'POST',
+    data:data,
+    success:function(data){
+      for (let i in data) {
+        if (i !== null) {
+          sessionLinkedArray.push({key: data[i].name, value: data[i].name, text: data[i].name});
+        }
+      }
+      this.setState({serviceArray:sessionLinkedArray});
+    }.bind(this),
+    error:function(err){
+    }.bind(this)
+  });
     }
+
+
+
     updateSearchQueryService(e, a) {
       let res = a.value;
       console.log('res value in service',res);
@@ -120,32 +136,24 @@ class DelinkService extends React.Component{
 
     DeleteSessionServiceLink(){
       console.log('inside linkimg');
-        let description = '';
-        let servicesN ='';
         let context =this;
         let sessionName = this.state.searchQuerySession;
-        console.log('searchQuerySession',this.state.searchQuerySession);
-        console.log('service got',this.state.searchQueryService);
-        let cost = this.state.costValue;
-        for (let i in this.state.serviceDescription) {
-          if (this.state.searchQueryService[i] === this.state.serviceDescription[i].name) {
-            description = this.state.serviceDescription[i].description;
-            servicesN =this.state.serviceDescription[i].name;
-            break;
-          }
-        }
-        if(this.state.searchQuerySession==''||servicesN==''){
-          this.checkForErrorAlert();
-        }
-        else{
+        console.log('searchQuerySession in delink',this.state.searchQuerySession);
+        console.log('service got in delink',this.state.searchQueryService);
         let data = {
           nameSession:this.state.searchQuerySession,
-          name:servicesN
+          name:this.state.searchQueryService
         }
+          console.log('my delink data', data);
         console.log(data,'delinkdata');
+        if(data.nameSession === ''||data.name==='' ) {
+          this.checkForErrorAlert();
+        }
+else{
         $.ajax({
           url:'/helpDeskAdmin/delinkServices',
           type:'POST',
+          traditional:true,
           data:data,
           success:function(data){
             context.checkForSuccessAlert();
@@ -162,7 +170,7 @@ class DelinkService extends React.Component{
           }.bind(this)
         });
         }
-    }
+}
   render(){
     return(
       <div>

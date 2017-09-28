@@ -123,6 +123,9 @@ class MenuExampleContentProp extends Component {
   userDashboard() {
     hashHistory.push('/userDashboard');
   }
+  helpDesk() {
+          hashHistory.push('/helpDesk');
+        }
   clickChange() {
     this.props.restaurantData(this.state.domain);
   }
@@ -215,6 +218,7 @@ class MenuExampleContentProp extends Component {
     let greeting = '';
     let toolsLink;
     let DeployCodeLink;
+let helpDeskLink;
     const {activeLoader} = this.state
     const {active} = this.state
     if (cookies.get('userType') == 'User' || cookies.get('userType') == 'Pair') {
@@ -238,6 +242,11 @@ class MenuExampleContentProp extends Component {
           <button id='pro' type='button' className='btn btn-link b1' onClick={this.DeployCode}>DeployCode</button>
         </li>
       );
+      helpDeskLink = (
+                    <li>
+                      <button id="pro" type="button" className="btn btn-link b1" onClick={this.helpDesk}>HelpDesk</button>
+                    </li>
+                  );
     } else if (cookies.get('userType') == 'Admin') {
       welcomeUser = ' (Admin)';
       greeting = <p id='welcomecolor' className='navbar-text'>
@@ -313,6 +322,9 @@ class MenuExampleContentProp extends Component {
             <li id='deploycode'>
               {DeployCodeLink}
             </li>
+            <li id="deploycode">
+                                  {helpDeskLink}
+                                </li>
           </ul>
         </div>
       );

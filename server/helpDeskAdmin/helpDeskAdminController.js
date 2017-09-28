@@ -88,7 +88,15 @@ var adminDeleteService = function(req,res){
   let name = req.body.name;
    let cost = req.body.cost;
    console.log(sessionName,name,cost,'hhhhhh');
-   let query = 'match (m:session {name:"'+sessionName+'"}) match (n:services) where n.name="'+name+'" merge (m)<-[r:cost{value:"'+cost+'"}]-(n) return m,n,r';
+   let query;
+   let bb = JSON.stringify(name);
+   console.log("df",bb);
+   if(typeof(name)!='string'){
+     query = 'unwind '+bb+' as r match (m:session {name:"'+sessionName+'"}) match (n:services) where n.name=r merge (m)<-[z:cost{value:"'+cost+'"}]-(n) return m,n,z '
+   }
+   else{
+     query = 'match (m:session {name:"'+sessionName+'"}) match (n:services) where n.name="'+name+'" merge (m)<-[r:cost{value:"'+cost+'"}]-(n) return m,n,r';
+}
 session.run(query).then(function(result){
   res.send('linked');
   session.close();
@@ -98,15 +106,49 @@ session.run(query).then(function(result){
  var delinkServices = function(req,res){
    let sessionName = req.body.nameSession;
    let name = req.body.name;
+
+   let result1 = [];
    console.log(sessionName,name,'delink data received');
 let session = driver.session();
-let query ='match (n:services)  where n.name="'+name+'" match (m:session {name:"'+sessionName+'"})<-[r:cost]-(n) detach delete r';
+let query ;
+let bb = JSON.stringify(name);
+console.log('bb',bb);
+if(typeof(name)!='string'){
+ query = 'unwind '+bb+' as r match (n:services) where n.name = r match(m:session{name:"'+sessionName+'"})<-[z:cost]-(n) detach delete z'
+}
+else{
+ query ='match (n:services)  where n.name="'+name+'" match (m:session {name:"'+sessionName+'"})<-[z:cost]-(n) detach delete z';
+}
+console.log("cvasd",query);
  session.run(query).then(function(result){
-   res.send('delinked');
+   for(let i of result.records){
+     result1.push({
+       'serviceId':(i._fields[0].identity.low),
+       'serviceName':(i._fields[0].properties.name),
+       'description':(i._fields[0].properties.description)
+     });
+   }
+   console.log('result delinked',result1);
+   res.send(result1);
    session.close();
  });
  }
 
+//  //route to  toggle service for the domain
+// var toggleService = function(req,res){
+//   let sessionName = req.body.nameSession;
+//   let name = req.body.name;
+//   let flagStatus = req.body.flag;
+//   let query;
+//   let bb = JSON.stringify(name);
+//   console.log('bb',bb);
+//   if(typeof(name)!='string'){
+//  query = 'unwind '+bb+'as r match(n:services) where n.name = r match (m.session{name:"'+sessionName+'"}) set n.flag = "+flagStatus+" return n.flag';
+// }
+// else{
+//   query ='match (m:session {name:"'+sessionName+'"}) match (n:services) where n.name="'+name+'"  set n.flag = "0" return n.flag'
+// }
+// }
 //route to get all the session
 var getAllSessions = function(req,res){
   let array = [];
@@ -123,6 +165,26 @@ var getAllSessions = function(req,res){
     });
 }
 
+
+//route to find the services for the session
+var findlinkServices = function(req,res){
+let array = [];
+let sessionName = req.body.name;
+let session = driver.session();
+let query = 'match (n:session {name:"'+sessionName+'"})<-[]-(m:services) return m';
+session.run(query).then(function(result){
+    result.records.map((item)=>{
+    array.push({
+      "name":item._fields[0].properties.name,
+        "description":item._fields[0].properties.description
+
+});
+    });
+    res.send(array);
+    session.close();
+});
+
+}
 // //route to toggle services
 // var toggleService = function(req,res){
 // let serviceName = req.body.name;
@@ -143,5 +205,7 @@ module.exports = {
   adminDeleteService,
   getAllSessions,
   linkServices,
-  delinkServices
+  delinkServices,
+  findlinkServices,
+  // toggleService
 }
