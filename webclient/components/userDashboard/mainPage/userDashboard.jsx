@@ -8,7 +8,7 @@ import TopScorers from '../topScorers/topScorers';
 import UserScenarioStatus from '../userScenarioStatus/userScenarioStatus';
 import TeamStats from '../teamStats/teamStats';
 import Cookies from 'universal-cookie';
-import Cookie from 'react-cookie';
+// import Cookie from 'react-cookie';
 const cookies = new Cookies();
 import {Component} from 'react';
 const {Link} = require('react-router');

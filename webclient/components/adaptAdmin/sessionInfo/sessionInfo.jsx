@@ -3,7 +3,7 @@ import ReactTable from 'react-table';
 import { Table, Segment, Grid, Button, Dropdown, Form} from 'semantic-ui-react';
 import 'react-table/react-table.css';
 import Cookies from 'universal-cookie';
-import Cookie from 'react-cookie';
+// import Cookie from 'react-cookie';
 const cookies = new Cookies();
 export default class UserScenarioStatus extends React.Component{
   constructor(props) {

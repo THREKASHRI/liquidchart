@@ -2,7 +2,7 @@ const React = require('react');
 const {Link} = require('react-router');
 const {hashHistory} = require('react-router');
 import { Button, Checkbox, Form, Card,Input,Icon } from 'semantic-ui-react';
-import Cookie from 'react-cookie';
+// import Cookie from 'react-cookie';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const ReactToastr = require('react-toastr');

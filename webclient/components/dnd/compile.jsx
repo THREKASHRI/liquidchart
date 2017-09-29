@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Cookies from 'universal-cookie';
-import Cookie from 'react-cookie';
+// import Cookie from 'react-cookie';
 const {hashHistory} = require('react-router');
 const ReactToastr = require('react-toastr');
 const {ToastContainer} = ReactToastr;

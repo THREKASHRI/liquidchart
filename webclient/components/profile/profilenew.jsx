@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Cookies from 'universal-cookie';
-import Cookie from 'react-cookie';
+// import Cookie from 'react-cookie';
 import Dropzone from 'react-dropzone';
 const {Link} = require('react-router');
 const {hashHistory} = require('react-router');
