@@ -527,6 +527,7 @@ var adminDashboardCompletedScenario =(req, res) => {
   let status = "'Completed'";
   let result1 = [];
   let query = 'match (n:team)<-[]-(w:loginid)<-[r:dashboardscenario]-(m:scenario)-[]->(q:domain) where r.status ='+status+' return n.name, m.name,r.status,q.name,w.name,w.username';
+// console.log("adminDashboardCompletedScenario ",query);
   // let query = 'match (n:team)<-[]-()<-[]-(m:dashboardscenario) where m.status ="completed" return n.name, m.name,m.status,m.domain,m.loginid';
   session.run(query).then(function(result) {
     for (var x of result.records) {
@@ -862,9 +863,9 @@ var toggleSession =(req, res) => {
   let domainName = req.body.name;
   let flagStatus = req.body.flag;
   let query = "match (n:session) where n.name='"+domainName+"' set n.flag = "+flagStatus+" return n.flag";
-  console.log("cfgdchv",query);
+  // console.log("cfgdchv",query);
   session.run(query).then(function(result) {
-    console.log("hgvh",result);
+    // console.log("hgvh",result);
     res.send("done");
   }).catch(function(error) {
   });

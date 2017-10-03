@@ -503,8 +503,9 @@ var getTeamScore = (req, res) => {
 
 var updateTeamScore = (req, res) => {
   loggerq.info(req.body.teamName+' - '+req.body.user+' - '+req.body.penalityScore);
-  //console.log("in updateTeamScore");
+  // console.log("in updateTeamScore");
   let query = "MATCH (n:team{name:'" + req.body.teamName + "'}) set n.score=" + req.body.teamScore;
+  // console.log("dcs ",query);
     let session = driver.session();
     session.run(query).then(function(result) {
       //console.log("aaa",result);

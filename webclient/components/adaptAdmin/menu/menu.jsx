@@ -202,7 +202,7 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
-            <Icon name='money' size='large' style={{
+            <Icon name='book' size='large' style={{
               float: 'left',
               color: '#737373',
               marginRight: '5px'
@@ -221,7 +221,7 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
-            <Icon name='money' size='large' style={{
+            <Icon name='dollar' size='large' style={{
               float: 'left',
               color: '#737373',
               marginRight: '5px'
@@ -237,7 +237,7 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
-            <Icon name='info' size='large' style={{
+            <Icon name='scribd' size='large' style={{
               float: 'left',
               color: '#737373',
               marginRight: '5px'
@@ -253,7 +253,7 @@ export default class AdminMenu extends Component {
             </Menu.Item>
           </Accordion.Content>
           <Accordion.Title id='accordian' color='black'>
-            <Icon name='info' size='large' style={{
+            <Icon name='help' size='large' style={{
               float: 'left',
               color: '#737373',
               marginRight: '5px'

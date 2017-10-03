@@ -1,15 +1,18 @@
-[28 09 2017 18:53:52.662] [INFO] -  - User - Demo User select - domain - Patient
-[28 09 2017 18:54:12.313] [INFO] - User - Demo User - select - userstory - Patient: List Appointment Details
-[28 09 2017 18:54:22.348] [INFO] - User - Demo User - update - components to left pane
-[28 09 2017 18:54:29.926] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:32.400] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:33.085] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:33.919] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:34.528] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:35.350] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:39.572] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
-[28 09 2017 18:54:46.106] [INFO] - User - Demo User - compile - Patient: List Appointment Details - failure
-[28 09 2017 18:54:59.123] [INFO] - User - Demo User - select - userDashBoard
-[28 09 2017 18:55:10.083] [INFO] - User - Demo User - select - profile
-[28 09 2017 18:55:11.819] [INFO] - User - Demo User - select - userDashBoard
-[28 09 2017 18:55:24.153] [INFO] - User - Demo User - select - profile
+[03 10 2017 10:40:23.926] [INFO] - User - aashika - select - profile
+[03 10 2017 10:41:06.165] [INFO] - User - aashika - select - profile
+[03 10 2017 10:41:13.321] [INFO] - User - aashika - select - profile
+[03 10 2017 11:01:31.071] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:01:35.423] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:01:51.645] [INFO] -  - User - Demo User select - domain - Patient
+[03 10 2017 11:02:00.273] [INFO] - User - Demo User - select - userstory - Patient: Login
+[03 10 2017 11:02:46.549] [INFO] - User - Demo User - update - components to left pane
+[03 10 2017 11:20:08.203] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:21:26.737] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:22:03.265] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:22:52.406] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:23:03.352] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:23:38.222] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:23:42.779] [INFO] - User - Demo User - select - userDashBoard
+[03 10 2017 11:28:57.306] [INFO] - User - Demo User - select - userDashBoard
+[03 10 2017 11:29:07.188] [INFO] - User - Demo User - select - profile
+[03 10 2017 11:41:14.199] [INFO] - User - Demo User - select - profile

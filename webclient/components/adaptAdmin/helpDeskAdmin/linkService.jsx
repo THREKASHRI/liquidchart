@@ -3,7 +3,6 @@ import {Form, Grid, Button, Divider, Dropdown} from 'semantic-ui-react';
 const ReactToastr = require('react-toastr');
 const {ToastContainer} = ReactToastr;
 const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
-
 class LinkService extends React.Component {
   constructor()
   {
@@ -20,7 +19,7 @@ class LinkService extends React.Component {
     this.LinkSessionAndService = this.LinkSessionAndService.bind(this);
    this.updatecostValue = this.updatecostValue.bind(this);
    this.checkForSuccessAlert = this.checkForSuccessAlert.bind(this);
-   this.checkForErrorAlert = this.checkForErrorAlert.bind(this);
+  this.checkForErrorAlert = this.checkForErrorAlert.bind(this);
   }
 componentWillMount(){
   this.getSessions();
@@ -47,40 +46,49 @@ checkForErrorAlert() {
     }
   );
 }
-LinkSessionAndService(){
 
+LinkSessionAndService(){
 console.log('inside linkimg');
   let description = '';
-  let servicesN ='';
+  // let servicesN ='';
   let context =this;
-  let sessionName = this.state.searchQuerySession;
   console.log('searchQuerySession',this.state.searchQuerySession);
   console.log('service got',this.state.searchQueryService);
+  console.log('array i need',this.state.serviceDescription);
   let cost = this.state.costValue;
-  for (let i in this.state.serviceDescription) {
-    if (this.state.searchQueryService[i] === this.state.serviceDescription[i].name) {
-      description = this.state.serviceDescription[i].description;
-      servicesN =this.state.serviceDescription[i].name;
-      break;
-    }
-  }
-  if(this.state.searchQuerySession==''||servicesN==''||cost==''){
-    this.checkForErrorAlert();
-  }
+  // for (let i in this.state.serviceDescription) {
+  //   if (this.state.searchQueryService[i] === this.state.serviceDescription[i].name){
+  //     description = this.state.serviceDescription[i].description;
+  //
+  //
+  //     break;
+  //   }
+  // }
+ console.log('arraay gt for services',this.state.searchQueryService);
+    // if(this.state.searchQuerySession==''||servicesN==''||cost==''){
+  //   this.checkForErrorAlert();
+  // }
   let data = {
     nameSession:this.state.searchQuerySession,
-  name:servicesN,
+  name:this.state.searchQueryService,
     cost:cost
   }
-  console.log('my data for linking',data);
+    console.log('my data for linking',data);
+  if(data.nameSession === '' || data.cost === ''||data.name==='' ) {
+    this.checkForErrorAlert();
+  }
+else{
   $.ajax({
     url:'/helpDeskAdmin/linkServices',
     type:'POST',
+    traditional: true,
     data:data,
     success:function(data){
       context.checkForSuccessAlert();
-      context.setState({sessionArray:[],searchQuerySession:'',searchQueryService:[]})
+      context.setState({searchQuerySession:''});
       context.setState({serviceArray: [], selectedAccount: []});
+      context.setState({searchQueryService:[]},function(){console.log('empty',this.state.searchQueryService);})
+      context.setState({costValue:''})
       context.getSessions();
       context.getServices();
     }.bind(this),
@@ -89,8 +97,7 @@ console.log('inside linkimg');
     }.bind(this)
   });
 }
-
-
+}
 getSessions(){
   let context = this;
   let sessions = [];
@@ -118,14 +125,13 @@ let servicesNames = [];
 let serviceDes =[];
 let keyPair =[];
 $.ajax({
-  url:'helpDeskAdmin/adminViewServiceDetails',
-  type:'GET',
+  url:'helpDeskAdmin/findSessionServices',
+  type:'POST',
   success:function(data){
     console.log('getServicesCost',data);
     data.map((item)=>{
-
        servicesNames.push({content:item.name});
-       serviceDes.push({name:item.name, description:item.description})
+      //  serviceDes.push({name:item.name, description:item.description})
     })
     servicesNames.map((item)=>{
       keyPair.push({key:item.content,value:item.content,text:item.content});
@@ -134,10 +140,9 @@ $.ajax({
     context.setState({serviceArray:keyPair}, function(){
       console.log('serviceArray',this.state.serviceArray);
     });
-    context.setState({serviceDescription:serviceDes},function(){
-      console.log('serviceDescription',this.state.serviceDescription);
-    })
-
+    // context.setState({serviceDescription:serviceDes},function(){
+    //   console.log('serviceDescription',this.state.serviceDescription);
+    // })
   }
 })
 }
@@ -187,7 +192,7 @@ updateSearchQuerySession(e,a) {
                 <label>
                   <p style={{fontSize: '14px', fontFamily: 'arial'}}>Service</p>
                 </label>
-                <Dropdown onChange ={this.updateSearchQueryService.bind(this)} value = {this.state.selectedAccount} placeholder='Select Service to be linked to Session' fluid multiple search selection options={this.state.serviceArray} required/>
+                <Dropdown value={this.state.selectedAccount} onChange ={this.updateSearchQueryService.bind(this)}  placeholder='Select Service to be linked to Session' fluid multiple search selection options={this.state.serviceArray} required/>
               </Form.Field>
               <Form.Field>
                 <label>
@@ -196,7 +201,6 @@ updateSearchQuerySession(e,a) {
                 <input autoComplete='off' type='number' value={this.state.costValue} onChange={this.updatecostValue} ref='modifiedServiceCost' placeholder='Service Cost' required/>
               </Form.Field>
             </Form>
-
             <Grid.Column width={8}>
               <Button style={{marginTop: '10px'}} color='green' fluid onClick={this.LinkSessionAndService.bind(this)}>Add</Button>
             </Grid.Column>
@@ -208,10 +212,9 @@ updateSearchQuerySession(e,a) {
       <ToastContainer ref='asd'
         toastMessageFactory={ToastMessageFactory}
         className='toast-top-center' style={{marginTop: '8%'}}/>
-
       </div>
     )
   }
 }
-
 module.exports = LinkService ;
+ 

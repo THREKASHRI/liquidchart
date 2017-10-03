@@ -1,0 +1,16 @@
+[28 09 2017 18:53:52.662] [INFO] -  - User - Demo User select - domain - Patient
+[28 09 2017 18:54:12.313] [INFO] - User - Demo User - select - userstory - Patient: List Appointment Details
+[28 09 2017 18:54:22.348] [INFO] - User - Demo User - update - components to left pane
+[28 09 2017 18:54:29.926] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:32.400] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:33.085] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:33.919] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:34.528] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:35.350] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:39.572] [INFO] - User - Demo User - click - clear sequence - Patient: List Appointment Details
+[28 09 2017 18:54:46.106] [INFO] - User - Demo User - compile - Patient: List Appointment Details - failure
+[28 09 2017 18:54:59.123] [INFO] - User - Demo User - select - userDashBoard
+[28 09 2017 18:55:10.083] [INFO] - User - Demo User - select - profile
+[28 09 2017 18:55:11.819] [INFO] - User - Demo User - select - userDashBoard
+[28 09 2017 18:55:24.153] [INFO] - User - Demo User - select - profile
+[29 09 2017 14:46:40.602] [INFO] - User - Demo User - select - profile

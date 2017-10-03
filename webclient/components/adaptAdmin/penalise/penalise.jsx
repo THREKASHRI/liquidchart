@@ -104,7 +104,7 @@ export default class Penalise extends React.Component {
       success: function() {
         context.setState({selectedTeam:'',penalityScore:0})
         context.checkForPenaliseSuccess();
-        this.refs.penalityScore.value = "";
+        // this.refs.penalityScore.value = "";
       },
       error: function(err) {
         //console.log("error", err);

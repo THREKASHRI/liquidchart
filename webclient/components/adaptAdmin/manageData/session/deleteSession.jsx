@@ -22,7 +22,7 @@ export default class DeleteComponent extends React.Component {
   }
   checkForRemovedComponentAlert() {
     this.refs.asd.success(
-      'Removed component successfully',
+      'Removed Session successfully',
       '', {
         timeOut: 3000,
         extendedTimeOut: 3000
@@ -31,7 +31,7 @@ export default class DeleteComponent extends React.Component {
   }
   checkForNoComponentAlert() {
     this.refs.asd.warning(
-      'No component to delete',
+      'No session to delete',
       '', {
         timeOut: 3000,
         extendedTimeOut: 3000
