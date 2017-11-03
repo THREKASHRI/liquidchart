@@ -1,6 +1,5 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const users = require('../server/users/userEntity').user;
 const connectFlash = require('connect-flash');
 
 passport.use(new LocalStrategy(function(username, password, cb) {
